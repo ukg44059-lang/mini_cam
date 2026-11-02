@@ -1,0 +1,34 @@
+{
+  "parameters": {
+    "frequency_mhz": 433.92,
+    "phy_kbps": 500,
+    "spi_hz": 2500000,
+    "stm32_baud": 1000000,
+    "receiver_baud": 921600,
+    "ack_guard_us": 300,
+    "jpeg_buffers": [
+      307200,
+      307200
+    ]
+  },
+  "images": {
+    "build_perf_uart1m/STM32U575_stream.bin": "2897109836474a1d04ad4a9bc95cf71d417d391ca13c4da5f437d580deb70115",
+    "cc1310/build_perf_tx_final/cc1310_rf_image_tx.bin": "0a06e2b521a7ad7e336dea3b24a429ad0809d683cdcea4853298a7a111081919",
+    "cc1310/build_perf_rx_final/cc1310_rf_image_rx.bin": "816fd18c4f4aa1dbcb4dba51d3b69b8efce9c2a15587ff348571566f3fc375b3"
+  },
+  "changed": [
+    "Makefile",
+    "cc1310/Makefile",
+    "cc1310/Core/Inc/rf_image_io.h",
+    "cc1310/Core/Inc/rf_prop_band.h",
+    "cc1310/Core/Src/app_rf_image_rx.c",
+    "cc1310/Core/Src/app_rf_image_tx.c",
+    "cc1310/Core/Src/rf_prop.c",
+    "Core/Inc/camera_port.h",
+    "Core/Inc/cc1310_link.h",
+    "Core/Src/app_stream.c",
+    "Core/Src/camera_port.c",
+    "Core/Src/cc1310_link.c",
+    "tools/stream_server.py"
+  ]
+}

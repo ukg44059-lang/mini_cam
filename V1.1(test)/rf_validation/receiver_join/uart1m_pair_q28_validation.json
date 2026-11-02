@@ -1,0 +1,19 @@
+{
+  "seconds": 30,
+  "qs": 28,
+  "cam_baud": 1000000,
+  "errors": [],
+  "direct": {
+    "frames": 54,
+    "bad_crc": 0,
+    "incomplete": 0
+  },
+  "radio": {
+    "frames": 55,
+    "bad_crc": 0,
+    "incomplete": 0
+  },
+  "matched": 54,
+  "radio_frames": 55,
+  "sequence_gaps": 0
+}

@@ -1,0 +1,3014 @@
+{
+  "imported_from": "测试工程案例",
+  "date": "2026-11-01",
+  "files": [
+    {
+      "source": "测试工程案例/Core/Inc/bsp.h",
+      "archived": "Core/Inc/bsp.h",
+      "sha256": "43a8b9629ed0639a844ee8e6c57efa10642900f34b763226360b5a798605514a"
+    },
+    {
+      "source": "测试工程案例/Core/Inc/camera_port.h",
+      "archived": "Core/Inc/camera_port.h",
+      "sha256": "96d2e8b13a8a9a757197297c7ed3c4bb43fd94d91deb706d5dc14d74876e4d08"
+    },
+    {
+      "source": "测试工程案例/Core/Inc/cc1310_link.h",
+      "archived": "Core/Inc/cc1310_link.h",
+      "sha256": "662de0d786e1eace42bd62a4c46d81efbe2a13af94e8449f7272690bf0c25144"
+    },
+    {
+      "source": "测试工程案例/Core/Inc/power_test.h",
+      "archived": "Core/Inc/power_test.h",
+      "sha256": "3bb31c96c44c69b5647bba6bf868e9727b964a7f5f304ed2f582242a122cd78a"
+    },
+    {
+      "source": "测试工程案例/Core/Inc/stm32u5xx_hal_conf.h",
+      "archived": "Core/Inc/stm32u5xx_hal_conf.h",
+      "sha256": "f27571f80df32531a78f0041045bf1c75b29029c5f5cf0adc44de505ef937549"
+    },
+    {
+      "source": "测试工程案例/Core/Inc/stm32u5xx_it.h",
+      "archived": "Core/Inc/stm32u5xx_it.h",
+      "sha256": "53f9fc157cbbe8f56da2d980af0bcc02fdce5345fbf3faea567ac08d619f35f1"
+    },
+    {
+      "source": "测试工程案例/Core/Inc/usbd_cdc_if.h",
+      "archived": "Core/Inc/usbd_cdc_if.h",
+      "sha256": "7f11f5cbe24a0f3f4c0ae50e6c62102ec3207646b1a4da8b817cd6799aa24eff"
+    },
+    {
+      "source": "测试工程案例/Core/Inc/usbd_conf.h",
+      "archived": "Core/Inc/usbd_conf.h",
+      "sha256": "d9a39d86280f3c6385133f67f7e8a44b10cff5d55e69f26ea1739a721a11f0b0"
+    },
+    {
+      "source": "测试工程案例/Core/Inc/usbd_desc.h",
+      "archived": "Core/Inc/usbd_desc.h",
+      "sha256": "2f53bcc6e34497b7d63a4d5015c7a8e5d9eafe8cc040cef4bab35376967b0c7a"
+    },
+    {
+      "source": "测试工程案例/Core/Src/app_camera.c",
+      "archived": "Core/Src/app_camera.c",
+      "sha256": "3c184159eae1935793fda98070b1c161d29907d99cac758d889b97f4b11f2d6f"
+    },
+    {
+      "source": "测试工程案例/Core/Src/app_led.c",
+      "archived": "Core/Src/app_led.c",
+      "sha256": "1b34cd968cee78cd64fcf147390106757837ea3bd02813495a79599d548e948e"
+    },
+    {
+      "source": "测试工程案例/Core/Src/app_spitest.c",
+      "archived": "Core/Src/app_spitest.c",
+      "sha256": "a5df391ad8e8f7298d648ae4718844b93c89b3583390f424fd052aa2f133d104"
+    },
+    {
+      "source": "测试工程案例/Core/Src/app_spitx.c",
+      "archived": "Core/Src/app_spitx.c",
+      "sha256": "3f45baf5c9fb71b42c7b229e60bf67fe158f3a6ea1b245a59d86a8efe43df271"
+    },
+    {
+      "source": "测试工程案例/Core/Src/app_stream.c",
+      "archived": "Core/Src/app_stream.c",
+      "sha256": "b28d9fb31a0c0cdd0a77e923e9a5765cb76d0e62835bdf5c2d5e0cd6b64605b0"
+    },
+    {
+      "source": "测试工程案例/Core/Src/app_uart.c",
+      "archived": "Core/Src/app_uart.c",
+      "sha256": "c9f79a257fb1eb52a4f333865bfa8ae1f64ae27bd777ff51cf5d5a1972323168"
+    },
+    {
+      "source": "测试工程案例/Core/Src/bsp.c",
+      "archived": "Core/Src/bsp.c",
+      "sha256": "73e08338b5fc9beeddaaaebf026212681ebd57a419173576ed3dde3a62af7696"
+    },
+    {
+      "source": "测试工程案例/Core/Src/camera_port.c",
+      "archived": "Core/Src/camera_port.c",
+      "sha256": "a8c5f49362a1407ff8077dc0fb27312e0cff679be6c6790dd4465b71e2e86a5f"
+    },
+    {
+      "source": "测试工程案例/Core/Src/cc1310_link.c",
+      "archived": "Core/Src/cc1310_link.c",
+      "sha256": "3a5fc5a1f82c3751c292e431d86cca2684269b23cf6f1f0da13cebf24bc23a35"
+    },
+    {
+      "source": "测试工程案例/Core/Src/stm32u5xx_hal_msp.c",
+      "archived": "Core/Src/stm32u5xx_hal_msp.c",
+      "sha256": "f006fa1f6cd1a307d7ada441e6011d67321a72551b3a76d52ab4f5072d2a9fa9"
+    },
+    {
+      "source": "测试工程案例/Core/Src/stm32u5xx_it.c",
+      "archived": "Core/Src/stm32u5xx_it.c",
+      "sha256": "72ddc1d6621326b42b0d7f3293e826c905f1b07478bba1a2ba660fc7266a54f2"
+    },
+    {
+      "source": "测试工程案例/Core/Src/syscalls.c",
+      "archived": "Core/Src/syscalls.c",
+      "sha256": "e10712641c9a16850e1f0aef2a46756bffadbe574791d9dd04416db518be54fe"
+    },
+    {
+      "source": "测试工程案例/Core/Src/sysmem.c",
+      "archived": "Core/Src/sysmem.c",
+      "sha256": "887a1d1db53e299e79c9e19cfec5f0305020089ffe0607727877a7fe18b8f865"
+    },
+    {
+      "source": "测试工程案例/Core/Src/system_stm32u5xx.c",
+      "archived": "Core/Src/system_stm32u5xx.c",
+      "sha256": "28d00434c85c76af756649577d6b2096f3810e2adb137203b5ebe4c33020622f"
+    },
+    {
+      "source": "测试工程案例/Core/Src/usbd_cdc_if.c",
+      "archived": "Core/Src/usbd_cdc_if.c",
+      "sha256": "4a17d99d171566d7c39f0a7fe01edab370d98b1f0f5df435cd704b4e036df212"
+    },
+    {
+      "source": "测试工程案例/Core/Src/usbd_conf.c",
+      "archived": "Core/Src/usbd_conf.c",
+      "sha256": "6a3f917e090bc824616da65d1a5d60a3b6f1334f0ee16f8139d8e0fbd8302ee2"
+    },
+    {
+      "source": "测试工程案例/Core/Src/usbd_desc.c",
+      "archived": "Core/Src/usbd_desc.c",
+      "sha256": "240ea4a5a99aa3ee8f738a3c353f15d8a769841d6fa917c759417974797e777e"
+    },
+    {
+      "source": "测试工程案例/Core/Startup/startup_stm32u575xx.s",
+      "archived": "Core/Startup/startup_stm32u575xx.s",
+      "sha256": "70e9034f2243394d0c7b815ca59c6ce3363a120e25efbcdf13bcda59d356b197"
+    },
+    {
+      "source": "测试工程案例/Drivers/BSP/OV3660/ov3660.c",
+      "archived": "Drivers/BSP/OV3660/ov3660.c",
+      "sha256": "e63aa6d6f20a57ba20246a4de4981b08c7bc7667d78a11fcd85167decb78f5ef"
+    },
+    {
+      "source": "测试工程案例/Drivers/BSP/OV3660/ov3660.h",
+      "archived": "Drivers/BSP/OV3660/ov3660.h",
+      "sha256": "49bed0833bcb281d79389e0111f0eead42e07cc0e7237d05f4bb769c5b54f434"
+    },
+    {
+      "source": "测试工程案例/Drivers/BSP/OV3660/ov3660_regs.h",
+      "archived": "Drivers/BSP/OV3660/ov3660_regs.h",
+      "sha256": "0ea49d9d201ee9361442bc54241c7013adf3e5892e65d3d8a125f8072544e709"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Device/ST/STM32U5xx/Include/partition_stm32u5xx.h",
+      "archived": "Drivers/CMSIS/Device/ST/STM32U5xx/Include/partition_stm32u5xx.h",
+      "sha256": "3c3f7516611319ca59a055f7e40e004fe954493b93969da1a01293fd154a8d69"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Device/ST/STM32U5xx/Include/stm32u535xx.h",
+      "archived": "Drivers/CMSIS/Device/ST/STM32U5xx/Include/stm32u535xx.h",
+      "sha256": "bc47adeffbeea9dd91ba68de1a7ceefde29557b49caa2480569b00ec7cb4bdfc"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Device/ST/STM32U5xx/Include/stm32u545xx.h",
+      "archived": "Drivers/CMSIS/Device/ST/STM32U5xx/Include/stm32u545xx.h",
+      "sha256": "9f17e9107dfb08c1528698222c1c70d17e5b9f3d13ceb61eedac777c0ad7a254"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Device/ST/STM32U5xx/Include/stm32u575xx.h",
+      "archived": "Drivers/CMSIS/Device/ST/STM32U5xx/Include/stm32u575xx.h",
+      "sha256": "854b9a7b5534b1bce610ece61cd975e5380010bb398ce3c4b6d1768c00232c77"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Device/ST/STM32U5xx/Include/stm32u585xx.h",
+      "archived": "Drivers/CMSIS/Device/ST/STM32U5xx/Include/stm32u585xx.h",
+      "sha256": "a51d1f05030e52a5ba60111e16904844e51a58a74af3dcc372687761d12e8ba1"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Device/ST/STM32U5xx/Include/stm32u595xx.h",
+      "archived": "Drivers/CMSIS/Device/ST/STM32U5xx/Include/stm32u595xx.h",
+      "sha256": "6611bc2e77db38874b1b9a772242cc6e21602386580ceb221c093deb5a98edad"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Device/ST/STM32U5xx/Include/stm32u599xx.h",
+      "archived": "Drivers/CMSIS/Device/ST/STM32U5xx/Include/stm32u599xx.h",
+      "sha256": "6ca8f7bc286c5f1294aef82ef17841b86309d45c050bed11c419d185b6b96302"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Device/ST/STM32U5xx/Include/stm32u5a5xx.h",
+      "archived": "Drivers/CMSIS/Device/ST/STM32U5xx/Include/stm32u5a5xx.h",
+      "sha256": "f1de14b408fa07f09b2781e6bc64a19fa259a7f44f7b4a53f72b673e087b18dc"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Device/ST/STM32U5xx/Include/stm32u5a9xx.h",
+      "archived": "Drivers/CMSIS/Device/ST/STM32U5xx/Include/stm32u5a9xx.h",
+      "sha256": "1661440253a0125b2e27bfa7a885ce4492dd5d0ad7fdb712e7fd9b2a0be80221"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Device/ST/STM32U5xx/Include/stm32u5f7xx.h",
+      "archived": "Drivers/CMSIS/Device/ST/STM32U5xx/Include/stm32u5f7xx.h",
+      "sha256": "a5b6eaebdee42c154d7cae39364c37a5122d8ed1f989f4d8f8cf0ee28bce3298"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Device/ST/STM32U5xx/Include/stm32u5f9xx.h",
+      "archived": "Drivers/CMSIS/Device/ST/STM32U5xx/Include/stm32u5f9xx.h",
+      "sha256": "2afc95377c9849baa465429f8c80445388bc7f0aa3ca52d477625822f4cca017"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Device/ST/STM32U5xx/Include/stm32u5g7xx.h",
+      "archived": "Drivers/CMSIS/Device/ST/STM32U5xx/Include/stm32u5g7xx.h",
+      "sha256": "d3c67f77d5f574986041a4ee6078713d05313088d4419db423121770d9481ef8"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Device/ST/STM32U5xx/Include/stm32u5g9xx.h",
+      "archived": "Drivers/CMSIS/Device/ST/STM32U5xx/Include/stm32u5g9xx.h",
+      "sha256": "e24191c59550ad428e246fbe92069c7737e50575945770d9c157d9384c5cbae3"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Device/ST/STM32U5xx/Include/stm32u5xx.h",
+      "archived": "Drivers/CMSIS/Device/ST/STM32U5xx/Include/stm32u5xx.h",
+      "sha256": "e14c30935b33e903dd293e84632f5b3c374bf5b6554182f188dba3a798ee7bc5"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Device/ST/STM32U5xx/Include/system_stm32u5xx.h",
+      "archived": "Drivers/CMSIS/Device/ST/STM32U5xx/Include/system_stm32u5xx.h",
+      "sha256": "73675e7a1dfd4a6378f08f6dce3ec072d6244f70365276ef52704144559b289e"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Include/cmsis_armclang.h",
+      "archived": "Drivers/CMSIS/Include/cmsis_armclang.h",
+      "sha256": "f7361b36a56909eff2b1cecd778443fd9da21eaa86878dabf5e8e216f6bfea29"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Include/cmsis_clang.h",
+      "archived": "Drivers/CMSIS/Include/cmsis_clang.h",
+      "sha256": "015fd70aaca6475443082154b7c844d6db58e757b2dbe3fa3bd2673e0c353ba0"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Include/cmsis_compiler.h",
+      "archived": "Drivers/CMSIS/Include/cmsis_compiler.h",
+      "sha256": "8932e7ac5c9a13b199c64f25b3dc67ebf0a877b33dbcf434d4e1b78e625f57c5"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Include/cmsis_gcc.h",
+      "archived": "Drivers/CMSIS/Include/cmsis_gcc.h",
+      "sha256": "7c34c8eb47e78acc8da3122fd27fc912b653b14817a2e1fb55ed41fb55c54281"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Include/cmsis_iccarm.h",
+      "archived": "Drivers/CMSIS/Include/cmsis_iccarm.h",
+      "sha256": "636f5dbc40e48243aad3312b3942457bae0df2f4d6725680572a13307b6d454f"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Include/cmsis_version.h",
+      "archived": "Drivers/CMSIS/Include/cmsis_version.h",
+      "sha256": "3b9195c5373a2a4dbfd968b083b3d7f5f446f9ec2e126f75928ac1ff4356b91e"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Include/core_ca.h",
+      "archived": "Drivers/CMSIS/Include/core_ca.h",
+      "sha256": "84e0df477d2e9cfefd7afe1e69d5dc29887f914147cf603f9823d3ab8bc6b1ef"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Include/core_cm0.h",
+      "archived": "Drivers/CMSIS/Include/core_cm0.h",
+      "sha256": "7ad6ed17206a7cb99bfef0ec36411620fb2ba9b4ef0cc1152b0e68c7db62348f"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Include/core_cm0plus.h",
+      "archived": "Drivers/CMSIS/Include/core_cm0plus.h",
+      "sha256": "3a01ca99a202b3c2acf476e9523181c9f6ddb027fa8e097c0be0037b213c8f23"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Include/core_cm1.h",
+      "archived": "Drivers/CMSIS/Include/core_cm1.h",
+      "sha256": "d5c5fade64174a97e81156e765cffa867aace08ccd66617bf5622327e1ede099"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Include/core_cm23.h",
+      "archived": "Drivers/CMSIS/Include/core_cm23.h",
+      "sha256": "8d2fb0ec0e59c664392591fe703cf7243e50969f05d9c6c4e4fea42cb99032cb"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Include/core_cm3.h",
+      "archived": "Drivers/CMSIS/Include/core_cm3.h",
+      "sha256": "00c9f5f9b9244661549e0ee7d4fa0e82de049f40c17902c201c1eb00fce70936"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Include/core_cm33.h",
+      "archived": "Drivers/CMSIS/Include/core_cm33.h",
+      "sha256": "47bd70aed10df47c7ca54bf049685d24ae886294b2d05ac6e411804dfe81b4b8"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Include/core_cm35p.h",
+      "archived": "Drivers/CMSIS/Include/core_cm35p.h",
+      "sha256": "eb1c002b97357517d1e070b0565f8bd3d859c95d09074e47b9cf59cee70f8130"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Include/core_cm4.h",
+      "archived": "Drivers/CMSIS/Include/core_cm4.h",
+      "sha256": "5d6f71c32258821ebf371045a5670fe74a1cab49318f8df75344adfe4813de04"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Include/core_cm52.h",
+      "archived": "Drivers/CMSIS/Include/core_cm52.h",
+      "sha256": "647b222cdf36b0ede804853c153b6d1486603de7c881ea3ed3acacb69b7b3c7b"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Include/core_cm55.h",
+      "archived": "Drivers/CMSIS/Include/core_cm55.h",
+      "sha256": "b0772b23e6dfce96638e7ca0040a063d9b399ed91a2843c62c32192a059d0231"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Include/core_cm7.h",
+      "archived": "Drivers/CMSIS/Include/core_cm7.h",
+      "sha256": "2927d0c055445d19cef7d311e076961ffa86f7af4bcbc5673dbd14d9c160ac29"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Include/core_cm85.h",
+      "archived": "Drivers/CMSIS/Include/core_cm85.h",
+      "sha256": "acea058815b71ec3710415001518e014d19f50be7b06e1ecf1a6071f28945698"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Include/core_sc000.h",
+      "archived": "Drivers/CMSIS/Include/core_sc000.h",
+      "sha256": "8a42600f7afd149a6029cc147f0aa7e48ad016b1729d87de24e29b74163910d0"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Include/core_sc300.h",
+      "archived": "Drivers/CMSIS/Include/core_sc300.h",
+      "sha256": "7846ebbc73ded9559195026f7719a6ffa7646cb0fd2de8a5927812b9ce8bc944"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Include/core_starmc1.h",
+      "archived": "Drivers/CMSIS/Include/core_starmc1.h",
+      "sha256": "1201164ecf3ecf25df9a49b6abea55eb3b612addfdd0b9d1d460b0e95bc3f9f1"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Include/core_starmc3.h",
+      "archived": "Drivers/CMSIS/Include/core_starmc3.h",
+      "sha256": "425936814b668ef4523bf759d6ac6f9dce8a8dd3d64087b3711239854bbb53f5"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Include/tz_context.h",
+      "archived": "Drivers/CMSIS/Include/tz_context.h",
+      "sha256": "2bcc2a5fea0567eff96dd3f2fd197b88feaa144bfe0df6146abd802701456d3b"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Include/a-profile/cmsis_armclang_a.h",
+      "archived": "Drivers/CMSIS/Include/a-profile/cmsis_armclang_a.h",
+      "sha256": "e3a6811ff4efb84514114b0b4832ba94bfccfc661039cf3f00e3c373cce29655"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Include/a-profile/cmsis_clang_a.h",
+      "archived": "Drivers/CMSIS/Include/a-profile/cmsis_clang_a.h",
+      "sha256": "179ee88a1c2e7c2e56fe399e9e88f4dba1916edf80152d88c71807db4e675ce7"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Include/a-profile/cmsis_cp15.h",
+      "archived": "Drivers/CMSIS/Include/a-profile/cmsis_cp15.h",
+      "sha256": "2fee149025d4d08f20fa54fe18162d24d5abc61908964501ff20f50621418a7a"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Include/a-profile/cmsis_gcc_a.h",
+      "archived": "Drivers/CMSIS/Include/a-profile/cmsis_gcc_a.h",
+      "sha256": "bdf9a2a49a012704b799951e66c6af13f7513349eef5f7291fd1d7ac0add0f0c"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Include/a-profile/cmsis_iccarm_a.h",
+      "archived": "Drivers/CMSIS/Include/a-profile/cmsis_iccarm_a.h",
+      "sha256": "c41d99a21bdcd2050d6d428ea2591837999cd7871e39d49eb7b10fe1ed3c4ab0"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Include/a-profile/irq_ctrl.h",
+      "archived": "Drivers/CMSIS/Include/a-profile/irq_ctrl.h",
+      "sha256": "ba65458c3550ed2613902e084ddcd69f9feae1dfb80bcb99d50e10c88ef8c336"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Include/m-profile/armv7m_cachel1.h",
+      "archived": "Drivers/CMSIS/Include/m-profile/armv7m_cachel1.h",
+      "sha256": "f7905d3e336feccda0647f214e791b424c5f92e788f1303e587cebca729b6dc3"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Include/m-profile/armv7m_mpu.h",
+      "archived": "Drivers/CMSIS/Include/m-profile/armv7m_mpu.h",
+      "sha256": "44294dc3e331deb8daae269793e579cc10920a9b88d133bbaf3a7af65d29f9e4"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Include/m-profile/armv81m_pac.h",
+      "archived": "Drivers/CMSIS/Include/m-profile/armv81m_pac.h",
+      "sha256": "fe2f5db52980237fe8bafe265b660ef9caac90bae4c478d34f243e82346d1daa"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Include/m-profile/armv8m_mpu.h",
+      "archived": "Drivers/CMSIS/Include/m-profile/armv8m_mpu.h",
+      "sha256": "3540efc65de718421637748878159d19e2aabc53609eb4bd02d6894cc9977582"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Include/m-profile/armv8m_pmu.h",
+      "archived": "Drivers/CMSIS/Include/m-profile/armv8m_pmu.h",
+      "sha256": "1323587da9fea03c96a685a9cf60c576b4d0532b3339501401332ff8a6c58e32"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Include/m-profile/cmsis_armclang_m.h",
+      "archived": "Drivers/CMSIS/Include/m-profile/cmsis_armclang_m.h",
+      "sha256": "d7425ea4ca4577e557f9ea155006f5506db1e9f6580442d56d6417549ad53b92"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Include/m-profile/cmsis_clang_m.h",
+      "archived": "Drivers/CMSIS/Include/m-profile/cmsis_clang_m.h",
+      "sha256": "4d6c792c84658954f991176e1774513c367df20d22f2ab2f43c30c6f14e2f106"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Include/m-profile/cmsis_gcc_m.h",
+      "archived": "Drivers/CMSIS/Include/m-profile/cmsis_gcc_m.h",
+      "sha256": "56241ce5b4798048f84429e28c1949d30bb907155f0b8351cb36aaaa9cbbeabb"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Include/m-profile/cmsis_iccarm_m.h",
+      "archived": "Drivers/CMSIS/Include/m-profile/cmsis_iccarm_m.h",
+      "sha256": "044ea6c892db7a8e65664894416e516d5aa1f6461ab94026bfc3feb28fcce1ca"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Include/m-profile/cmsis_tiarmclang_m.h",
+      "archived": "Drivers/CMSIS/Include/m-profile/cmsis_tiarmclang_m.h",
+      "sha256": "c753507cf915b193908baad0754322144c1b40192cdaf22da0aa8b9202185cef"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Include/r-profile/cmsis_armclang_r.h",
+      "archived": "Drivers/CMSIS/Include/r-profile/cmsis_armclang_r.h",
+      "sha256": "d3875ee329abb8a5746cfda99633d71f30a131156ebc8aafc8b2ec4992df8616"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Include/r-profile/cmsis_clang_r.h",
+      "archived": "Drivers/CMSIS/Include/r-profile/cmsis_clang_r.h",
+      "sha256": "50cb3a674ebffb742934ec63c86948ec321771ee4c645d136a5d897dcc2ead07"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Include/r-profile/cmsis_gcc_r.h",
+      "archived": "Drivers/CMSIS/Include/r-profile/cmsis_gcc_r.h",
+      "sha256": "3502300039821e8f1b8ecbd7a5cc433c5ce90da41e4d71fccaec0bb1568404da"
+    },
+    {
+      "source": "测试工程案例/Drivers/CMSIS/Include/r-profile/cmsis_iccarm_r.h",
+      "archived": "Drivers/CMSIS/Include/r-profile/cmsis_iccarm_r.h",
+      "sha256": "8295759ba6993f3a71c4b7cd953e75bcb59c016960670f2a9613b081d6afd415"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/LICENSE.md",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/LICENSE.md",
+      "sha256": "3ef135517604c828e7e2ac60daa5d34ce90a258dd0dfbec140651ac173b45ced"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal.h",
+      "sha256": "be0aa206bbdbd4be224282ab540aa1b2545b41981b61893ca9c2868c10d45e43"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_adc.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_adc.h",
+      "sha256": "294c9ec27c4d4d5efce0d31e31b09bee2651229a1df68781aaf7ea415d2c5bd4"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_adc_ex.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_adc_ex.h",
+      "sha256": "b2acc7d3c97a248a1932f36c372325df581519c4db37daa826f7e7b1235ecc3e"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_comp.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_comp.h",
+      "sha256": "1c79afbcc8c657ab19cdbb4075e071f2b9f99e7f59783acafadf8fb0b16e77d3"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_conf_template.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_conf_template.h",
+      "sha256": "a761a1c98d22aa0ddfda8c9c2d20bbc2124e495c63d0724e6b437c5b77a9ddf6"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_cordic.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_cordic.h",
+      "sha256": "5accd373624585c6f8411bb43178411762ea26f368f29db091ac41b95389f069"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_cortex.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_cortex.h",
+      "sha256": "d839d550236888f60248d33a19ed31a5fe0bece6a6dde6b2dbf9e01f776f8b25"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_crc.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_crc.h",
+      "sha256": "00a423b114a5c6c7c8dc23553e53d5025aa254149c208f03cf9f8af06f297a8d"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_crc_ex.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_crc_ex.h",
+      "sha256": "a835b9f1e363404c3c360114803545dad455f6040d8b445136f027c3de0adf92"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_cryp.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_cryp.h",
+      "sha256": "7c4d572f0572cd1a6e0f9586c400ec0db40133748bfe6bbc4594b2df7b7755c1"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_cryp_ex.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_cryp_ex.h",
+      "sha256": "f57473819ef0bab453f996ee378915041fce98ccdd98c7e698a6c2600ef89ed6"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_dac.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_dac.h",
+      "sha256": "44a2c09a62f3e6e5497d4b06396075ecd5be050ed9fcaa5b5bff466b9d067666"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_dac_ex.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_dac_ex.h",
+      "sha256": "a55d7e3aca788a274a7e45497d8db78f06786063eead1d6ad7a21286d9f8e9fa"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_dcache.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_dcache.h",
+      "sha256": "e7d22bf39a5409c5f1d503de6e8840dec9a88e88956e7659dcf94204e46ce605"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_dcmi.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_dcmi.h",
+      "sha256": "725046175e4eb49542baf663add493134e7078dda21a20dc36be2c79b1b538d7"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_def.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_def.h",
+      "sha256": "73a911c835b4c7f75b7d4c7e47847f9776c5b55dc265bb59c17dfbbc6488e2b9"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_dma.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_dma.h",
+      "sha256": "0d4f824e3037433289958fb4d590807e04390bd707b503844286da39e11f1205"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_dma2d.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_dma2d.h",
+      "sha256": "4a527d94594d03faef5dea90461fefae66216298380227244d0303a5bcb1120f"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_dma_ex.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_dma_ex.h",
+      "sha256": "5465ca6acdf8fce2f81d9efebfc131bcd9ad2a7fa7debfabd9e0645e33588146"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_dsi.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_dsi.h",
+      "sha256": "6ca4b99dda854f5695b11ab7892bf3681f6c5834b493371c49ea419af8284d9c"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_exti.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_exti.h",
+      "sha256": "9fa3b01b38b1b9376e4ac9a6f4985e319c08420b67b229db919e8e8a429f3bbe"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_fdcan.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_fdcan.h",
+      "sha256": "d1dca90d3b8ddbcd172809b7ee2ab03c8ecd8ee3e3b2976ebc1d4af029683c50"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_flash.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_flash.h",
+      "sha256": "304651ba7695ac5279325ea0e47d542a8564b910d987a340a47628dba9bb5508"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_flash_ex.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_flash_ex.h",
+      "sha256": "8943fc2f847e40a811a27ccac5628b2b7ed19f40ab4b1dc30a813d5574778fc6"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_fmac.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_fmac.h",
+      "sha256": "b661c2c203ecf84050aecc88b2c64eeb02bee4cb801c6804ed8d0d6cb55e8b38"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_gfxmmu.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_gfxmmu.h",
+      "sha256": "16b50288067e746d4d8520a365a4eb9d7d3d6708c18463bee6252ea16d4d1cd3"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_gfxtim.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_gfxtim.h",
+      "sha256": "9dfa9cf3e5cc9c6fbd98e5b1b47d64b9587799e980d82defb15e1a901912b14e"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_gpio.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_gpio.h",
+      "sha256": "6d9e6c1abe6303f3e72f488c21fe2a1272a033a8309e6b8da4a3f2f62c3ced23"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_gpio_ex.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_gpio_ex.h",
+      "sha256": "40848fe334a9252b50e7a941537312443ba0830ef0a3f2a2c283151f0f4fa23c"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_gpu2d.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_gpu2d.h",
+      "sha256": "5e045b98324e1e89a96d3531f600a015d31fcd7c9775e7f37188c914944c6db3"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_gtzc.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_gtzc.h",
+      "sha256": "00906371d13f23982d72d85765aa40a8be03fd6e68e95d65938c1025c86bf840"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_hash.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_hash.h",
+      "sha256": "f05a4de01a4ee81ba9f9b027df3e2ee084e9c0148900a23fc7fb6c2008818671"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_hash_ex.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_hash_ex.h",
+      "sha256": "6e108141ad3a5becffe4219ec1a8771c1f7879a15e5d487277d4caac2f66a71a"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_hcd.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_hcd.h",
+      "sha256": "1ac522964d2b6659d9a1241079e63a45f3d2eb983e96be101fcaa1dc1766586c"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_i2c.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_i2c.h",
+      "sha256": "a6c5c538d478ec7ae8d4e8813a1086cbebcd45396b7e316eb507ef5c4f4ba147"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_i2c_ex.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_i2c_ex.h",
+      "sha256": "b3db3fb637456e6076b7c253226c8fe3f204e2c6bb96ed1e65f906a7bbfa648d"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_icache.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_icache.h",
+      "sha256": "9c37a28d8f269113d93817fc5a7f7ed48ca59966a9726edd47ad4fd1a12f1aea"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_irda.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_irda.h",
+      "sha256": "578560c1cb2793a0bd88a5a58a2599f8c0aafb411ee878afa6bbb12547cdb7ae"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_irda_ex.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_irda_ex.h",
+      "sha256": "bfc46de689bc29681f2d8b9476b17b6c959708ed463c6513d90ef3ac30096a05"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_iwdg.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_iwdg.h",
+      "sha256": "28f4133413f1c0a725053f50f53b2614d83accd55cd9a9681eb5a6b7b7c34d33"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_jpeg.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_jpeg.h",
+      "sha256": "00552ecbc399feacda2ac73f0bcfff93d3da4b854054e45f62769fa30a16e7cb"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_lptim.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_lptim.h",
+      "sha256": "e6727a1c6080fa6a967807a1a4f0d44a6fe22aeac064b365284d04033cc59db7"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_ltdc.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_ltdc.h",
+      "sha256": "cc7fba3db6e034bf4a0f63c12eb35be2068d3cdde1f25561b7872bbf2f6f0643"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_ltdc_ex.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_ltdc_ex.h",
+      "sha256": "b90f14939080bb3aab5639222de77922fcab2a3ea89e37d26b1fbbd47acce103"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_mdf.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_mdf.h",
+      "sha256": "b7a3dd9bcd49e9ecd08ac0ead36a6e9382ed5293f930330f7498225650fe34c9"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_mmc.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_mmc.h",
+      "sha256": "0b034445e5c6ac270e065b64df134e28507ffecbcf2d5916d390be41f15d5ae4"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_mmc_ex.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_mmc_ex.h",
+      "sha256": "0e1b8b569e38097ee72f8eda9d73163b5b6abaa3886957e408577ac18838959d"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_nand.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_nand.h",
+      "sha256": "9e5361685b37c0918b374d632b74f003ef4f250e458fa3a5aff2d56a8326f5a6"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_nor.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_nor.h",
+      "sha256": "952b97e7c605601071848a1e86142e746e2c0fb9fa91780ae0f215ebebede1b8"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_opamp.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_opamp.h",
+      "sha256": "cb5a5ab367616e96d5bc1b659293822edea16de6cc0f9943f58642476a32c353"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_opamp_ex.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_opamp_ex.h",
+      "sha256": "82cc8fd42201a9c8b39d41077d56d532f9a575546f73af7140754ab8ea6a3c61"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_ospi.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_ospi.h",
+      "sha256": "9f3561a4f18a7216abd4aff4043f45dff745cd589ba9112bf4c78c583886531c"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_otfdec.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_otfdec.h",
+      "sha256": "1b6643450c4c09959e62b82869192232a0c1d5dc370a654a7a8bd0d4d89b257c"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_pcd.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_pcd.h",
+      "sha256": "5968df8180f4200ff7bf8e70007f5c6ce440c1c60a92ae638ab83e24ba0b2e35"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_pcd_ex.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_pcd_ex.h",
+      "sha256": "57ca135317a8b1220a458aa4f9c67b73c896d78f17f7f3a90bb45af013002029"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_pka.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_pka.h",
+      "sha256": "0bcdb4209df7d823bca6f8864382a082a9d0ab80d0f0bda39840927c4179f16c"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_pssi.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_pssi.h",
+      "sha256": "5f94f7321a76ff2b0f5695a9253ea99e2633542eb4eb9b62a8fe1520348beac8"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_pwr.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_pwr.h",
+      "sha256": "d1b3888b86f2c25b4d64a0ff6b47fc968eeb9dd0c68baf0cd7e76654b63891ab"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_pwr_ex.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_pwr_ex.h",
+      "sha256": "dd70ff0d9345914c8eac245ae7750eb66be1bb93c408a2716054a63e05eb4de2"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_ramcfg.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_ramcfg.h",
+      "sha256": "8b52eef3e73d44e07fe18eacf4c21093ae53bb05da519d7ab00cee041437219f"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_rcc.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_rcc.h",
+      "sha256": "d9d216430330714c842b47a11deb9c860442ec6a05ec496cb626b042c12434a5"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_rcc_ex.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_rcc_ex.h",
+      "sha256": "79e433bc3ff360f10f4e06aba39ff398d9c21199fdbed7338793bd23ac054f25"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_rng.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_rng.h",
+      "sha256": "33cf5fe438453bc246d77b3f3459e5a0476387befe9bf90453d94d3492c54ce5"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_rng_ex.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_rng_ex.h",
+      "sha256": "121e3fbcf06e7ec325420ed43d75c0e762f54a79d03a3b2282de39e87b286ff3"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_rtc.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_rtc.h",
+      "sha256": "92a7b0baff657fa0a8eba030c93b775dfb8aa7dc5a02d4077c55c65c94c375ee"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_rtc_ex.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_rtc_ex.h",
+      "sha256": "fd1d619c9c91eff99c219ae766be070e192a88f3ab9aea9bf9ab67491c4aaa53"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_sai.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_sai.h",
+      "sha256": "2745ec2daf909017d1120d3cf63f3c4e1b99c0910ebb8974a24259453289e124"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_sai_ex.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_sai_ex.h",
+      "sha256": "c95345038800965798afa1c18d8507d3c6948bbf8c831903085c0b40e71c9556"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_sd.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_sd.h",
+      "sha256": "8b44a1339a2edc7df15613aa6a31312628ce38d75077a99e3a321367816a7ebf"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_sdio.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_sdio.h",
+      "sha256": "ffd2284ae23bfed91974077535d464b25e98d14786c1284385d9954e26c4062d"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_sd_ex.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_sd_ex.h",
+      "sha256": "dfdc08e5b8e8fa38178988902cf4d71674f028aec926faf7717008d94c101f0a"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_smartcard.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_smartcard.h",
+      "sha256": "103169f897f81b1ea727c6cd7d469f48e761839ae27e629dfe041b4f83f7cab6"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_smartcard_ex.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_smartcard_ex.h",
+      "sha256": "394a59ca326d4dd8242410230f1efed5bf231b0d1ac99a69bcda9ccf24206d6c"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_smbus.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_smbus.h",
+      "sha256": "bb2de49c1c0e773303ad3ef2b540f17f39b680fe4442b98d14d804e278cc2844"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_smbus_ex.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_smbus_ex.h",
+      "sha256": "f4515b69fa82e381f1861df9f58ff59a5b2abe2691d55223c872c0ea68804186"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_spi.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_spi.h",
+      "sha256": "786f1dd29f4b50206f3dd681c55623f71b2a9e7e1c482bd73850b4ec5ff4b50f"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_spi_ex.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_spi_ex.h",
+      "sha256": "6b954f01464253b0c2ac9d774861018c8d1d48e1a23c57e0992413183aa42350"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_sram.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_sram.h",
+      "sha256": "3dd117cc93a2d625f06989669e1d8371157d2fc46398f0100e78d52b0c886350"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_tim.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_tim.h",
+      "sha256": "cd8c85a21ee3794d3b0b60b8b53a9687cb257699126f39773ac99fdc35cbb03d"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_tim_ex.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_tim_ex.h",
+      "sha256": "8a4574ce63e8a04ba4266a3d879a99260d33429a736cc8f9dd13b9782e20cbaa"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_tsc.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_tsc.h",
+      "sha256": "025ec56e2b4441f0a9f1e14e771652cbcd1155e613b72656531ca42f6301b3e4"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_uart.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_uart.h",
+      "sha256": "7b57e3b86a4a2f351292322c44dc9897f4d16066c7a765510224f7c6253fbe81"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_uart_ex.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_uart_ex.h",
+      "sha256": "7ea8a8c34083f46f8b11071abc8a7dae7eb3111aef06a1cf05960865163ebae7"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_usart.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_usart.h",
+      "sha256": "6dd0a3ff62b3d411440b05337110e70b92380b8e7c37a3b1bc25c14d50649df2"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_usart_ex.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_usart_ex.h",
+      "sha256": "37489ec2b586b43773ec36aba3058e1d9c7c88ed52dcc1ae95e835ac894d0e4e"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_wwdg.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_wwdg.h",
+      "sha256": "7ee7c3b1593d44818955b3d5302eeef7ec723e39576380fd0882fe7792c67705"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_xspi.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_hal_xspi.h",
+      "sha256": "5d180a4b499b2ed92d7e9cf654a709e02f36d8f69ef1e87f556df46036fc863c"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_adc.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_adc.h",
+      "sha256": "c190c599ce0deb33b48d36fa21c8528f8489784642751de3b25114d323622d0f"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_bus.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_bus.h",
+      "sha256": "a771a988182391a991c4b419c47d4e2cbf70f79f378add0c60fe9f3cb5cac6f2"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_comp.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_comp.h",
+      "sha256": "2d9f688937e27440070ece256b75d9491c25bd70f19ac05da5c0a6807564785d"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_cordic.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_cordic.h",
+      "sha256": "bcc5cb1263081ab8ed4639411cabf23ec9ca0d470a5180f96c529be5cc48dbde"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_cortex.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_cortex.h",
+      "sha256": "5c088a21f30fcb18195239281377da49b063c4caf0e9055498400b914082af83"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_crc.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_crc.h",
+      "sha256": "7a935380b2ba6d78d6993c4b246417e92077cf43eed5174cb118d50e3f82d326"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_crs.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_crs.h",
+      "sha256": "7e8889489c8ccd768d38fd3bd30aa8d7787fe7807f2630a66e945b61808be060"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_dac.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_dac.h",
+      "sha256": "e05c1b9f5208129eeaa6c7692bcc5b7765c71eeebe6426b5339d591f2ce900e3"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_dcache.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_dcache.h",
+      "sha256": "a9d358ae2c3b8a076e350d8b518f23c2949cb1027e41264cfb6077b7c15b6d3c"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_dlyb.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_dlyb.h",
+      "sha256": "51e2ffc271e4733d9aa042f8bf25e150e9cc405f9b11e7c25da9ddd498919749"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_dma.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_dma.h",
+      "sha256": "2cca143aaf883cffacd46e6a0a29a4a677badd485b7eb19f8da6199eceacead6"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_dma2d.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_dma2d.h",
+      "sha256": "1557a4328e5eb5d803af7c424daf28a4a8b515b9c71c9acf8cbb0347edf23b75"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_exti.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_exti.h",
+      "sha256": "abedfbc2cc3afd1e620e0e73743dbbc7de6fda47a51d528fe08308365404665b"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_fmac.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_fmac.h",
+      "sha256": "607723f667ed7f784c5265306d5dbd39d53ef0d98ddeb3e5d982fbf11dd7aacd"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_fmc.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_fmc.h",
+      "sha256": "8b123136def598f352fdfb17c4c3be8b8351063622605f944583ce85704323b1"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_gpio.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_gpio.h",
+      "sha256": "e2915fdd634fe93aec7bfd6ffaa59c555e4c5edba91318b1f421cfc0e187859a"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_i2c.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_i2c.h",
+      "sha256": "8b7b9ad4cb5aeff1df318c042399f55726e745f129146f7ba27cec3d4623449d"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_icache.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_icache.h",
+      "sha256": "74e938188567a09394c4e7c3928593edf480c2fb012435f6bcd68e646c3a8166"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_iwdg.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_iwdg.h",
+      "sha256": "8552e2843e0cf8b42b505418ccaaadb1db7b4cc4ad7f730c141d90729d13df1e"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_lpgpio.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_lpgpio.h",
+      "sha256": "71189836c364ffb0f76bde6dcd50348df507114db619f3351b9354c26300a506"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_lptim.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_lptim.h",
+      "sha256": "cf6118925392ddfbff46444ab740f8bcd52a302e6625e914b5e141fb0ed4353f"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_lpuart.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_lpuart.h",
+      "sha256": "b52f51e18d25e00cc2d7811abb64869a2ac12e9a7e3af092c3c3f271feba9689"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_opamp.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_opamp.h",
+      "sha256": "56b0de819bb910c87690b32c2d350fb20c6bcd99df79dc1ea2c1a9c0d90e11c8"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_pka.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_pka.h",
+      "sha256": "b6bb1d9dd6c4fe053cd4c065a1d299e3da3e36cee10f8113b5c162f5e0081286"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_pwr.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_pwr.h",
+      "sha256": "dd616b1bd6bdf3ea369c279498ba07bd0feffb7ae3568289404acf78738298d7"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_rcc.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_rcc.h",
+      "sha256": "9d05359c0e477fee75927edfacebff6d862de97a08f08d8107ce2a115e434591"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_rng.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_rng.h",
+      "sha256": "bf6e8a52ae4bf06268186b757c1c3c014f65576c5e5c12bd83e751f6b96d7843"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_rtc.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_rtc.h",
+      "sha256": "e40e46698164cd4c0722460fbb59c868be643ba0f7447e0bed439a88f3a63bf2"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_sdmmc.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_sdmmc.h",
+      "sha256": "d6c3c0cb92a121da20106483295c5a395b679a467e054840eeed1d5924424452"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_spi.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_spi.h",
+      "sha256": "3526ac7c129a1053790bf218aa982621a09df81d02c3e9f7fb6a42acc5fb6890"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_system.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_system.h",
+      "sha256": "e482344b634537f1c518a531106be559a668252e9d0119ac623f4ab535b4d04c"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_tim.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_tim.h",
+      "sha256": "02157f3fbfcce84f5223d6d7486da02e4eb4e22949ff170ade76ac25115c3178"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_ucpd.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_ucpd.h",
+      "sha256": "2efe18f2b050b882cc834972306960680afd89e83e769c4599f0103fd961251c"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_usart.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_usart.h",
+      "sha256": "50a203a04e4b9688b95db3c806cb5af1a4c436b1608ea44e04d72205f354127b"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_usb.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_usb.h",
+      "sha256": "76870b21378ee58d97743352990e07814650f82ded4c55a0a940e0e7acf0ca1e"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_utils.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_utils.h",
+      "sha256": "35a84353fe5d938a7c099e761a5c1c0e4684b72327898160cb75c8019d6341ac"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_wwdg.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32u5xx_ll_wwdg.h",
+      "sha256": "06c35313ec94d8ea27597fcfa7367b7ddf04e749ad40d27e7cccd8af50a747b2"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/stm32_assert_template.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/stm32_assert_template.h",
+      "sha256": "ff99bb51c44f3538260d06f7ed4c67e91c579f92d2f8257f6a2e9113ab816fb1"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h",
+      "sha256": "ae2c716ae3097e6b34ac92eeb0feeaa01c992628da1a2d3adf12710352004288"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal.c",
+      "sha256": "96d73b285f8e6dc4bc03ec68854f82455324dc8989448e6e36d12041a7034fbd"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_adc.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_adc.c",
+      "sha256": "2a122a4f8b269fa97f065fd0b832c75f6057b4edb6d3a12867dd42a3e4d94147"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_adc_ex.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_adc_ex.c",
+      "sha256": "43f2b96e435ede9403c18bf9ade2addc33a0204ed9c8f942c57ca76743fa2554"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_comp.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_comp.c",
+      "sha256": "b20248e2139244fe82cb085397f59a1c1d1e4f1f88d5797b610c1da4dc4e31f8"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_cordic.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_cordic.c",
+      "sha256": "4a6b06e8569671554961674a1a50f058d4a610852de776240600331db9286f9a"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_cortex.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_cortex.c",
+      "sha256": "adc1de7635bc42dd76a376614abe09c5e77733571ac376a0beaf5cf3aa14a3a3"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_crc.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_crc.c",
+      "sha256": "8fb47423e7b95b4dc7b11e75e747c946eb5d4be5434a90503c5ce129fa0ccb41"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_crc_ex.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_crc_ex.c",
+      "sha256": "80e3f8d577f2333367871dc3b4b706f6c82bd097216da431a95efac85aaa85fe"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_cryp.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_cryp.c",
+      "sha256": "97aac3c5a07401517d91b139a750c70954f9073345e7c4877d0e640421e95d6c"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_cryp_ex.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_cryp_ex.c",
+      "sha256": "e686b5b3023e37f1c02e6ef02b547d3038144f98879f6fecb518c63d4d438137"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dac.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dac.c",
+      "sha256": "6cd9df86290e4cf7103747af926d541bfb14a7cd688aa89567c61a1d9ad78dbe"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dac_ex.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dac_ex.c",
+      "sha256": "a70e5aac788c0f7b6950fcf00d21af2d77b28902038bfcf5cf44e1e074646f34"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dcache.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dcache.c",
+      "sha256": "3a3c3f1808e93518fbc8580ee137f4f1f81ef4af4a41198b55ec970d022a6000"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dcmi.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dcmi.c",
+      "sha256": "6e20d1f035d19a4fa4daa3b40b45a1fa0356297abd17746630994d8031423391"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dma.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dma.c",
+      "sha256": "55390442b90c03dbe0ec51487db7e15e3cc1b05a90cca161dd32c2d53544c3f9"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dma2d.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dma2d.c",
+      "sha256": "08883d239f7b838e85287167a671a9c9f0a441c489c7c2d7bcb707fddc74ac13"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dma_ex.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dma_ex.c",
+      "sha256": "228b0a50e01cf75fd85c6963780747d7fbfb9d6dbb0e531aa2f9b41eab5b55e5"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dsi.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dsi.c",
+      "sha256": "349d9177e8ce01ffb8fd7b03172706f0a977c90addc0c18905613c6d6d974f20"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_exti.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_exti.c",
+      "sha256": "6e552a440b1d6333f950b74da575faa82340e1f2fc0383de55216122bb92753b"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_fdcan.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_fdcan.c",
+      "sha256": "c8978ab55dcdac60ba1ec92b2d2ea62606d271e51e2b250325c252d83c80101d"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_flash.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_flash.c",
+      "sha256": "62304b32a4eb7bfafb12b77543fc6f5d8aea0b95039c1f89b188e84be82e5e96"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_flash_ex.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_flash_ex.c",
+      "sha256": "7db04e6f195fb3c22925f0c4007910a016ea25a6842e09939825319998fbfb66"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_fmac.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_fmac.c",
+      "sha256": "6813c973c150c7f82ecae052e096c794e00418e765d254f117cecdc8419173d4"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_gfxmmu.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_gfxmmu.c",
+      "sha256": "7238cd13cb51e1c7581df52cca8961d4c25c32b8b1859fd3d43d803e10befe46"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_gfxtim.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_gfxtim.c",
+      "sha256": "1745e3beff04a383b66e7ffb275d6f96c781fa1ed0689408e94b4267b4e41b07"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_gpio.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_gpio.c",
+      "sha256": "2d7b5f252bf1bf2ad0fff46ac4fa7050bf437b23802f212051a0a595a283fffd"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_gpu2d.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_gpu2d.c",
+      "sha256": "b34cf0530bc94dba26b0a6b90d41aad49cebf766714ac6a47886d6eb42ec7c6f"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_gtzc.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_gtzc.c",
+      "sha256": "4f4433f59e3d3e9b5207b6bf47ee4bad9225fca1cde40c1d58ec7bf56612931f"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_hash.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_hash.c",
+      "sha256": "ac91e9250b61726603649fb534099f39631965b53a11c0a361059200e77fe5e2"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_hash_ex.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_hash_ex.c",
+      "sha256": "aaf8bd56863f62c52d888e27e3e24f1bac49aa9f5bf77ffa1d7ae5bc8bd871dd"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_hcd.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_hcd.c",
+      "sha256": "bf431329a05cb379aa47a5ac48e6133be3b4320dc309f2b4693cf35eced9fb79"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_i2c.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_i2c.c",
+      "sha256": "1affaa4105759f27fe9c4919ea56181b46e9faa5d055bc6e9a80acdce41c3afa"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_i2c_ex.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_i2c_ex.c",
+      "sha256": "43589137818ca179eebc3e43085dddd7bfd2bc04b2fb253924fc6508d2573acd"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_icache.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_icache.c",
+      "sha256": "f567b029cc3854aedda85357c300cb5df269fdfe440a24c93db90a61093271ba"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_irda.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_irda.c",
+      "sha256": "419b1017d4f2a75f44e98d82da62fd7ce6d36b42afe3c95438aa21d1e6ce1d91"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_iwdg.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_iwdg.c",
+      "sha256": "37583c3c80454416d852ca503381d11f3bd38086f8e45591a5e1d55a09bda3fa"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_jpeg.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_jpeg.c",
+      "sha256": "a826e5783a9be7082e5ae41f041c5ab49cba6b7a94cc4c5cf4bc157b28ca6bdb"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_lptim.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_lptim.c",
+      "sha256": "48dca4cc3dfe90ea56140deacf12596eb12856cd597965ee1453fae123bfaf01"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_ltdc.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_ltdc.c",
+      "sha256": "5719852b63327376bbb47c9f1191960e0806c15a27dde4a2a9b5b109e1a730c8"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_ltdc_ex.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_ltdc_ex.c",
+      "sha256": "c4f1051f9d644d35587873cd56456e784362c966f5e379acb468e952e5630e82"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_mdf.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_mdf.c",
+      "sha256": "0895679516ebfca41d2e678edb1730d20220cc1a7b016d48ce1639b285a019ad"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_mmc.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_mmc.c",
+      "sha256": "64e293d7a9215c5e9f95c603c43265cae73fa4d5164e221b48f50b73df0b4990"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_mmc_ex.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_mmc_ex.c",
+      "sha256": "2123ffcc7abb4da952a3e227bb7834f0cfe6ed353c5feaa22d08952ec17e94fd"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_msp_template.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_msp_template.c",
+      "sha256": "43b8c1728e36fe1d2bab32671121ed2396bcad87bd0c6679463ee552e673a78b"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_nand.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_nand.c",
+      "sha256": "19961ea6247352376c86353b728649fe854813550da52d69887a58ae7ed76a4b"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_nor.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_nor.c",
+      "sha256": "656541dad7c1ea0e4fcc55605075f71b4f09b1c545d527eeaafb3c731a38abbf"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_opamp.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_opamp.c",
+      "sha256": "27178a57810f146b11e182fcd53a43bb24297596feb64a84ac5f6a5f61fc6526"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_opamp_ex.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_opamp_ex.c",
+      "sha256": "df9836a672bbd73b89e6f69c6ace37521e185f9c0a4a7c0f5fb13663c96732ce"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_ospi.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_ospi.c",
+      "sha256": "64d67089b52dc4379c1a6ffc7a92328ec396c6838a8b990a20b2319b2d5761e8"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_otfdec.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_otfdec.c",
+      "sha256": "fc49c8813fb914ffbb6e889558792641a77b7f7b2a330bd30fef7af99ea15a6c"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_pcd.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_pcd.c",
+      "sha256": "c4e4eda120ccf437c0f6b780e32ec464c306dea66ad46c8ded2d992c44e1f427"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_pcd_ex.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_pcd_ex.c",
+      "sha256": "db2e0a50e2e886b2ae91d3b02dc57f3733b484dd3400abdb38d5a56bfe741a0b"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_pka.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_pka.c",
+      "sha256": "3e7ae7ababc175856f3659d2c980d8e557b4ee263d7a6b835ffec412002879fb"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_pssi.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_pssi.c",
+      "sha256": "5091b3b8cea0fee6bda2393c64c4e152b7960d2c01b6cc06161eeb0bf24a3f51"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_pwr.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_pwr.c",
+      "sha256": "39a009767b01100b602becf7f9c166e813baf1380d5245c0e0a67e12d97ea6dc"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_pwr_ex.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_pwr_ex.c",
+      "sha256": "2e7539e029556909828b4e9b2eede71fff772343ad8a93adee88394ac79ba0c2"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_ramcfg.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_ramcfg.c",
+      "sha256": "c1678db4ea904c9d062729ac77d0a48390b84a558c72303262c971693fd5efed"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_rcc.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_rcc.c",
+      "sha256": "732be0a667d4c5b23f0a5ca6b52b9fe4fa265be64f0c865b6b5aa3ed9fa9a05f"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_rcc_ex.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_rcc_ex.c",
+      "sha256": "0a45772828e1039466f4652770b60aec034a464bb604e372626ea8a4f901aaf4"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_rng.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_rng.c",
+      "sha256": "71a08bacad459e0613fcc26c600756f0b680ee9e48bfa51cc3c3665fc7854ab8"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_rng_ex.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_rng_ex.c",
+      "sha256": "bfe8fd05c8b750cc05d00a2bfc8f3fcd4031c99dbc9fd6e43ed211ffa63948e1"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_rtc.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_rtc.c",
+      "sha256": "afb8e33b809ec1cdff38d34a4cff57b54bf0f0d024c5c6281a0ad3b9a4574641"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_rtc_ex.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_rtc_ex.c",
+      "sha256": "955b2813ff348909a89503069d89b8ddbe70d4532108c5dca88822fdcd750cb6"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_sai.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_sai.c",
+      "sha256": "f2bbd60bd9f927a40e1945fe57de9dae805fd4f5bfcbf9e0d371163f30160fce"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_sai_ex.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_sai_ex.c",
+      "sha256": "0c1930eba6767f3c349f2819257814cbbba7f42e06340ede59d0250ae340adee"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_sd.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_sd.c",
+      "sha256": "5ec395f5e2a79431960596b50bf2b776b28f5c8d4ff36d93822efb825dbf90af"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_sdio.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_sdio.c",
+      "sha256": "6498de8b060dc2b22e467c2298f46976584cb8c391c94f6fa32c9f5673e8a9fb"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_sd_ex.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_sd_ex.c",
+      "sha256": "4cde4e449ba8f243defbc4c7ce3f7b621abb95786a6f24e304dcdb18327c3d99"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_smartcard.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_smartcard.c",
+      "sha256": "d618f2f62be3748dca6254f00fef46eff622273100157a083fb38d698f66fea5"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_smartcard_ex.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_smartcard_ex.c",
+      "sha256": "b71e6c3b2f3f77f3cd60ada247027bbd861e179f8d901712757eb3951c546e6f"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_smbus.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_smbus.c",
+      "sha256": "ce020e38974a5d7b29591672657aca5d520d71bc1eccec687dec1dd47f2bb22a"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_smbus_ex.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_smbus_ex.c",
+      "sha256": "c6597a1c125b273e141d183e7863245272d4a194f8ff214628546229429893f6"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_spi.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_spi.c",
+      "sha256": "a1668346fe2847e5ed1fb1c7812158e3e39391a62cfd6487c4973e66308c22a3"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_spi_ex.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_spi_ex.c",
+      "sha256": "65a2f68795af0884a497c646a20c1dde0f376a97edf71c083c74702ecf4a926d"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_sram.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_sram.c",
+      "sha256": "1253fd747685cb39e95a679a7935b446dc9a2088c355b5307d89a3346874b431"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_tim.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_tim.c",
+      "sha256": "c6a0fe93dff062bb565da3e5ba8c8d1f1341325a4a918d751ff84aea9a4cb1b6"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_timebase_rtc_alarm_template.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_timebase_rtc_alarm_template.c",
+      "sha256": "18df5f057f2aa74504760d627924752bae969fdaeea2ebb40f42e8043f28e104"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_timebase_rtc_wakeup_template.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_timebase_rtc_wakeup_template.c",
+      "sha256": "6303d8c313bbf2b85bc4a9ab4d6f9a359405ee32407c738f4e5d3e736f8e1116"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_timebase_tim_template.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_timebase_tim_template.c",
+      "sha256": "7199342823ec92dd4fd471bcfbc1df45e1d34a10ef420180d404b81e7065502e"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_tim_ex.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_tim_ex.c",
+      "sha256": "c2758025d1c7b46e49518142640c0da2eff045d928b5dc672bed1f39bac0ebff"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_tsc.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_tsc.c",
+      "sha256": "eb2e209d57f7e0860db04e274ec5a018f697f64b6da73a977fa8863d8d7b44ae"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_uart.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_uart.c",
+      "sha256": "e7d43e463b5c82d800554a55210f9bff77ffc034e36e58d270b09bedcfa35d8b"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_uart_ex.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_uart_ex.c",
+      "sha256": "2a97151fc6f5a7d463bf8f70f5fe3df218fd083c780c7f3e8f9b3611f8d0c42a"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_usart.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_usart.c",
+      "sha256": "b5309f4dc6387225ecc8870edf016873ca4a80243b8d829edf3ff856ecd84eef"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_usart_ex.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_usart_ex.c",
+      "sha256": "a6d28cde9b0126dfe1e289105be782c5242f182ccfd9c61248b7b96e99c52821"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_wwdg.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_wwdg.c",
+      "sha256": "f2fb7c8950104967599206fdd8035dd8a30259bc3be8d142155f608d6cc77334"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_xspi.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_xspi.c",
+      "sha256": "e5f75b1bee67da96a0b2bc00ecb1c71809c8afaf41e8a0f5b3ce4d3dd2d32024"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_adc.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_adc.c",
+      "sha256": "3d0ae4af178141dcd406cd0cc2c5baba214a68dbdb0a40eae49208c18fe10114"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_comp.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_comp.c",
+      "sha256": "fd299918b63040e2146553af32a86467581082232f41dd1ac81f3be40ac0d1cc"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_cordic.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_cordic.c",
+      "sha256": "bfc749af956d76e45c8b69d7463477304e2c34ff80862962892eab73d4dbd09a"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_crc.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_crc.c",
+      "sha256": "221feafe5c833c003fe0d890f512527c2d608bdde4f703a38163657c713a7669"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_crs.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_crs.c",
+      "sha256": "cd15d9cd5039c855ded3be870464649f558465e36cb79d2550f4d41fa425b7a7"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_dac.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_dac.c",
+      "sha256": "05dcd0d9b88b24773aae82dc7ecfd6c4b5158a34554f9b2f01dc9807320528d3"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_dlyb.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_dlyb.c",
+      "sha256": "641e9d60812d068263a7f9b9ec32b0c9c47447c1b05d4a06f8932739f8863789"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_dma.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_dma.c",
+      "sha256": "e25c160fd0970986dac112627574564bf34371554059769542cf039ec38a5a19"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_dma2d.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_dma2d.c",
+      "sha256": "10efec56bfeae7b90fa6301b1801852b8266296576581ee3ee7a8d3c3a0dcf7b"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_exti.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_exti.c",
+      "sha256": "d1459638a1fda5f7a9fcba01b2aa3b9f9445e7ba9e8b468283ec7aaf949b3af1"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_fmac.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_fmac.c",
+      "sha256": "389caf1146b9f3a1b9febca1826a96059b1960029ae6774da6531cef134f0a30"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_fmc.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_fmc.c",
+      "sha256": "f8fd166580dc37bdd8f11367e9a6d3c07ea5cf086bbd4f41221910fcc6154fd6"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_gpio.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_gpio.c",
+      "sha256": "74042b8954eab08e176449ac0c9edd2658bbce81f2744b4e3ab621aa87bfe528"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_i2c.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_i2c.c",
+      "sha256": "351a2f16fe9d17d910cb12aa8da173912b2eb0e071ed7ceaa8a705376fbebb77"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_icache.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_icache.c",
+      "sha256": "71b800800f2e09f52e9086976ff9078d10327ae0ca6a4921176f04eba0ab8170"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_lpgpio.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_lpgpio.c",
+      "sha256": "75847080c2fa95da9f0f8bdb85cc720c8182f087d954f36f52cde076d3818254"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_lptim.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_lptim.c",
+      "sha256": "45fa9e9d86f12aa0e07a049382c7dec70ffccee1bd81814212e03dfb7a7edab5"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_lpuart.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_lpuart.c",
+      "sha256": "4f937ae517d2d3e4333b3b9038536734fd4d70f42e1bee8134f90284d1334fc3"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_opamp.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_opamp.c",
+      "sha256": "e30ee4d438eb1aac5a63618084d561e5a53b198a712e3c3f24d7319d4cea906c"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_pka.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_pka.c",
+      "sha256": "c0e6fc253f75109aca7a1af0a402466aedddf951131fdc2551bc3a14ed2684e3"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_pwr.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_pwr.c",
+      "sha256": "142b1ce355da76738427ba92249aa63f7fba42f9bb4f9b1c0ded16a4e42ae9f6"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_rcc.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_rcc.c",
+      "sha256": "53ff44902b2e59b9d537627bbbe5e12856be67fa88bbe224b72f1c3cf8293fe4"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_rng.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_rng.c",
+      "sha256": "182b17302a4f2a0db277cc5f4da0cfb050a9f2752af75f6c3d531f14e7892d83"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_rtc.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_rtc.c",
+      "sha256": "3d74c38c787ee270618a9c503c3e4b7009523e2cf2a4421cf4591609812ebac2"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_sdmmc.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_sdmmc.c",
+      "sha256": "8fbf607ec39f920591cccc4e8a17c150bc3110db95e943b2aa7c9e7d4fa666a6"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_spi.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_spi.c",
+      "sha256": "19a29d76482576aa1dd9aa4b4314485fc20dfdd86e5e38bd33d91abbf9ab06fc"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_tim.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_tim.c",
+      "sha256": "5b339deb522535b0025069300ca1904102a2cc50eb9b9013968a8a521ece7a7f"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_ucpd.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_ucpd.c",
+      "sha256": "e657d2186ba8adc99250b786d30e8089457dbd34b3c64a6a12f063354b458683"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_usart.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_usart.c",
+      "sha256": "8573450a270807f9f3ada5cb0f9b93f32f3f12c7f6a46cff7f80824b8e3848d7"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_usb.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_usb.c",
+      "sha256": "9e536a1ef474c56f997a7b3a7b1e54a4186f72aafbfab419314d00afeea422a8"
+    },
+    {
+      "source": "测试工程案例/Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_utils.c",
+      "archived": "Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_ll_utils.c",
+      "sha256": "d603caecef865c7eee724f43b97ad6c16a389a217d8028592a0a960c191c3e51"
+    },
+    {
+      "source": "测试工程案例/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc/usbd_cdc.h",
+      "archived": "Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc/usbd_cdc.h",
+      "sha256": "3ea35b19e264217c3bd1d433c75f4e093930ea83cdf63aa88aee77748a9fc7dc"
+    },
+    {
+      "source": "测试工程案例/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c",
+      "archived": "Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c",
+      "sha256": "5229bac9e3df38c7602b3d8790e73ebfff4395da011fb8fac57aaea48a48b407"
+    },
+    {
+      "source": "测试工程案例/Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h",
+      "archived": "Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h",
+      "sha256": "3cb4fced9231986b0300ea38a1d3b71c285a544f457a869b1f7b37839807de2a"
+    },
+    {
+      "source": "测试工程案例/Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h",
+      "archived": "Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h",
+      "sha256": "cb3043a6642b22e711195173faf608ff84818db50095b910ec85f7e1586f46e9"
+    },
+    {
+      "source": "测试工程案例/Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h",
+      "archived": "Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h",
+      "sha256": "cc686b7775e6c23259018ac616463a3d4a48e1f56d9679e65d280b656d7cc695"
+    },
+    {
+      "source": "测试工程案例/Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h",
+      "archived": "Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h",
+      "sha256": "d9dcde551a46bb7f0640e16bc2e43f96c5a69ea43730e9666083f71638918071"
+    },
+    {
+      "source": "测试工程案例/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c",
+      "archived": "Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c",
+      "sha256": "bb0a98dff92510f8698e4bf994230232386471e4c31ba8b3c06e6649c4991434"
+    },
+    {
+      "source": "测试工程案例/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c",
+      "archived": "Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c",
+      "sha256": "17e7cb8bb042adf9aaa784cac4925bdfae5659678772f7268cc4adbb1d285e40"
+    },
+    {
+      "source": "测试工程案例/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c",
+      "archived": "Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c",
+      "sha256": "7df0e6888230c6e0e4af31278853ae1accdf5728288ab2d1a1190a5692157038"
+    },
+    {
+      "source": "测试工程案例/test_pwm/app_pwm.c",
+      "archived": "test_pwm/app_pwm.c",
+      "sha256": "28286b852fbb8dfc2236fa989140f53170f58a47dfd757fd7e9263d657019564"
+    },
+    {
+      "source": "测试工程案例/test_pwm/README.md",
+      "archived": "test_pwm/README.md",
+      "sha256": "272becbe75aafc5bdeeb88d1c20c7bf47963406e1d53dac12160415e916f20ed"
+    },
+    {
+      "source": "测试工程案例/cc1310/Core/Inc/board.h",
+      "archived": "cc1310/Core/Inc/board.h",
+      "sha256": "4aa056f90f3de64856d7095f796ca7ab42346850129148bb0d9cbf1462e748d0"
+    },
+    {
+      "source": "测试工程案例/cc1310/Core/Inc/rf433_demo_impl.h",
+      "archived": "cc1310/Core/Inc/rf433_demo_impl.h",
+      "sha256": "f912674d9290f8b72ecce8360c25b7d13cd32cd51dc8e15906efab2852b4535d"
+    },
+    {
+      "source": "测试工程案例/cc1310/Core/Inc/rf_image_io.h",
+      "archived": "cc1310/Core/Inc/rf_image_io.h",
+      "sha256": "56bf7f869e3c0ac91c6a74c8518c89bde2e54e7d7cf2ce184fd196979cc09211"
+    },
+    {
+      "source": "测试工程案例/cc1310/Core/Inc/rf_image_protocol.h",
+      "archived": "cc1310/Core/Inc/rf_image_protocol.h",
+      "sha256": "7dbccd2d11ff4420b6c1f1741770ba203308177a771243b19a3aaa29bdf28c98"
+    },
+    {
+      "source": "测试工程案例/cc1310/Core/Inc/rf_prop.h",
+      "archived": "cc1310/Core/Inc/rf_prop.h",
+      "sha256": "5cc40d0e443a983eaddc462692bff0b28be23bc58c02a11676862c8001d4a6f9"
+    },
+    {
+      "source": "测试工程案例/cc1310/Core/Inc/rf_prop_band.h",
+      "archived": "cc1310/Core/Inc/rf_prop_band.h",
+      "sha256": "08ad52dcede40651a2c4af6436b04e28ce5991580485809ee3b79eb806ee0827"
+    },
+    {
+      "source": "测试工程案例/cc1310/Core/Inc/uart_test_impl.h",
+      "archived": "cc1310/Core/Inc/uart_test_impl.h",
+      "sha256": "8736d146501d3d56eecb627ace7e3aba5ef44434f3da361045ec61e4641cfbd9"
+    },
+    {
+      "source": "测试工程案例/cc1310/Core/Src/app_blink.c",
+      "archived": "cc1310/Core/Src/app_blink.c",
+      "sha256": "6e4c2e9357e69fbac97669c5d50bc00027d3f351aeb2125090c45f485c711006"
+    },
+    {
+      "source": "测试工程案例/cc1310/Core/Src/app_rf433_board1.c",
+      "archived": "cc1310/Core/Src/app_rf433_board1.c",
+      "sha256": "58627c0b89bdb3b459cad467c5e39e7136049da930f4a160e947bd82e0041c90"
+    },
+    {
+      "source": "测试工程案例/cc1310/Core/Src/app_rf433_board2.c",
+      "archived": "cc1310/Core/Src/app_rf433_board2.c",
+      "sha256": "18568f5758d328eb002fbe7d554cc05f674b2b45b38dd339c4ea508973f3ea6a"
+    },
+    {
+      "source": "测试工程案例/cc1310/Core/Src/app_rftx.c",
+      "archived": "cc1310/Core/Src/app_rftx.c",
+      "sha256": "ff6f37fa2e2ee74bd2c66e526b2299bc719fc242cedd560e0decec84d5892fb4"
+    },
+    {
+      "source": "测试工程案例/cc1310/Core/Src/app_rf_image_rx.c",
+      "archived": "cc1310/Core/Src/app_rf_image_rx.c",
+      "sha256": "981bed7c6a024edb7a522c01e8dcca0815f57ea8d602ac352e3dabffd4d5cd0b"
+    },
+    {
+      "source": "测试工程案例/cc1310/Core/Src/app_rf_image_tx.c",
+      "archived": "cc1310/Core/Src/app_rf_image_tx.c",
+      "sha256": "eb59885906f89d40b0ad238887e7c5a28b159d8111a3e85dbd385d2ea35c8c1b"
+    },
+    {
+      "source": "测试工程案例/cc1310/Core/Src/app_spirx.c",
+      "archived": "cc1310/Core/Src/app_spirx.c",
+      "sha256": "0f9fc609871cd1b72aebbced63ba9c5ef8e22a66748b76b222b304ea02b11a1d"
+    },
+    {
+      "source": "测试工程案例/cc1310/Core/Src/app_spiuart.c",
+      "archived": "cc1310/Core/Src/app_spiuart.c",
+      "sha256": "4d2f3377e0145703f6fc0d5da96ef2acb333adf94dcc2979503bd4de8032d839"
+    },
+    {
+      "source": "测试工程案例/cc1310/Core/Src/app_uart1920.c",
+      "archived": "cc1310/Core/Src/app_uart1920.c",
+      "sha256": "3049112716770fee94227857a0895f35a31689e8222721628da639a1a7a2925f"
+    },
+    {
+      "source": "测试工程案例/cc1310/Core/Src/app_uart2526.c",
+      "archived": "cc1310/Core/Src/app_uart2526.c",
+      "sha256": "6b357c31439bae488b713294dfe9471b900e7b7b18778d08681f06b6ab1530e6"
+    },
+    {
+      "source": "测试工程案例/cc1310/Core/Src/rf_image_protocol.c",
+      "archived": "cc1310/Core/Src/rf_image_protocol.c",
+      "sha256": "a2897922aa79505b1b929d864b72f68c7b67bdb25b067f00b1f55079ec866232"
+    },
+    {
+      "source": "测试工程案例/cc1310/Core/Src/rf_prop.c",
+      "archived": "cc1310/Core/Src/rf_prop.c",
+      "sha256": "9e164fe19293fe88eb1d4fad7fddcb2fc897d792879e91abf2e0ec93561a84a3"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/README_upstream.md",
+      "archived": "cc1310/Drivers/cc13xxware/README_upstream.md",
+      "sha256": "2f023c8902588d0a337cea35a8426b5ab86652852d440ce232d6a0414972fe77"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/adi.c",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/adi.c",
+      "sha256": "33e7c6cd9e3b3ad071a42e61bade01e2704d2a3cb9bd0ad9050ef4513cc093c7"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/adi.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/adi.h",
+      "sha256": "c1ee691f33a4caae6acf894f3afac963ae5d66a6aaa7fe0d8cda2004400cfd47"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/adi_doc.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/adi_doc.h",
+      "sha256": "f4f33487b1df4f6adda04c8cf95a34d8c811ed5a2c15823d3886ddd385fdaa07"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/aon_batmon.c",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/aon_batmon.c",
+      "sha256": "a2b941f8609d17ca020ea355afa4ece74fcd9bb8444ef7efe68c31c3ebe4fb95"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/aon_batmon.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/aon_batmon.h",
+      "sha256": "32470b353e89d1d9de7765a687cefb40b552b816630bf14bde895fb60c940786"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/aon_event.c",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/aon_event.c",
+      "sha256": "0a44580d2e886108037f786b17855204e80dc7d735f31e6955a103778c23b91e"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/aon_event.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/aon_event.h",
+      "sha256": "aff55ead8bd64e0964d1462e18a696e1d9d9a6cb935b9a4c95c3e9cfcde562a4"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/aon_event_doc.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/aon_event_doc.h",
+      "sha256": "dc6ac7de1b2738cf8c8573907dd3216a628b9c902749257889edac404c0a10fc"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/aon_ioc.c",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/aon_ioc.c",
+      "sha256": "ee009c101b5f4652ca30731028b09051471ff4013ea4ec39f0ab23f261bf7874"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/aon_ioc.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/aon_ioc.h",
+      "sha256": "e6750bcb46c247f5ad37e10c05501faf357fc5a71f50cd9a1cfdffa5dfc6da7d"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/aon_ioc_doc.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/aon_ioc_doc.h",
+      "sha256": "e7a1845186f3e00dbf8a018087a4de54e25e33c5333ef55ff34839754f9ce67e"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/aon_rtc.c",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/aon_rtc.c",
+      "sha256": "5c1d18ae9460e4fb2bd70ea03f5e38dbb87adb50089a605878ddaa66096d1d22"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/aon_rtc.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/aon_rtc.h",
+      "sha256": "4e8af243e3fa0a7f8c2d26f6117eeeb571b818f48ffadf08b7071b9f67b82a60"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/aon_rtc_doc.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/aon_rtc_doc.h",
+      "sha256": "c88b5b0146735902102e9ce3915df6a16745182406a7ad0904367096722e316a"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/aon_wuc.c",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/aon_wuc.c",
+      "sha256": "16e12aa907357fe852ed2f75c4478a9c007fecd8379609b732d6c7e6d4be0249"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/aon_wuc.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/aon_wuc.h",
+      "sha256": "fef8ea98264315d304818507549b62bca45b9aca35b61e6511fb9a044047df77"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/aux_adc.c",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/aux_adc.c",
+      "sha256": "23c74a0d4b4b5fd495a835738c1895e7956f30708958c9bba4d403b178b8efca"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/aux_adc.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/aux_adc.h",
+      "sha256": "1c1fbbd81ba3e626ebd1c7c05dc31d87cd4a9db5e7aad50c4619db3d36c15f11"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/aux_smph.c",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/aux_smph.c",
+      "sha256": "6a0947fee0b8ccfb6df8f3d82c7b1632962aef0b554c0658333ee5f6dc9e0d60"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/aux_smph.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/aux_smph.h",
+      "sha256": "958b5109953eb2fc40ab5fbbefe4a2c19c173698c2143bab9afdcd100d59ec9d"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/aux_tdc.c",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/aux_tdc.c",
+      "sha256": "bd7eed6671308c305f1f26350fe0a1d3641d84e727a4b749e4da4afb11bb9c5f"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/aux_tdc.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/aux_tdc.h",
+      "sha256": "89579bc1693a0557308a7c240c9708a66a25b21e5d63ffb70ca313eb17216040"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/aux_timer.c",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/aux_timer.c",
+      "sha256": "c27d0e8e206dd7d5db1071649af42b8b7e6641ca3e73b985aeb7da3d2e0f39a9"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/aux_timer.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/aux_timer.h",
+      "sha256": "bc16c00700e28c35f663d695a81fef993b74443f7ab3a5ec92cf557f9ddeac2c"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/aux_wuc.c",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/aux_wuc.c",
+      "sha256": "8c1190bba133157d4384b1286fc0a92a517106289d186ab966924a0352f234ea"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/aux_wuc.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/aux_wuc.h",
+      "sha256": "b193d7f5b3d1d10663d3a808fb91aa642fddf5b37d522de7c4ee706478724ef6"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/ccfgread.c",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/ccfgread.c",
+      "sha256": "6eed9dcce8e5157ea9b3cc4678b5311c03591c558fe67cbfa6d7474cf225142e"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/ccfgread.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/ccfgread.h",
+      "sha256": "1c72e59900f908bdcd72561f8ccd6421d78379ae519ef1b2ebce1d5d60f45abb"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/ccfgread_doc.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/ccfgread_doc.h",
+      "sha256": "644497fd398501505c50a19999ddf3ba1d51e4135574c1bd5b8e163f65a6a45d"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/chipinfo.c",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/chipinfo.c",
+      "sha256": "cbe771c184d67ba45645bad48b63cf12dccfb33eedb278409206fd6b4b0b6bfc"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/chipinfo.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/chipinfo.h",
+      "sha256": "0ad80f52034936a66a8d1b879628562a5e726c3a47ec087ca100d694f61f8660"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/cpu.c",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/cpu.c",
+      "sha256": "0b595b91cf8075be4c36df6acc9814beb37d7b938014bc141e6301c4a7399bae"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/cpu.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/cpu.h",
+      "sha256": "42bd6f8628a2a869b32a26262ace89cc933f67abe1e08596beff3eea0c42f544"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/cpu_doc.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/cpu_doc.h",
+      "sha256": "9681d2835d03a8c473127dc3a07175bb02de5a33b62cd4f9d01fa8cd351df82f"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/crypto.c",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/crypto.c",
+      "sha256": "9170666dff29ad83051ff7268f6156468b7613e190cf9b91905bbc1210bd662e"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/crypto.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/crypto.h",
+      "sha256": "bd10f95615ee39dd9e3cdcc96358a2829ff88d7dc8abb1aa6c798b5496272f9e"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/ddi.c",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/ddi.c",
+      "sha256": "b75d1aee007996b9e6fa1d31fd70f1a9d42e488c05ce642b7a9e2bffd1b03ae8"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/ddi.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/ddi.h",
+      "sha256": "dfc1d68722b1d7b7b685c33e403f4cb607f97fbc29a17abfdcec93ad7299bcd7"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/ddi_doc.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/ddi_doc.h",
+      "sha256": "ffe13b34021084b834a33d5786a9fa127e1d956e1b0cf7ecdcd2bb19765d5f86"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/debug.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/debug.h",
+      "sha256": "ff4be42e24a1bb24e323d5baf13f1a264c6769995084f0ae902e0e5d89fcc567"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/driverlib_release.c",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/driverlib_release.c",
+      "sha256": "6991fe913eb83935244cd54d7fe8df515c8c9a6ee3b1ecc3fa846b25bc55d370"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/driverlib_release.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/driverlib_release.h",
+      "sha256": "0223c4b7fb7d9304c69080873c5aa0d69be7a659888d5902e7c490db0b2863da"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/event.c",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/event.c",
+      "sha256": "190034ca79ee93414dc10c53dee4a6dddd4ebf58dca5e51c08f481362cb0e27a"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/event.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/event.h",
+      "sha256": "3804e3bfadd4222eda1ada3a2cd85a05921b0a15552963f2652cff991322bc55"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/event_doc.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/event_doc.h",
+      "sha256": "7e4042408baa7139d240fd67fe63a67fb6ef4cc5c13cc2caa4c7183892f22efc"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/flash.c",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/flash.c",
+      "sha256": "a42601ebc6870da0d5e92b3cb263eb35d86a5ed6270e66c8952bd8a54ccc28b6"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/flash.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/flash.h",
+      "sha256": "6c231cd7dc8c8234d7b3a321bcc8de83d8148d95097c272dc40ce582224c180f"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/gpio.c",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/gpio.c",
+      "sha256": "38ad75f845788cd1a61a4842e0aa3e3275876853531017027dff7a595e95b166"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/gpio.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/gpio.h",
+      "sha256": "c6f2a4e3fb01fc8c1a04fc15c5ce030d496c4e7ecbf165f85891447adea39088"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/gpio_doc.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/gpio_doc.h",
+      "sha256": "e15b32689295351781d0b9fd657d5769915a2179c8b59208453022044ea99cbe"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/group_analog_doc.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/group_analog_doc.h",
+      "sha256": "ccc619e4cf577507fd10133be1e30044b85f2a657f9a2aa0b362ef85918be638"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/group_aon_doc.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/group_aon_doc.h",
+      "sha256": "336a0a9ee2f9c342a8868e891257bb7f103392af3e7a3cbe8f113b6a7430d15d"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/group_aux_doc.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/group_aux_doc.h",
+      "sha256": "9f34e3e35d603eaf4cbb03fa8d6e0bfba0b7ac13bcb95cf406074eadf899a2ad"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/i2c.c",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/i2c.c",
+      "sha256": "6424447ee650d9c3134625df45b17d032b6243085292578bf259b23e815c39c9"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/i2c.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/i2c.h",
+      "sha256": "fce6e121ec737d285e887d03905caa68e44f56469a88029729032029fbc1d6eb"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/i2c_doc.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/i2c_doc.h",
+      "sha256": "fd0689a2eea3c47532272419c5701bb05cf89696bc26c36d9d24cb4af667c908"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/i2s.c",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/i2s.c",
+      "sha256": "a9c02b40be8c4974887d281e24737b1115fe2c38732f703b898c5d5067c21f31"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/i2s.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/i2s.h",
+      "sha256": "4b6fa352121aeed9fdefc6a8685b4136cd47c17da677b54f2d1c626e4e71016d"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/interrupt.c",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/interrupt.c",
+      "sha256": "d482ed039344e8b3c3473b6837061cae2ecf19f7a8b4a563430f74833c734107"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/interrupt.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/interrupt.h",
+      "sha256": "0a2307cffdc63be02def004f5e48f3327bc8a3d08703c072d42110b1056d5396"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/interrupt_doc.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/interrupt_doc.h",
+      "sha256": "9742da94ef77cda62087857523521cf5b3ad5999cdc92fe36b9c0b0c5e19d68c"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/ioc.c",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/ioc.c",
+      "sha256": "c482242da35f553828d0953ec83d3336b466bdfea125edb69459263032150c4b"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/ioc.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/ioc.h",
+      "sha256": "fee3a0a8efbefc9ca7ae92a32467b701d2beb563eb195a4e478ba3b89eeed0e4"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/ioc_doc.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/ioc_doc.h",
+      "sha256": "56865c078b14b356775cc8385e4967cbf8b803ad2d879760b8372ffaf1b83813"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/osc.c",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/osc.c",
+      "sha256": "188f71326b145e4802da6840ba8b727543c85bdcdd9d5b9729e6db42d15120b5"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/osc.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/osc.h",
+      "sha256": "99935f7df9b9f5b9e8723131e4319cad0abe6bd49292880fc9cc826cf9d1a9f4"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/prcm.c",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/prcm.c",
+      "sha256": "2139f3b506fe497d35bf3ab6c7fda4898b1dc0911e59a6f505b9437788ed14c1"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/prcm.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/prcm.h",
+      "sha256": "9e5ea5a25934bb8dcd6a5bc5af953675367e2370b20c6094439045f83c514414"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/pwr_ctrl.c",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/pwr_ctrl.c",
+      "sha256": "6e6aed9e18142949ba64689ef5193d604c6a3bebaac1d84d254c5d9481493069"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/pwr_ctrl.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/pwr_ctrl.h",
+      "sha256": "1b5ad4cbd5c23cfc6cf18d808ac444edf3105498ec59f5f4abc9f28bd753ea51"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/rfc.c",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/rfc.c",
+      "sha256": "e7db97540ee8dd5642082c5138e5f3f685d5925a9563091492d734c5fcfc0d0b"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/rfc.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/rfc.h",
+      "sha256": "5c63d633ace25aff7928932f417afc5b844aecea9ed68f353c6f7894f8b0a4d8"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/rf_ble_cmd.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/rf_ble_cmd.h",
+      "sha256": "280aa0e393ae60f461ed28df95898a61186212c7bf83f68aa6f36dd4eaf17777"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/rf_ble_mailbox.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/rf_ble_mailbox.h",
+      "sha256": "a1924d1d704ae7de4b4322d78e79ba358e264525e3e91e3f0bd2757e0e1c00de"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/rf_common_cmd.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/rf_common_cmd.h",
+      "sha256": "d7b0b2d3487616211450b768c2c3147a0b0a1c3498cc283d5902bf1de570a718"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/rf_data_entry.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/rf_data_entry.h",
+      "sha256": "1a968c8ea33714d309860097a42630166e40b0ac52a5c0679eda8db980b59508"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/rf_hs_cmd.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/rf_hs_cmd.h",
+      "sha256": "0871281e47afd1e904a37725cb25514c02af047f3a8736a9ee4435b34a348e55"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/rf_hs_mailbox.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/rf_hs_mailbox.h",
+      "sha256": "662098d8d7abc09bccdd882c48d6268e3294020479fb9102e53bbe0a5391895b"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/rf_mailbox.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/rf_mailbox.h",
+      "sha256": "ebdfa62bf265ac3d87b7ecac314723e1df785ac6d88712e0208030348751d215"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/rf_prop_cmd.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/rf_prop_cmd.h",
+      "sha256": "37708d058f56778ae87d4cdee5abe2e628c17674522ec22b580b7c6b3abd1f50"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/rf_prop_mailbox.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/rf_prop_mailbox.h",
+      "sha256": "7722bec0dcddddb20b7fa7f1c01b7073392f34e14ae9d8247d2ba95972de581e"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/rom.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/rom.h",
+      "sha256": "9dd7c614f503395f1f1d00d3913c4e9ccea3b90b83ed92c15b278c6002246f98"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/rom_crypto.c",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/rom_crypto.c",
+      "sha256": "c42824680b9424af8b1778ce726994dec5e9f0e5db7aa330cc9a7302775585bb"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/rom_crypto.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/rom_crypto.h",
+      "sha256": "a69a746b965ba0dc5f844d927f9d3547a1f8b426e77bc46bbb52819a618f1961"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/setup.c",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/setup.c",
+      "sha256": "9ed1fd1f6e38c1cfaf9eac218c02c2acc951e623c5e784fe97e72754d3c65d76"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/setup.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/setup.h",
+      "sha256": "c1ae73feb865cdaef6475b2da27935923be2b1364e16d24106e73e0d09e825fa"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/setup_rom.c",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/setup_rom.c",
+      "sha256": "7b121d77e481088516f3fa3a43c5ed5765aa62c81097b30d2fcc01e63e39ff64"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/setup_rom.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/setup_rom.h",
+      "sha256": "b80445e5c03c1447aaa790a46e27f6c25d72ea1edb8df9c446cae4171a9d6b24"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/smph.c",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/smph.c",
+      "sha256": "ac58aa8217fc5749ae909a96929d4104ed6c3e0ceca8b50b2ccf792b9c5f871b"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/smph.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/smph.h",
+      "sha256": "96963e7c26efa5e6d5e87d710b3b6395a405f98e8281b7d3bb1e913bea4453ae"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/smph_doc.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/smph_doc.h",
+      "sha256": "c0012e5a1d0c361828ac20859c11dc34202c794483de046bb51d403b248d160a"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/ssi.c",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/ssi.c",
+      "sha256": "d7adabe1970e5a07e1ec899addd127e7270f95122f6d894eb2128152db1fd4fe"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/ssi.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/ssi.h",
+      "sha256": "88ecaa1312d97d0681a81cecb207b95972a3a4278a4975e38dd7f0ae8f2fe88e"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/systick.c",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/systick.c",
+      "sha256": "0aa5ddbf2a83ae9c0037679071e848adfc27548ad0a5eb23222a83080425377b"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/systick.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/systick.h",
+      "sha256": "e944867d6b7ab068cd76edde9767d2b9f07c50c5383bd1c3857ed00aef70f0f7"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/systick_doc.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/systick_doc.h",
+      "sha256": "a0e8bfd6748e82b563be40d4d710b251bf27ce3b81f6dba2cde4411693218e80"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/sys_ctrl.c",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/sys_ctrl.c",
+      "sha256": "bc547ddb7801f09ecd63c25de7ff73cfa0f6149ff5dff175354d32d090667e6d"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/sys_ctrl.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/sys_ctrl.h",
+      "sha256": "3686d8985bf0554c971e833a372897cb3175672f1418b030ad39713b94dcfd56"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/timer.c",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/timer.c",
+      "sha256": "017d99ce9bf935436260b437bf24538b6411fae798501232ac20afaac2679159"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/timer.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/timer.h",
+      "sha256": "ac45c113b03d39c8b2eabdec1f05f6901af039c228f60a1b4d5df3735e18e2b6"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/timer_doc.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/timer_doc.h",
+      "sha256": "b3a90e75b5d90967fdbdd2e635f184d521207f8e0b824f131aae25e337a7eafc"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/trng.c",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/trng.c",
+      "sha256": "026e7d7e80ac040ec3feecef923888323e12046a18aaad7497530b07b32b2420"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/trng.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/trng.h",
+      "sha256": "b47efe90c693ea806c2072d11f860fd17c5728affcd992fe04ec18fe8ed086b5"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/uart.c",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/uart.c",
+      "sha256": "30ca745fe2adcaf459b9383a84909d0e7b71c9dc1e4219aba85566499d68fc84"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/uart.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/uart.h",
+      "sha256": "a169d4ea8c1adaa21b2592c95584a2b69a3e9e2ff0fd2f6dd59e5814dea251a9"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/udma.c",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/udma.c",
+      "sha256": "3c743310015e49075c9d51686583648a5bf8557c5382f42df8cdfe360741735c"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/udma.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/udma.h",
+      "sha256": "8fb099fcb3d0cef076896f0b9c00888ce1d3dda7b44244aeb19d6ebbf9ef2e64"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/vims.c",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/vims.c",
+      "sha256": "3bff2c1dab3c3df1d58c3561b7ded40b3ac16b021efc3a99ee36ff3f2a053d11"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/vims.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/vims.h",
+      "sha256": "cefe8cd6726c3a98a8eb7f7d8e31883e2d3410b6497263f91c8c28f4087bca85"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/watchdog.c",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/watchdog.c",
+      "sha256": "cc79035134475e20853747066b97218e8845d7150fac2b4740bc4313ef56228c"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/watchdog.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/watchdog.h",
+      "sha256": "3d3acab66692d9793a9ac7464e9ca29d805cb6e90f7f3fff098bb4e622a3fd61"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/driverlib/watchdog_doc.h",
+      "archived": "cc1310/Drivers/cc13xxware/driverlib/watchdog_doc.h",
+      "sha256": "ae4527260d122304f03dc37846554cb8a07f238642084e678f979a8334875bef"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/asmdefs.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/asmdefs.h",
+      "sha256": "1817b6cf8c964685cd5257d8e2e924351f5f2f294da534a592cda654c2a2c74c"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_adi.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_adi.h",
+      "sha256": "67ffa509139b697685b6740872601f5f9d903429fe40e2cf13f6809c0605ed36"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_adi_0_rf.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_adi_0_rf.h",
+      "sha256": "f18c8d5d89432acd86bd46f32dfefd23790c3688eb7a5f415dfd30fcf881abfd"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_adi_1_synth.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_adi_1_synth.h",
+      "sha256": "23bcb4969abe06e78fb1f6a42f3b6385e0650208e52b5787086b1047cb37f6dc"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_adi_2_refsys.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_adi_2_refsys.h",
+      "sha256": "02bbaa129bbe1f237ccc5f90dca4647b232b86f940de5a3d18f22d6a4dc156dd"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_adi_3_refsys.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_adi_3_refsys.h",
+      "sha256": "d948ea063d1ba4cf03ddd1df0e5ac39e500627ef5da17cdb98d23c8bdcf6da0e"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_adi_4_aux.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_adi_4_aux.h",
+      "sha256": "acdf13f36b056aa9b628b1788d8b42a92400f8972fe9e0feab7e9c0f0cfb2984"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_aon_batmon.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_aon_batmon.h",
+      "sha256": "ad390c971d96b7b0da71aabb64bfcdeeeec7f6a96223ee5e35ffc4b45599baab"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_aon_event.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_aon_event.h",
+      "sha256": "1540291180a63e24a83226da02b43b152fb4e7dbf0c64262bf49494211122edd"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_aon_ioc.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_aon_ioc.h",
+      "sha256": "15edfae6a427effa228b9e5094e4e3d2b3a39a02d53349bf7c2ad148a935fcc5"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_aon_rtc.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_aon_rtc.h",
+      "sha256": "8f062906111e591948389b10490c382abb1deefabce68fb0e1825e3c1ab6c07d"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_aon_sysctl.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_aon_sysctl.h",
+      "sha256": "74378d6ef1ca1e75ab8555af46ae3a5def2b814d7936cc0dfd13595fe13c01d8"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_aon_wuc.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_aon_wuc.h",
+      "sha256": "90778d3e5dbf6ae608c511230448b6f9dcdaedfa5b9aa0df22b98ead74c5f9c5"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_aux_aiodio.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_aux_aiodio.h",
+      "sha256": "ee696a7d0105816cf9d24dcb76e597b97d9c7f1641e7e3bd50d76329f12d3d7f"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_aux_anaif.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_aux_anaif.h",
+      "sha256": "a79df5d27d0e9f614731d13ffaef28fb163d3a3d575baa2bcffa6f488ebb88f7"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_aux_evctl.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_aux_evctl.h",
+      "sha256": "9484cf41d46ef501890a87dc6f982103bbf6014d57d87f1217aa1d1fb828e712"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_aux_sce.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_aux_sce.h",
+      "sha256": "05caac9da0a93e710c06f035882d0a1b64920d141de0e38ab340c3d83a76fd9e"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_aux_smph.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_aux_smph.h",
+      "sha256": "d4cd5e7096a566ba7752e6756ba52373ec99f5f70569916ef398caf14cc8acd5"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_aux_tdc.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_aux_tdc.h",
+      "sha256": "298c4b100660ec574d78056842e507a705a53fef8a018dadfa766aa0c0d699cb"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_aux_timer.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_aux_timer.h",
+      "sha256": "7c853c368e255bcc2a375861c8f8011faca7cf85579070123e6e0666ea664738"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_aux_wuc.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_aux_wuc.h",
+      "sha256": "e4051d2a1e8b209d2b61396e2ada76c1b370310d1458ee27f9f1a4c9967e5761"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_ccfg.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_ccfg.h",
+      "sha256": "1e277723658d361bf03e88f5787768f537aefd36e9aa4b3451a5f8d8898525d8"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_ccfg_simple_struct.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_ccfg_simple_struct.h",
+      "sha256": "fb7d675eff3751f3c01229dc8ab34de1c6888602e9e90ffdd6fbc04885ba0a4f"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_chip_def.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_chip_def.h",
+      "sha256": "48ea5a0108a037a1a367c5dd3412a804720eed741969489cb7ca8672c4c73192"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_cpu_dwt.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_cpu_dwt.h",
+      "sha256": "1772e88fdbfefbe8a2adb38ed26e9140808b4002bcd2730f3179afd84f0eb95c"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_cpu_fpb.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_cpu_fpb.h",
+      "sha256": "fcc4bf40096e34f1e4691ba2f3845ad38a2c7f35ee11476501a23e8e79bc0e69"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_cpu_itm.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_cpu_itm.h",
+      "sha256": "9eda55bb747f3d927001162d84cb7831d197f9c5f514418a185335bebf41b55d"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_cpu_rom_table.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_cpu_rom_table.h",
+      "sha256": "4a40792616ce6e2c76cd21efc29bc5fff38df00c299353590b78fb4d555e2dd5"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_cpu_scs.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_cpu_scs.h",
+      "sha256": "6059bb7a22c3bf4cce1925b12219f9e958565f82fd9acbce4f6c1347fea03f92"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_cpu_tiprop.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_cpu_tiprop.h",
+      "sha256": "37b69c8a1e0048b7c6dbcb44ce618458030e752a8de14f0f5757399f2ff48ff7"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_cpu_tpiu.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_cpu_tpiu.h",
+      "sha256": "d07ab05945ad6e80a300d59b9b68362aa3c6a74ccf34c61f8a2a7493289fb07f"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_crypto.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_crypto.h",
+      "sha256": "fe01a2f7fb1ba3fef8ebf6a51f06297847008dc7e73705a1652125c73ab97362"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_ddi.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_ddi.h",
+      "sha256": "30e1bac08bb6aba7dd04560676fe23e7adccccdd81f02e5a8a7267a7a0ed4a31"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_ddi_0_osc.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_ddi_0_osc.h",
+      "sha256": "362d77ff3656ce16c7b81f5a02a96d0abc8a12a01c6c0cca678410838d539bc4"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_device.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_device.h",
+      "sha256": "9f053fa99a42c45014e95e991fe40ec49051add367ece842b62645de059af135"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_event.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_event.h",
+      "sha256": "14e039ca456bac728ff77e001948548dae3653f6b704dbc38714c46ef9312b20"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_fcfg1.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_fcfg1.h",
+      "sha256": "68e0746cd21294dcdb5ddde28ddc6e9079c1012878daf130da45450a5df86504"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_flash.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_flash.h",
+      "sha256": "547967bf6f3ccd5c394950c4dbf62ef3ca82edcd19a93b15ed4afc561a971aa0"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_gpio.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_gpio.h",
+      "sha256": "20669ff9bbaaa61f1464dae782ecdf09564cc53da42a83866665571f1a955870"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_gpt.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_gpt.h",
+      "sha256": "1b8fb631bf0c8bb055d211aa29730abf2375611070f1f3f4a797e8b5a1ff6d8e"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_i2c.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_i2c.h",
+      "sha256": "d9302793b02d019deddd67d8dfcb6296a8fc389489c4232d625a11b487238a2a"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_i2s.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_i2s.h",
+      "sha256": "1e64b3a1c92027510d7abd095822f00f23d3aa268211517c7abdd7294f49e3c5"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_ints.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_ints.h",
+      "sha256": "0fc1e45c96976ffe131afe7c25562b4bd480a0ff5993a447bfba0183d3429f35"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_ioc.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_ioc.h",
+      "sha256": "83456f0d5d848d022af53f4377f7dc37922f712ac226e63c24ef85dea43533e1"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_memmap.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_memmap.h",
+      "sha256": "f150e16a1af25762d1e0f10eaf7951d136167711b9651bf56e54cc95ab3f8e68"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_nvic.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_nvic.h",
+      "sha256": "23853e550b6857a13d5b9d527ac533e8fc84f1990a9094d618ebe8a87c7b9611"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_prcm.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_prcm.h",
+      "sha256": "238a2b6759f38bd490b22f3b33c6e8b46f188457625ed8d162c6072caba2bd1d"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_rfc_dbell.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_rfc_dbell.h",
+      "sha256": "2477f80d750a6fbcb62dd15a73117f5728dc3c3a1f5f07c45934c6360afb1276"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_rfc_pwr.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_rfc_pwr.h",
+      "sha256": "c83c06466e3e2e7092fc8a88c2c3a1ecd1b04785f8cb0e193ad1927018ff3f2a"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_rfc_rat.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_rfc_rat.h",
+      "sha256": "829e5bca28a830c658cd865642a9a025195187733f3fc1832c48476b1d034924"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_smph.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_smph.h",
+      "sha256": "aa7d9dd6f20fde3619ad3c5e28feb45ec5e7a438ae5c485a8b03576a9a7acf8f"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_ssi.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_ssi.h",
+      "sha256": "47431ada3458b63fd2040f5a91427b65ffb7db5b3efd67323b3069dba5ed78b6"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_sysctl.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_sysctl.h",
+      "sha256": "aed27daac968e724f412e705dd8a57bcced2a3c72c5dc279ddd22b3dc9536951"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_trng.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_trng.h",
+      "sha256": "7369cd265d29423c40d56ad626bdbceb826eea645d581e6163f4a84325a353ea"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_types.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_types.h",
+      "sha256": "5667d184fd12ec06cfe2e46b09b0358353d6118f5740b75fe280a0e17ecee961"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_uart.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_uart.h",
+      "sha256": "6fcf5f652f562776e4a643c2bb431e8e979c586c6eb81f8a0444339c316a4b25"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_udma.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_udma.h",
+      "sha256": "ca14116955043ca4493af32da12a8c3f6120b3ac1c841862ec42e6c43629880e"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_vims.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_vims.h",
+      "sha256": "7bbd048c20a1b11d4e440027bbf0b474e5906a7d9b10b0872183c1d8d34858ce"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/inc/hw_wdt.h",
+      "archived": "cc1310/Drivers/cc13xxware/inc/hw_wdt.h",
+      "sha256": "24c59dbab6dc1d060e741bd022cdc80d459c29c2f231d03411573112d272985b"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/rf_patches/rf_patch_cpe_ble.h",
+      "archived": "cc1310/Drivers/cc13xxware/rf_patches/rf_patch_cpe_ble.h",
+      "sha256": "7f8bb632cf06a3d6f6629ab4a3b0821129e822819071e6cbe094e757cf477a27"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/rf_patches/rf_patch_cpe_ble_priv_1_2.h",
+      "archived": "cc1310/Drivers/cc13xxware/rf_patches/rf_patch_cpe_ble_priv_1_2.h",
+      "sha256": "7d6ea8c760a360571828729cae4a15f182a626a4caa66c6b82756ae21b454a08"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/rf_patches/rf_patch_cpe_genfsk.h",
+      "archived": "cc1310/Drivers/cc13xxware/rf_patches/rf_patch_cpe_genfsk.h",
+      "sha256": "0e9e1c005577fecd99124c4dffb76bd939ebaae6f07e4ca0c1cba173d8cff6f1"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/rf_patches/rf_patch_cpe_genook.h",
+      "archived": "cc1310/Drivers/cc13xxware/rf_patches/rf_patch_cpe_genook.h",
+      "sha256": "ac69d26892b21f14d4eb77c68f467e36c31b90dad59b6355951ed42060a46635"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/rf_patches/rf_patch_cpe_lrm.h",
+      "archived": "cc1310/Drivers/cc13xxware/rf_patches/rf_patch_cpe_lrm.h",
+      "sha256": "a37c73b4aca099bb7eb5f5ed00e995f515878f0a315ecc17a32e8233c4a3a723"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/rf_patches/rf_patch_mce_genook.h",
+      "archived": "cc1310/Drivers/cc13xxware/rf_patches/rf_patch_mce_genook.h",
+      "sha256": "99c4713f039292d2e402ec486df0b83cccfa8861f568f1daa9ce43f8a8ae6811"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/rf_patches/rf_patch_mce_hsp_4mbps.h",
+      "archived": "cc1310/Drivers/cc13xxware/rf_patches/rf_patch_mce_hsp_4mbps.h",
+      "sha256": "f09e527a8412e2c9ee903e411ed8717e9100b59e346f4b075a7a75e4b1a218f0"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/rf_patches/rf_patch_rfe_ble.h",
+      "archived": "cc1310/Drivers/cc13xxware/rf_patches/rf_patch_rfe_ble.h",
+      "sha256": "2dfd1a3d52d7620700f439f0e7d1cbc8209e3acae86a43f9180fd5397c0baab6"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/rf_patches/rf_patch_rfe_genfsk.h",
+      "archived": "cc1310/Drivers/cc13xxware/rf_patches/rf_patch_rfe_genfsk.h",
+      "sha256": "51d6a3e74f5da0d92b3e8dbdb010c7e1c213120e702991b29325b0abe408b296"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/rf_patches/rf_patch_rfe_genook.h",
+      "archived": "cc1310/Drivers/cc13xxware/rf_patches/rf_patch_rfe_genook.h",
+      "sha256": "c05e8b10e7a2ac9efb1923abf1fe9ec91940c127fe182f863e2449c9e5038318"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/rf_patches/rf_patch_rfe_hsp_4mbps.h",
+      "archived": "cc1310/Drivers/cc13xxware/rf_patches/rf_patch_rfe_hsp_4mbps.h",
+      "sha256": "3722e983215d13fc9bc0d9b409bba48c32104062ef1da2052f794ba17e6c8e8f"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/rf_patches/rf_patch_rfe_lrm.h",
+      "archived": "cc1310/Drivers/cc13xxware/rf_patches/rf_patch_rfe_lrm.h",
+      "sha256": "4f9b1dea523e8c8930f1b0a627fcab66fcb28f4def27f3832d675ec729d33965"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/startup_files/ccfg.c",
+      "archived": "cc1310/Drivers/cc13xxware/startup_files/ccfg.c",
+      "sha256": "8580f3f8eed56718fc257bd95199d4877c42bcfa71e93d1daf4962160b257f71"
+    },
+    {
+      "source": "测试工程案例/cc1310/Drivers/cc13xxware/startup_files/startup_gcc.c",
+      "archived": "cc1310/Drivers/cc13xxware/startup_files/startup_gcc.c",
+      "sha256": "370ebc064cbe602bc80ce6578483db8441bf209380c30c33d3ef612e0ec095dd"
+    },
+    {
+      "source": "测试工程案例/build.ps1",
+      "archived": "build.ps1",
+      "sha256": "eb0dfe3a79e388e67e8df514d467ae67849bb637f2d346cecceece67b07cb5c0"
+    },
+    {
+      "source": "测试工程案例/Makefile",
+      "archived": "Makefile",
+      "sha256": "06167868da53a1f414f84530f97344da7413a67217e263641be6ac8e7d4ceae9"
+    },
+    {
+      "source": "测试工程案例/README-v2.md",
+      "archived": "README-v2.md",
+      "sha256": "62cd1aa4b0146e41e79a623b8490185f970332b7948f65839382c718d2699c14"
+    },
+    {
+      "source": "测试工程案例/requirements.txt",
+      "archived": "requirements.txt",
+      "sha256": "e3bbfd855265e04b2259abdc862d9ea475e3697bbfe438c540d5b619bf73ebe3"
+    },
+    {
+      "source": "测试工程案例/RF_IMAGE_LINK.md",
+      "archived": "RF_IMAGE_LINK.md",
+      "sha256": "d8051b1c311d21585a7235b032ead6d9d3491c66fa2c1c2d930cb003f6ed50c5"
+    },
+    {
+      "source": "测试工程案例/RF_PERFORMANCE.md",
+      "archived": "RF_PERFORMANCE.md",
+      "sha256": "15340f44a29acbe62a3871a40ab8af8715ce93a89926aeaed546367bf283b7c7"
+    },
+    {
+      "source": "测试工程案例/SPI_IMAGE_LINK.md",
+      "archived": "SPI_IMAGE_LINK.md",
+      "sha256": "7bbd27e8edd52e7b0ed18cf4368ce7f4cc4b8f38d389690c127dd7ce205e912b"
+    },
+    {
+      "source": "测试工程案例/STM32U575ZITXQ_FLASH.ld",
+      "archived": "STM32U575ZITXQ_FLASH.ld",
+      "sha256": "098f3b8b29910b233095542c147463c85c4a0dc27a41111e88fcfd0023d935de"
+    },
+    {
+      "source": "测试工程案例/下位机软件架构梳理.md",
+      "archived": "下位机软件架构梳理.md",
+      "sha256": "2fd14e13353fb3a0b94254ef3e9579b5aaab0ada3235822b56661f7161ff55c7"
+    },
+    {
+      "source": "测试工程案例/启动测试上位机.ps1",
+      "archived": "启动测试上位机.ps1",
+      "sha256": "ec631026a473bbcfcac374ac406d3d3bce466f904d1d2eac9968a1dc50c141a4"
+    },
+    {
+      "source": "测试工程案例/测试操作说明.md",
+      "archived": "测试操作说明.md",
+      "sha256": "9375debc7f44cdbe4aa9ca3ccc5cd554e4edf5edd9c08ca983b493c8639e245e"
+    },
+    {
+      "source": "测试工程案例/cc1310/build.ps1",
+      "archived": "cc1310/build.ps1",
+      "sha256": "77a49177eb445a73f940a02cddd39efa11e8b3f5a89cc15f8a9bb3090ec4a104"
+    },
+    {
+      "source": "测试工程案例/cc1310/cc1310f128.ld",
+      "archived": "cc1310/cc1310f128.ld",
+      "sha256": "217865a7623b707252a9d34fc8f7b8d8b6a2db23977095b5668fd4646b745cad"
+    },
+    {
+      "source": "测试工程案例/cc1310/Makefile",
+      "archived": "cc1310/Makefile",
+      "sha256": "89461b8e5cfdf67392e2467543d14b5607b359b4863fe854f3d88b7a36308ec2"
+    },
+    {
+      "source": "测试工程案例/cc1310/README.md",
+      "archived": "cc1310/README.md",
+      "sha256": "3f568fd7fc1b8aa7427488b5aac1a0267935c47ec5cf3d9b10e5df6fcff8db9c"
+    },
+    {
+      "source": "测试工程案例/cc1310/RF433_LINK_TEST.md",
+      "archived": "cc1310/RF433_LINK_TEST.md",
+      "sha256": "5e1e6389c2f319e861ff4e2c47d337cafb6d6fe6aca65018bf98d09e9f666ae7"
+    },
+    {
+      "source": "测试工程案例/cc1310/UART_TEST.md",
+      "archived": "cc1310/UART_TEST.md",
+      "sha256": "c47711296115a5cfb131299f3b2a43e6f66e77ab3124fc07f6fdd5173be04e59"
+    },
+    {
+      "source": "测试工程案例/tools/check_connected.py",
+      "archived": "tools/check_connected.py",
+      "sha256": "2fda3a69cdca6043f0a926752b7e5688f5de0da2999f0625f7fbe846b4986919"
+    },
+    {
+      "source": "测试工程案例/tools/recv_frame.py",
+      "archived": "tools/recv_frame.py",
+      "sha256": "e60ba56b26cffb7720af084c1356d05afc36d8b90a681ae734836f7b3ecfaba4"
+    },
+    {
+      "source": "测试工程案例/tools/STM32U575.svd",
+      "archived": "tools/STM32U575.svd",
+      "sha256": "375361b4fdca7f55987e187480e7ba2061dfcbea6baedb32e543b8c662ddb5d8"
+    },
+    {
+      "source": "测试工程案例/tools/stream_server.py",
+      "archived": "tools/stream_server.py",
+      "sha256": "c74ff222e6eb41837598cceed3a8e921b9d7fab6a6f2daf1aaceea3f0179ee90"
+    },
+    {
+      "source": "测试工程案例/tools/test_console.html",
+      "archived": "tools/test_console.html",
+      "sha256": "93b7caa50da198ce2f91f07dda31ea8f680f7d4aeccec65d54aed77da97dca30"
+    },
+    {
+      "source": "测试工程案例/tools/test_console.py",
+      "archived": "tools/test_console.py",
+      "sha256": "0090bc19730644188a569aa0b39a88b78235a35b74f9a87d8f1c759df7b474ac"
+    },
+    {
+      "source": "测试工程案例/tools/validate_test_console.py",
+      "archived": "tools/validate_test_console.py",
+      "sha256": "f10941c3d8d19ef7014c70308e3779bf3ef268ee40782caf8c3711f521269133"
+    },
+    {
+      "source": "测试工程案例/rf_validation/test_protocol.c",
+      "archived": "rf_validation/test_protocol.c",
+      "sha256": "71dfa8d9e5c86292d758174c4855d6bac847d1711f75100918b362542467b300"
+    },
+    {
+      "source": "测试工程案例/rf_validation/test_receiver.py",
+      "archived": "rf_validation/test_receiver.py",
+      "sha256": "aa6e49736803ca75004b3cc72fcd55e1bc6a2af8f04b6ee5ef91dee8540dd8a3"
+    },
+    {
+      "source": "测试工程案例/rf_validation/c_uart_fixture.bin",
+      "archived": "rf_validation/c_uart_fixture.bin",
+      "sha256": "a6234282493ad09b6fce74d96a8f22f182ecf9251d9e9f134d49d1aa3704fab2"
+    },
+    {
+      "source": "测试工程案例/rf_validation/flash_image_board.py",
+      "archived": "rf_validation/flash_image_board.py",
+      "sha256": "b0f0e26dcc90a3e996361f9bc51f058809a475328bde812bc5aa6d7375987372"
+    },
+    {
+      "source": "sofeware_V2/rf_validation/performance/baseline_50k.json",
+      "archived": "rf_validation/performance/baseline_50k.json",
+      "sha256": "f6cf2726c7b1ccb3aaf45cb5612833b358e3dccbb8ab34ad7dee42a67dd2c36d"
+    },
+    {
+      "source": "sofeware_V2/rf_validation/performance/final_web_ui.json",
+      "archived": "rf_validation/performance/final_web_ui.json",
+      "sha256": "cda3ced52da590c9d8affe85cd1e21e58806285afc5d7399c53b48e22e412e80"
+    },
+    {
+      "source": "sofeware_V2/rf_validation/performance/packed_async_50k.json",
+      "archived": "rf_validation/performance/packed_async_50k.json",
+      "sha256": "ebb57c1221b314e377ea831026ec82030fc3ed404d94bd85f72192e74828ab30"
+    },
+    {
+      "source": "sofeware_V2/rf_validation/performance/phy500_fast_no_mirror.json",
+      "archived": "rf_validation/performance/phy500_fast_no_mirror.json",
+      "sha256": "60f2b383938d6134c7bb43c9aae40187f2dd06d031a06b4021bd0105bcbe25cc"
+    },
+    {
+      "source": "sofeware_V2/rf_validation/performance/phy500_fast_spi2500.json",
+      "archived": "rf_validation/performance/phy500_fast_spi2500.json",
+      "sha256": "c3937ec6e6e6f22a2f1afc6c5f7ae77641841712db13c3643e862f2d58838f24"
+    },
+    {
+      "source": "sofeware_V2/rf_validation/performance/phy500_pipeline_spi625.json",
+      "archived": "rf_validation/performance/phy500_pipeline_spi625.json",
+      "sha256": "58cf2061f7dd8e0980a2ba9cc8f920e33ab518741d2b829d7077321ea07afbc7"
+    },
+    {
+      "source": "sofeware_V2/rf_validation/performance/release_manifest.json",
+      "archived": "rf_validation/performance/release_manifest.json",
+      "sha256": "a23fc8cc66048695b4e028dcb6578e1959400cdce6cece7776be1e3d16cef0da"
+    },
+    {
+      "source": "sofeware_V2/rf_validation/performance/stability_vga_q28_10min.json",
+      "archived": "rf_validation/performance/stability_vga_q28_10min.json",
+      "sha256": "1ac4129648d351117f640774a8bb4e22b38682f8a78d518d2b5317264fc461a6"
+    },
+    {
+      "source": "sofeware_V2/rf_validation/performance/vga_q28_sequential.json",
+      "archived": "rf_validation/performance/vga_q28_sequential.json",
+      "sha256": "08e724ead809a5e942e01b0e3639b783b2d35a85127b3ee64add5e7a994ef026"
+    },
+    {
+      "source": "sofeware_V2/rf_validation/performance/vga_qs20.json",
+      "archived": "rf_validation/performance/vga_qs20.json",
+      "sha256": "48a08f1667db4c0eb0b75fcdc539e6eddc72bab6eadc5410f704b0f7aa7452f2"
+    },
+    {
+      "source": "sofeware_V2/rf_validation/performance/vga_qs28.json",
+      "archived": "rf_validation/performance/vga_qs28.json",
+      "sha256": "1c26e8283a58985917f8630842249d83b855097ae5347f4b6b272a0c0b99acfe"
+    },
+    {
+      "source": "sofeware_V2/rf_validation/performance/vga_qs36.json",
+      "archived": "rf_validation/performance/vga_qs36.json",
+      "sha256": "dbc805f680e147798df1b8ce4a6fc2ae2aac28fe24465f9fa86385ab5cc58507"
+    },
+    {
+      "source": "sofeware_V2/rf_validation/receiver_join/final_raw_pair_q28_validation.json",
+      "archived": "rf_validation/receiver_join/final_raw_pair_q28_validation.json",
+      "sha256": "b25d8e7c40720181c8ae90e6a037bc3b72c864dc9fa266c8bb626c5cc03fff5e"
+    },
+    {
+      "source": "sofeware_V2/rf_validation/receiver_join/final_vga_q12_validation.json",
+      "archived": "rf_validation/receiver_join/final_vga_q12_validation.json",
+      "sha256": "f8cd0f48919710f1bed11710a0cdf6b6357529a90934b0257cbfb28ad5313a7e"
+    },
+    {
+      "source": "sofeware_V2/rf_validation/receiver_join/final_vga_q28_buffered_audit.json",
+      "archived": "rf_validation/receiver_join/final_vga_q28_buffered_audit.json",
+      "sha256": "3011371ccd9e9c4c5d75a13d0b40c47c61e6761a1664de0e280fe69b08e81230"
+    },
+    {
+      "source": "sofeware_V2/rf_validation/receiver_join/final_vga_q28_buffered_validation.json",
+      "archived": "rf_validation/receiver_join/final_vga_q28_buffered_validation.json",
+      "sha256": "0dee5d4084e80694663c6668a3bf237b214f4d14a6c6e59f16232d7681957f4e"
+    },
+    {
+      "source": "sofeware_V2/rf_validation/receiver_join/initial_validation.json",
+      "archived": "rf_validation/receiver_join/initial_validation.json",
+      "sha256": "8017728e6249196ceb1359ebb5d031f76c30db909f75a5356f06a25921809486"
+    },
+    {
+      "source": "sofeware_V2/rf_validation/receiver_join/optimized_vga_q12_validation.json",
+      "archived": "rf_validation/receiver_join/optimized_vga_q12_validation.json",
+      "sha256": "78ca54f72407de08d9712095b241dda162ebaf36125951bf1fda39e04620a411"
+    },
+    {
+      "source": "sofeware_V2/rf_validation/receiver_join/qvga_validation.json",
+      "archived": "rf_validation/receiver_join/qvga_validation.json",
+      "sha256": "15291dffbb5bbd2b9d0d2f63d65c943d6bd2ba113fcbb4d226c8ed711c34b862"
+    },
+    {
+      "source": "sofeware_V2/rf_validation/receiver_join/uart1m_pair_q12_validation.json",
+      "archived": "rf_validation/receiver_join/uart1m_pair_q12_validation.json",
+      "sha256": "7279faf9884f2c0c5fb22824e5f0d3e600efb11fa55129d2866575f5ada96166"
+    },
+    {
+      "source": "sofeware_V2/rf_validation/receiver_join/uart1m_pair_q28_validation.json",
+      "archived": "rf_validation/receiver_join/uart1m_pair_q28_validation.json",
+      "sha256": "4445588dded1273a8c5a80e533a3040f2fb6287c7790b67a4f40ba0927730a63"
+    },
+    {
+      "source": "sofeware_V2/rf_validation/receiver_join/web_live_validation.json",
+      "archived": "rf_validation/receiver_join/web_live_validation.json",
+      "sha256": "6013138fca2c2f10ad8c7f14fb9f7dccd89bafb962e7f746ba9597b9711c1163"
+    }
+  ],
+  "archive_adaptations": [
+    "build.ps1",
+    "测试操作说明.md",
+    "cc1310/build.ps1",
+    "cc1310/Makefile",
+    "tools/validate_test_console.py"
+  ],
+  "adaptation_note": "Build wrappers use relative OpenOCD and configurable make; test documentation/report output paths adapted. Application C/header sources match import exactly."
+}

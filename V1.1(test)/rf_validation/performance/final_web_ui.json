@@ -1,0 +1,21 @@
+{
+  "bad": "0",
+  "baud": "921600",
+  "dropped": "0",
+  "fps": "2.4",
+  "frames": "92",
+  "image": [
+    640,
+    480
+  ],
+  "logStyle": {
+    "background": "rgb(255, 255, 255)",
+    "color": "rgb(17, 17, 17)"
+  },
+  "perf": "采集 92 ms；发送 413 ms；并行；副本关；SPI 2.5 MHz",
+  "port": "COM25",
+  "qs": "28",
+  "route": "OV3660 → STM32 → SPI2 → CC1310 发送 → 433.92 MHz → CC1310 接收 → COM25 → 浏览器",
+  "source": "rf433",
+  "status": "已连接 COM25 @ 921600；控制串口 COM22"
+}

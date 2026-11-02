@@ -1,0 +1,25 @@
+...
+[����] [RF433 RX] READY
+[����] [RF433 RX] READY
+[����] [RF433 RX] READY
+----------------------------------------------------------------------
+[����] [RF433 RX] READY
+[����] [RF433 RX] READY
+[����] [RF433 RX] READY
+[����] [RF433 RX] READY
+[����] [RF433 RX] READY
+Ran 3 tests in 0.717s
+
+OK
+[����] [RF433 RX] READY
+[����] [RF433 RX] READY
+[����] [RF433 RX] READY
+[����] [RF433 RX] READY
+[����] [RF433 RX] READY
+[����] [RF433 RX] READY
+[����] [RF433 RX] READY
+[����] [RF433 RX] READY
+[����] [RF433 RX] READY
+[����] [RF433 RX] READY
+[����] [RF433 RX] READY
+[����] [RF433 RX] READY
