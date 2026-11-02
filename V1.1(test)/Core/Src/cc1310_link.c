@@ -6,10 +6,17 @@
 #include "cc1310_link.h"
 #include <string.h>
 #include <stdbool.h>
+#include "../../cc1310/Core/Inc/wireless_control.h"
 
 static SPI_HandleTypeDef spi;
 volatile uint32_t g_cc_packets, g_cc_timeouts, g_cc_signatures;
 volatile uint32_t g_cc_spi_errors, g_cc_last_status, g_cc_last_error;
+static uint8_t command_queue[4][WC_COMMAND_MAX];
+static uint16_t command_sizes[4];
+static uint32_t command_sessions[4],command_sequences[4];
+static unsigned command_head,command_tail;
+static uint32_t poll_due;
+static uint32_t delivered_session,delivered_sequence;
 
 void CC_LinkInit(void)
 {
@@ -69,30 +76,72 @@ void CC_LinkSetSpeed(unsigned level)
   if (HAL_SPI_Init(&spi) != HAL_OK) Error_Handler();
 }
 
-uint32_t CC_LinkWrite(const uint8_t *data, uint32_t len)
+/* One checked mailbox shared by image transfers, status and idle polls. */
+static void accept_reply(const uint8_t *rx,unsigned size)
 {
-  uint32_t done = 0;
-  uint8_t tx[258], rx[258];
-  while (done < len)
-  {
-    uint32_t n = len - done;
-    if (n > 256U) n = 256U;
-    memset(tx, 0, sizeof(tx));
-    tx[0] = (uint8_t)n; tx[1] = (uint8_t)(n >> 8);
-    memcpy(tx + 2, data + done, n);
-    if (!wait_ready(GPIO_PIN_SET)) return done;
-    HAL_GPIO_WritePin(GPIOE, GPIO_PIN_9, GPIO_PIN_RESET);
-    HAL_StatusTypeDef st = HAL_SPI_TransmitReceive(&spi, tx, rx, sizeof(tx), 200);
-    g_cc_last_status = st;
-    g_cc_last_error = spi.ErrorCode;
-    HAL_GPIO_WritePin(GPIOE, GPIO_PIN_9, GPIO_PIN_SET);
-    if (st != HAL_OK) { ++g_cc_spi_errors; return done; }
-    if (!wait_ready(GPIO_PIN_RESET)) return done;
-    /* SSI TX FIFO retains a signature phase between packets. */
-    for (unsigned i = 0; i < 8; ++i)
-      if (memcmp(rx + i, "CC13", 4) == 0) { ++g_cc_signatures; break; }
-    ++g_cc_packets;
-    done += n;
+  static uint32_t last_session,last_seq;
+  for(unsigned off=0;off+20U<=size;++off) {
+    const uint8_t *p=rx+off;
+    if(memcmp(p,"WC13",4)) continue;
+    unsigned n=p[12]|((unsigned)p[13]<<8);
+    if(n>WC_COMMAND_MAX || p[14] || p[15] || off+20U+n>size) continue;
+    if(WC_Check(p,16U+n)!=WC_Get32(p+16U+n)) continue;
+    uint32_t session=WC_Get32(p+4),seq=WC_Get32(p+8);
+    unsigned next=(command_head+1U)&3U;
+    if(n && next!=command_tail && (session!=last_session || seq!=last_seq)) {
+      memcpy(command_queue[command_head],p+16,n);
+      command_sizes[command_head]=(uint16_t)n;
+      command_sessions[command_head]=session;command_sequences[command_head]=seq;
+      command_head=next;last_session=session;last_seq=seq;
+    }
+    ++g_cc_signatures;
+    break;
+  }
+}
+static bool exchange(const uint8_t *data,uint32_t len,uint16_t tag)
+{
+  uint8_t tx[258]={0},rx[258];
+  if(len>256U) return false;
+  tx[0]=(uint8_t)tag;tx[1]=(uint8_t)(tag>>8);
+  if(len) memcpy(tx+2,data,len);
+  if(!wait_ready(GPIO_PIN_SET)) return false;
+  HAL_GPIO_WritePin(GPIOE,GPIO_PIN_9,GPIO_PIN_RESET);
+  HAL_StatusTypeDef st=HAL_SPI_TransmitReceive(&spi,tx,rx,sizeof(tx),200);
+  g_cc_last_status=st;g_cc_last_error=spi.ErrorCode;
+  HAL_GPIO_WritePin(GPIOE,GPIO_PIN_9,GPIO_PIN_SET);
+  if(st!=HAL_OK) { ++g_cc_spi_errors;return false; }
+  if(!wait_ready(GPIO_PIN_RESET)) return false;
+  accept_reply(rx,sizeof(rx));++g_cc_packets;
+  return true;
+}
+uint32_t CC_LinkWrite(const uint8_t *data,uint32_t len)
+{
+  uint32_t done=0;
+  while(done<len) {
+    uint32_t n=len-done;if(n>256U)n=256U;
+    if(!exchange(data+done,n,(uint16_t)n)) break;
+    done+=n;
   }
   return done;
+}
+uint32_t CC_LinkRead(uint8_t *data,uint32_t capacity)
+{
+  if(command_tail==command_head) return 0;
+  uint32_t n=command_sizes[command_tail];
+  if(n>capacity) return 0; /* Never execute a truncated command batch. */
+  memcpy(data,command_queue[command_tail],n);
+  delivered_session=command_sessions[command_tail];delivered_sequence=command_sequences[command_tail];
+  command_tail=(command_tail+1U)&3U;poll_due=HAL_GetTick();return n;
+}
+uint32_t CC_LinkTelemetry(const uint8_t *data,uint32_t len)
+{
+  if(!len || len>WC_STATUS_MAX) return 0;
+  return exchange(data,len,(uint16_t)(0x8000U|len))?len:0;
+}
+uint32_t CC_LinkPoll(void)
+{
+  uint32_t now=HAL_GetTick();if((int32_t)(now-poll_due)<0)return 0;
+  poll_due=now+100U;
+  uint8_t receipt[8];WC_Put32(receipt,delivered_session);WC_Put32(receipt+4,delivered_sequence);
+  return exchange(receipt,sizeof(receipt),0x4008U);
 }

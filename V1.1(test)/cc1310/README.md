@@ -2,6 +2,8 @@
 
 **433 MHz 无线图像：`APP=rf_image_tx` / `APP=rf_image_rx`，必须 `BAND=433`；收发已烧录并通过 COM25 实测图像接收，详见 [RF_IMAGE_LINK.md](../RF_IMAGE_LINK.md)。COM20 是发送板可选状态口。**
 
+V1.1(test) 双向控制版本中，PC只连接收板UART；`WRC1`命令经RX排队、433 MHz转发到TX，再通过STM32 SPI送达。板端状态以`WTS1`记录经433 MHz回传。新的TX/RX镜像需配套刷写；不能把它与V1.0镜像混用。
+
 图像应用默认 500 kbps、满负载组包、接收端后台串口；COM25=921600，COM20 状态口仍为 115200。性能和画质对照见 [RF_PERFORMANCE.md](../RF_PERFORMANCE.md)。
 
 **自制板 SPI 图像转串口：新增 `APP=spiuart`，配置与实测见 [SPI_IMAGE_LINK.md](../SPI_IMAGE_LINK.md)。**

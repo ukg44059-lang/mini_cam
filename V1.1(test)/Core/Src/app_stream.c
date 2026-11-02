@@ -38,6 +38,7 @@
 #include "ov3660.h"
 #include <string.h>
 #include <stdlib.h>
+#include <stdarg.h>
 #include "power_test.h"
 #ifdef STREAM_TRANSPORT_DUAL
 #include "cc1310_link.h"
@@ -477,12 +478,14 @@ static bool handle_commands(void)
 {
   static char line[16];
   static uint8_t line_len;
-  uint8_t  rx[32];
+  uint8_t  rx[160];
   uint32_t n;
   uint32_t i;
   bool     res_changed = false;
 
-#ifdef STREAM_TRANSPORT_USB
+#ifdef STREAM_TRANSPORT_DUAL
+  n = CC_LinkRead(rx, sizeof(rx));
+#elif defined(STREAM_TRANSPORT_USB)
   n = USBCDC_Read(rx, sizeof(rx));
 #else
   /* 图传发送期间由 IRQ 把命令暂存进环形缓冲，避免 RX overrun。 */
@@ -699,9 +702,19 @@ static bool test_standby, test_changed = true;
 static uint32_t test_request;
 static bool test_report = true;
 
+static void test_log(const char *fmt,...)
+{
+  char text[224]; va_list ap; va_start(ap,fmt);
+  int n=vsnprintf(text,sizeof(text),fmt,ap);va_end(ap);
+  if(n>0) {
+    unsigned size=(unsigned)n<sizeof(text)?(unsigned)n:(unsigned)sizeof(text)-1U;
+    (void)CC_LinkTelemetry((const uint8_t *)text,size);
+  }
+}
+
 static void test_status(void)
 {
-  printf("[TEST] event=status proto=2 rid=%lu case=%u led=%u interval_ms=%lu standby=%u captures=%lu sends=%lu\r\n",
+  test_log("[TEST] event=status proto=3 transport=rf433 rid=%lu case=%u led=%u interval_ms=%lu standby=%u captures=%lu sends=%lu\r\n",
     (unsigned long)test_request, test_case, test_led_duty,
     (unsigned long)test_interval, test_standby,
     (unsigned long)test_captures, (unsigned long)test_sends);
@@ -750,7 +763,7 @@ static bool test_command(const char *line)
   } else if (line[0] == 'L' && value <= 100U && test_case == 5U) {
     test_led_duty = (unsigned)(value / 5U * 5U);
     test_report = true;
-    printf("[TEST] event=led duty=%u\r\n", test_led_duty);
+    test_log("[TEST] event=led duty=%u\r\n", test_led_duty);
   } else if (line[0] == 'I' && value >= 1U && value <= 3600U) {
     test_interval = (uint32_t)value * 1000U;
   }
@@ -759,8 +772,10 @@ static bool test_command(const char *line)
 
 static void test_run(void)
 {
+  static uint32_t frame_report_due;
   uint32_t start, len, capture_ms, send_ms = 0;
   bool sent = false;
+  (void)CC_LinkPoll();
   (void)handle_commands();
   if (test_changed) {
     test_changed = false;
@@ -770,9 +785,9 @@ static void test_run(void)
     if (!apply_framesize((ov3660_framesize_t)3))
       die("Test configuration failed", "480x360 JPEG");
     test_captures = test_sends = 0;
-    printf("[TEST] event=states camera=soft_standby_when_idle mcu=Sleep_SysTick1ms tx=SPI_poll_RFcore_on rx=continuous_receive_external led_pwm_hz=50\r\n");
+    test_log("[TEST] event=states camera=soft_standby_when_idle mcu=Sleep_SysTick1ms tx=SPI_poll_RFcore_on rx=continuous_receive_external led_pwm_hz=50\r\n");
     test_due = HAL_GetTick();
-    printf("[TEST] event=case case=%u tick=%lu width=480 height=360 qs=12 led=%u interval_ms=%lu\r\n",
+    test_log("[TEST] event=case case=%u tick=%lu width=480 height=360 qs=12 led=%u interval_ms=%lu\r\n",
       test_case, (unsigned long)test_due, test_led_duty, (unsigned long)test_interval);
   }
   if (test_case == 0U || test_case == 2U || test_case == 8U ||
@@ -792,7 +807,7 @@ static void test_run(void)
     /* Start-to-start period. If a cycle overruns, skip missed slots. */
     do { test_due += test_interval; }
     while ((int32_t)(start - test_due) >= 0);
-    printf("[TEST] event=cycle_start tick=%lu\r\n", (unsigned long)start);
+    test_log("[TEST] event=cycle_start tick=%lu\r\n", (unsigned long)start);
   }
   test_sensor(false);
   if (test_report) test_status();
@@ -807,13 +822,16 @@ static void test_run(void)
       ++test_sends; ++s_seq;
     }
   }
-  printf("[TEST] event=frame case=%u tick=%lu bytes=%lu capture_ms=%lu send_ms=%lu spi_ok=%u captures=%lu sends=%lu\r\n",
+  if(test_case!=3U || (int32_t)(HAL_GetTick()-frame_report_due)>=0) {
+  frame_report_due=HAL_GetTick()+1000U;
+  test_log("[TEST] event=frame case=%u tick=%lu bytes=%lu capture_ms=%lu send_ms=%lu spi_ok=%u captures=%lu sends=%lu\r\n",
     test_case, (unsigned long)HAL_GetTick(), (unsigned long)len,
     (unsigned long)capture_ms, (unsigned long)send_ms, sent,
     (unsigned long)test_captures, (unsigned long)test_sends);
+  }
   if (test_case == 7U) {
     test_sensor(true);
-    printf("[TEST] event=cycle_wait tick=%lu due=%lu\r\n",
+    test_log("[TEST] event=cycle_wait tick=%lu due=%lu\r\n",
       (unsigned long)HAL_GetTick(), (unsigned long)test_due);
   }
   if (test_case == 1U && len && sent) {
@@ -832,7 +850,7 @@ int main(void)
 
   BSP_Init();
   white_leds_off_init();
-#ifndef STREAM_TRANSPORT_USB
+#if !defined(STREAM_TRANSPORT_USB) && !defined(STREAM_TRANSPORT_DUAL)
   stream_uart_rx_init();
 #endif
 

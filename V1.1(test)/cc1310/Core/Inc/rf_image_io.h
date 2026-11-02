@@ -22,12 +22,31 @@
 static uint8_t image_uart_ring[IMAGE_UART_RING];
 static volatile unsigned image_uart_head, image_uart_tail;
 volatile unsigned g_image_uart_peak;
+#ifdef RF_IMAGE_UART_CONTROL
+static uint8_t image_rx_ring[512];
+static volatile unsigned image_rx_head,image_rx_tail;
+volatile unsigned g_image_control_overruns;
+static int image_read_byte(void)
+{
+  if(image_rx_tail==image_rx_head) return -1;
+  unsigned value=image_rx_ring[image_rx_tail];
+  image_rx_tail=(image_rx_tail+1U)&511U; return (int)value;
+}
+#endif
 static unsigned image_uart_free(void)
 { return (image_uart_tail-image_uart_head-1U)&(IMAGE_UART_RING-1U); }
 /* One producer in main, one consumer in the UART TX interrupt. */
 void UART0IntHandler(void)
 {
-  UARTIntClear(UART0_BASE,UART_INT_TX);
+  UARTIntClear(UART0_BASE,UART_INT_TX|UART_INT_RX|UART_INT_RT);
+#ifdef RF_IMAGE_UART_CONTROL
+  while(UARTCharsAvail(UART0_BASE)) {
+    int value=UARTCharGetNonBlocking(UART0_BASE);
+    unsigned next=(image_rx_head+1U)&511U;
+    if(next==image_rx_tail) ++g_image_control_overruns;
+    else { image_rx_ring[image_rx_head]=(uint8_t)value; image_rx_head=next; }
+  }
+#endif
   while(image_uart_tail!=image_uart_head &&
         UARTCharPutNonBlocking(UART0_BASE,image_uart_ring[image_uart_tail]))
     image_uart_tail=(image_uart_tail+1U)&(IMAGE_UART_RING-1U);
@@ -51,6 +70,10 @@ static void image_io_init(unsigned tx, unsigned rx)
   UARTEnable(UART0_BASE);
 #ifdef RF_IMAGE_UART_ASYNC
   UARTFIFOLevelSet(UART0_BASE,UART_FIFO_TX4_8,UART_FIFO_RX4_8);
+#ifdef RF_IMAGE_UART_CONTROL
+  UARTFIFOLevelSet(UART0_BASE,UART_FIFO_TX4_8,UART_FIFO_RX1_8);
+  UARTIntEnable(UART0_BASE,UART_INT_RX|UART_INT_RT);
+#endif
   IntEnable(INT_UART0_COMB);
   IntMasterEnable();
 #endif

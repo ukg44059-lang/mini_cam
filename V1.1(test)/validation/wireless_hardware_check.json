@@ -1,0 +1,207 @@
+{
+  "started_utc": "2026-11-02T08:30:23.778352+00:00",
+  "checks": [
+    {
+      "case": 2,
+      "phase": "wait",
+      "observed_s": 2,
+      "new_images": 0,
+      "board": {
+        "proto": 3,
+        "rid": 808198,
+        "case": 2,
+        "led": 0,
+        "interval_ms": 2000,
+        "standby": 1,
+        "captures": 0,
+        "sends": 0,
+        "received_at": 1793608224.6613634
+      },
+      "bad_crc": 0,
+      "radio_incomplete": 0
+    },
+    {
+      "case": 3,
+      "phase": "wait",
+      "observed_s": 2,
+      "new_images": 0,
+      "board": {
+        "proto": 3,
+        "rid": 808200,
+        "case": 3,
+        "led": 0,
+        "interval_ms": 2000,
+        "standby": 0,
+        "captures": 0,
+        "sends": 0,
+        "received_at": 1793608227.7264476
+      },
+      "bad_crc": 0,
+      "radio_incomplete": 0
+    },
+    {
+      "case": 4,
+      "phase": "wait",
+      "observed_s": 6,
+      "new_images": 11,
+      "board": {
+        "proto": 3,
+        "rid": 808202,
+        "case": 4,
+        "led": 0,
+        "interval_ms": 2000,
+        "standby": 0,
+        "captures": 0,
+        "sends": 0,
+        "received_at": 1793608230.8969934
+      },
+      "bad_crc": 0,
+      "radio_incomplete": 0
+    },
+    {
+      "case": 5,
+      "phase": "wait",
+      "observed_s": 3,
+      "new_images": 6,
+      "board": {
+        "proto": 3,
+        "rid": 808204,
+        "case": 5,
+        "led": 20,
+        "interval_ms": 2000,
+        "standby": 0,
+        "captures": 0,
+        "sends": 0,
+        "received_at": 1793608238.2472634
+      },
+      "bad_crc": 0,
+      "radio_incomplete": 0
+    },
+    {
+      "case": 7,
+      "phase": "wait",
+      "observed_s": 6,
+      "new_images": 3,
+      "board": {
+        "proto": 3,
+        "rid": 808206,
+        "case": 7,
+        "led": 0,
+        "interval_ms": 2000,
+        "standby": 0,
+        "captures": 0,
+        "sends": 0,
+        "received_at": 1793608243.1672091
+      },
+      "bad_crc": 0,
+      "radio_incomplete": 0
+    },
+    {
+      "case": 8,
+      "phase": "wait",
+      "observed_s": 2,
+      "new_images": 0,
+      "board": {
+        "proto": 3,
+        "rid": 808208,
+        "case": 8,
+        "led": 0,
+        "interval_ms": 2000,
+        "standby": 1,
+        "captures": 0,
+        "sends": 0,
+        "received_at": 1793608250.5839694
+      },
+      "bad_crc": 0,
+      "radio_incomplete": 0
+    },
+    {
+      "case": 8,
+      "phase": "active",
+      "observed_s": 3,
+      "new_images": 6,
+      "board": {
+        "proto": 3,
+        "rid": 808210,
+        "case": 4,
+        "led": 0,
+        "interval_ms": 2000,
+        "standby": 0,
+        "captures": 0,
+        "sends": 0,
+        "received_at": 1793608253.7482548
+      },
+      "bad_crc": 0,
+      "radio_incomplete": 0
+    }
+  ],
+  "physical_power_cycles_tested": false,
+  "receiver_power_off_tested": false,
+  "current_or_energy_measured": false,
+  "unused_sender_ports_exclusively_held": [
+    "COM30",
+    "COM34"
+  ],
+  "receiver": {
+    "port": "COM20",
+    "baud": 921600,
+    "source": "rf433",
+    "control_port": "COM20",
+    "control_baud": 921600
+  },
+  "ok": true,
+  "final_board": {
+    "proto": 3,
+    "rid": 808211,
+    "case": 0,
+    "led": 0,
+    "interval_ms": 2000,
+    "standby": 1,
+    "captures": 0,
+    "sends": 0,
+    "received_at": 1793608257.5289292
+  },
+  "final_stats": {
+    "receiver": {
+      "port": "COM20",
+      "baud": 921600,
+      "source": "rf433",
+      "control_port": "COM20",
+      "control_baud": 921600
+    },
+    "control_transport": "433 MHz 双向无线",
+    "control_age": 0.0,
+    "sender": {
+      "connected": true,
+      "port": "433 MHz",
+      "last": "[TEST] event=status proto=3 transport=rf433 rid=808211 case=0 led=0 interval_ms=2000 standby=1 captures=0 sends=0"
+    },
+    "performance": {},
+    "firmware_mode": "test",
+    "radio_packets": 1696,
+    "radio_incomplete": 0,
+    "frame_age": 0.2,
+    "width": 480,
+    "height": 360,
+    "frames": 32,
+    "dropped": 0,
+    "bad_crc": 0,
+    "resyncs": 0,
+    "fps": 1.87,
+    "kbps": 25.2,
+    "jpeg_bytes": 11953,
+    "jpeg_avg": 11642,
+    "raw_bytes": 345600,
+    "ratio": 28.9,
+    "quality": 85,
+    "bpp": 0,
+    "hw_jpeg": true,
+    "jpeg_qs": 12,
+    "want_res": null,
+    "want_fps": 0,
+    "uptime": 61,
+    "serial_ok": true,
+    "serial_err": "",
+    "has_frame": true
+  }
+}

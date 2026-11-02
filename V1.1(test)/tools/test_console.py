@@ -67,8 +67,9 @@ class Experiments:
             raise ValueError('请先选择433 MHz无线接收来源')
         if getattr(latest, 'firmware_mode', 'unknown') == 'stream':
             raise ValueError('检测到原图传固件；请先烧录测试版STM32固件，再运行8项测试。当前可正常查看无线图像。')
-        if case != 1 and (self.board.get('proto') != 2 or latest.ser is None):
-            raise ValueError('尚未收到新版测试固件确认，请先点击查询板端状态并核对控制口')
+        if case != 1 and (self.board.get('proto') != 3 or
+                           time.time()-self.board.get('received_at', 0) > 15 or latest.ser is None):
+            raise ValueError('尚未收到15秒内的433 MHz发送端确认；请检查双向无线链路并查询状态')
         duty, interval = int(q.get('duty', 50)), int(q.get('interval', 10))
         if not 0 <= duty <= 100 or duty % 5 or not 1 <= interval <= 3600:
             raise ValueError('占空比为0至100的5%档位；周期1至3600秒')

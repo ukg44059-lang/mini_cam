@@ -1,0 +1,337 @@
+xPack Open On-Chip Debugger 0.12.0+dev-01850-geb6f2745b-dirty (2025-02-07-10:08)
+
+Licensed under GNU GPL v2
+
+For bug reports, read
+
+	http://openocd.org/doc/doxygen/bugs.html
+
+cortex_m reset_config vectreset
+
+DEPRECATED! use 'gdb port', not 'gdb_port'
+
+DEPRECATED! use 'tcl port' not 'tcl_port'
+
+DEPRECATED! use 'telnet port', not 'telnet_port'
+
+Info : XDS110: connected
+
+Info : XDS110: vid/pid = 0451/bef3
+
+Info : XDS110: firmware version = 2.3.0.12
+
+Info : XDS110: hardware version = 0x0025
+
+Info : XDS110: connected to target via JTAG
+
+Info : XDS110: TCK set to 2500 kHz
+
+Info : clock speed 200 kHz
+
+Info : JTAG tap: cc13x0.jrc tap/device found: 0x3b9be02f (mfg: 0x017 (Texas Instruments), part: 0xb9be, ver: 0x3)
+
+Info : JTAG tap: cc13x0.cpu enabled
+
+Info : [cc13x0.cpu] Cortex-M3 r2p1 processor detected
+
+Info : [cc13x0.cpu] target has 6 breakpoints, 4 watchpoints
+
+Info : [cc13x0.cpu] Examination succeed
+
+Info : [cc13x0.cpu] gdb port disabled
+
+FACTORY=0x37611287 0x124b00
+
+shutdown command invoked
+
+Info : XDS110: disconnected
+
+
+
+
+USB Device Firmware Upgrade Utility
+
+Copyright (c) 2008-2019 Texas Instruments Incorporated.  All rights reserved.
+
+
+
+Scanning USB buses for supported XDS110 devices...
+
+
+
+
+
+<<<< Device 0 >>>>
+
+
+
+VID: 0x0451    PID: 0xbef3
+
+Device Name:   XDS110 Embed with CMSIS-DAP
+
+Version:       2.3.0.12
+
+Manufacturer:  Texas Instruments
+
+Serial Num:    00002156
+
+Mode:          Runtime
+
+Configuration: Standard
+
+
+
+<<<< Device 1 >>>>
+
+
+
+VID: 0x0451    PID: 0xbef3
+
+Device Name:   XDS110 Embed with CMSIS-DAP
+
+Version:       2.3.0.12
+
+Manufacturer:  Texas Instruments
+
+Serial Num:    00002156
+
+Mode:          Runtime
+
+Configuration: Standard
+
+
+
+Found 2 devices.
+
+
+
+
+USB Device Firmware Upgrade Utility
+
+Copyright (c) 2008-2019 Texas Instruments Incorporated.  All rights reserved.
+
+
+
+Scanning USB buses for supported XDS110 devices...
+
+
+
+
+
+<<<< Device 0 >>>>
+
+
+
+VID: 0x0451    PID: 0xbef3
+
+Device Name:   XDS110 Embed with CMSIS-DAP
+
+Version:       2.3.0.12
+
+Manufacturer:  Texas Instruments
+
+Serial Num:    00002156
+
+Mode:          Runtime
+
+Configuration: Standard
+
+
+
+Switching device into DFU mode.
+
+
+xPack Open On-Chip Debugger 0.12.0+dev-01850-geb6f2745b-dirty (2025-02-07-10:08)
+
+Licensed under GNU GPL v2
+
+For bug reports, read
+
+	http://openocd.org/doc/doxygen/bugs.html
+
+cortex_m reset_config vectreset
+
+DEPRECATED! use 'gdb port', not 'gdb_port'
+
+DEPRECATED! use 'tcl port' not 'tcl_port'
+
+DEPRECATED! use 'telnet port', not 'telnet_port'
+
+Info : XDS110: connected
+
+Info : XDS110: vid/pid = 0451/bef3
+
+Info : XDS110: firmware version = 2.3.0.12
+
+Info : XDS110: hardware version = 0x0025
+
+Info : XDS110: connected to target via JTAG
+
+Info : XDS110: TCK set to 2500 kHz
+
+Info : clock speed 200 kHz
+
+Info : JTAG tap: cc13x0.jrc tap/device found: 0x3b9be02f (mfg: 0x017 (Texas Instruments), part: 0xb9be, ver: 0x3)
+
+Info : JTAG tap: cc13x0.cpu enabled
+
+Info : [cc13x0.cpu] Cortex-M3 r2p1 processor detected
+
+Info : [cc13x0.cpu] target has 6 breakpoints, 4 watchpoints
+
+Info : [cc13x0.cpu] Examination succeed
+
+Info : [cc13x0.cpu] gdb port disabled
+
+FACTORY=0x219d1542 0x124b00
+
+shutdown command invoked
+
+Info : XDS110: disconnected
+
+
+xPack Open On-Chip Debugger 0.12.0+dev-01850-geb6f2745b-dirty (2025-02-07-10:08)
+
+Licensed under GNU GPL v2
+
+For bug reports, read
+
+	http://openocd.org/doc/doxygen/bugs.html
+
+cortex_m reset_config vectreset
+
+DEPRECATED! use 'gdb port', not 'gdb_port'
+
+DEPRECATED! use 'tcl port' not 'tcl_port'
+
+DEPRECATED! use 'telnet port', not 'telnet_port'
+
+Info : XDS110: connected
+
+Info : XDS110: vid/pid = 0451/bef3
+
+Info : XDS110: firmware version = 2.3.0.12
+
+Info : XDS110: hardware version = 0x0025
+
+Info : XDS110: connected to target via JTAG
+
+Info : XDS110: TCK set to 2500 kHz
+
+Info : clock speed 200 kHz
+
+Info : JTAG tap: cc13x0.jrc tap/device found: 0x3b9be02f (mfg: 0x017 (Texas Instruments), part: 0xb9be, ver: 0x3)
+
+Info : JTAG tap: cc13x0.cpu enabled
+
+Info : [cc13x0.cpu] Cortex-M3 r2p1 processor detected
+
+Info : [cc13x0.cpu] target has 6 breakpoints, 4 watchpoints
+
+Info : [cc13x0.cpu] Examination succeed
+
+Info : [cc13x0.cpu] gdb port disabled
+
+FLASH_ID=0x219d1542 0x124b00
+
+Info : JTAG tap: cc13x0.jrc tap/device found: 0x3b9be02f (mfg: 0x017 (Texas Instruments), part: 0xb9be, ver: 0x3)
+
+Info : JTAG tap: cc13x0.cpu enabled
+
+Warn : [cc13x0.cpu] Only resetting the Cortex-M core, use a reset-init event handler to reset any peripherals or configure hardware srst support.
+
+[cc13x0.cpu] halted due to breakpoint, current mode: Thread
+
+xPSR: 0x01000000 pc: 0x0000112c msp: 0x20005000
+
+** Programming Started **
+
+Info : Flash write discontinued at 0x00002b2c, next section at 0x0001ffa8
+
+Warn : Adding extra erase range, 0x0001f000 .. 0x0001ffa7
+
+** Programming Finished **
+
+** Verify Started **
+
+** Verified OK **
+
+** Resetting Target **
+
+Info : JTAG tap: cc13x0.jrc tap/device found: 0x3b9be02f (mfg: 0x017 (Texas Instruments), part: 0xb9be, ver: 0x3)
+
+Info : JTAG tap: cc13x0.cpu enabled
+
+Warn : [cc13x0.cpu] Only resetting the Cortex-M core, use a reset-init event handler to reset any peripherals or configure hardware srst support.
+
+shutdown command invoked
+
+Info : XDS110: disconnected
+
+
+
+
+USB Device Firmware Upgrade Utility
+
+Copyright (c) 2008-2019 Texas Instruments Incorporated.  All rights reserved.
+
+
+
+Scanning USB buses for supported XDS110 devices...
+
+
+
+
+
+<<<< Device 0 >>>>
+
+
+
+VID: 0x1cbe    PID: 0x00ff
+
+Device Name:   Tiva Device Firmware Update
+
+Manufacturer:  Texas Instruments Incorporated
+
+Serial Num:    00000000
+
+Mode:          DFU
+
+
+
+<<<< Device 1 >>>>
+
+
+
+VID: 0x0451    PID: 0xbef3
+
+Device Name:   XDS110 Embed with CMSIS-DAP
+
+Version:       2.3.0.12
+
+Manufacturer:  Texas Instruments
+
+Serial Num:    00002156
+
+Mode:          Runtime
+
+Configuration: Standard
+
+
+
+Found 2 devices.
+
+
+
+
+USB Device Firmware Upgrade Utility
+
+Copyright (c) 2008-2019 Texas Instruments Incorporated.  All rights reserved.
+
+
+
+Scanning USB buses for supported XDS110 devices...
+
+
+
+Setting serial number to "00002156"...

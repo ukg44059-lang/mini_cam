@@ -2,6 +2,7 @@
 import json
 import math
 import tempfile
+import time
 import threading
 import urllib.request
 import urllib.error
@@ -14,14 +15,20 @@ import stream_server as server
 
 def run():
     checks = []
+    tc.experiments.boots = []
+    tc.experiments.active = None
     class FakeSerial:
         def __init__(self):
             self.commands = []
         def write(self, data):
-            self.commands.append(data.decode())
+            if data.startswith(b'WRC1'):
+                size = int.from_bytes(data[4:6], 'little')
+                command = data[6:6+size].decode('ascii')
+            else:
+                command = data.decode('ascii')
+            self.commands.append(command)
             if self.auto_ack:
                 import re
-                command = data.decode()
                 match = re.search(r'A(\d+)\n', command)
                 if match:
                     self.rid = int(match[1])
@@ -33,7 +40,7 @@ def run():
                     self.interval = int(match[1])*1000
                 match = re.search(r'L(\d+)\n', command)
                 self.duty = int(match[1]) if match else 0
-                tc.experiments.telemetry(('[TEST] event=status proto=2 rid=%d case=%d led=%d interval_ms=%d standby=0\n' %
+                tc.experiments.telemetry(('[TEST] event=status proto=3 rid=%d case=%d led=%d interval_ms=%d standby=0\n' %
                                          (self.rid, self.case, self.duty, self.interval)).encode())
         auto_ack = True
         rid, case, duty, interval = 0, 0, 0, 10000
@@ -43,7 +50,7 @@ def run():
     latest = server.latest
     latest.ser = serial
     latest.firmware_mode = 'test'
-    tc.experiments.board = dict(proto=2)
+    tc.experiments.board = dict(proto=3, received_at=time.time())
     latest.receiver['source'] = 'rf433'
     http = ThreadingHTTPServer(('127.0.0.1', 0), server.Handler)
     thread = threading.Thread(target=http.serve_forever, daemon=True)

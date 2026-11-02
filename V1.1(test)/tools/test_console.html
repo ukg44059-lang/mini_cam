@@ -4,8 +4,8 @@
 </style><main>
 <h1>V1.1(test) 测试控制台</h1><p class="muted">433.92 MHz 无线图传 · 480 × 360 · 硬件 JPEG QS 12 · 500 kbps · 固定功率寄存器 0x913F</p>
 <div id="message" role="status">先连接串口，再选择测试。测试记录自动保存至 test_results。</div>
-<section><strong>连接配置</strong> <button onclick="act('query')">查询板端状态</button> <a href="/viewer" target="_blank">打开原图传界面与串口选择</a>
-<p>在原界面选择“433 MHz 无线接收”，核对 STM32 控制口、发送板状态口和接收板图像口。测试固件固定图像参数，原界面的画质设置不用于本实验。</p><div id="status">正在读取连接状态…</div></section>
+<section><strong>连接配置</strong> <button onclick="act('query')">查询板端状态</button> <a href="/viewer" target="_blank">查看无线图像</a>
+<p>电脑只连接接收端 CC1310（默认 COM20）。测试命令、STM32确认和发送端日志都通过 433 MHz 双向链路；无需连接 COM30 或 COM34。接收端断电时无法下发命令，重新上电后查询状态。控制轮询会带来少量无线活动。</p><div id="status">正在读取连接状态…</div></section>
 <div class="layout"><div><section><strong>选择实验</strong><p class="muted">切换测试前先停止。按钮表示下发请求，板端确认和有效图像显示在记录中。</p>
 <label>照明占空比 <input id="duty" type="number" min="0" max="100" step="5" value="50" style="width:80px"> %</label>
 <label>间歇周期 <input id="interval" type="number" min="1" max="3600" value="10" style="width:85px"> 秒</label>
@@ -13,8 +13,8 @@
 <textarea id="note" placeholder="记录供电电压、仪表型号、测量位置、接收机开关状态等"></textarea>
 <div class="cases">
 <button onclick="start(1)">① 上电初始化 <small>断电后开始 → 标记上电 → 首张无线图像；重复5次</small></button>
-<button onclick="start(2)">② 系统等待 <small>LED关；摄像头软待机，MCU Sleep，TX等待SPI</small></button>
-<button onclick="start(3)">③ 只采集图像 <small>摄像头和STM32运行；无SPI图像发送</small></button>
+<button onclick="start(2)">② 系统等待 <small>LED关；摄像头软待机，MCU Sleep，TX等待SPI（保留低频无线控制轮询）</small></button>
+<button onclick="start(3)">③ 只采集图像 <small>摄像头和STM32运行；不发送图像，无线控制状态仍低频轮询</small></button>
 <button onclick="start(4)">④ 连续无线图传 <small>固定参数顺序采集与发送，LED关闭</small></button>
 <button onclick="start(5)">⑤ 加照明 <small>与④相同，仅改变PG14照明占空比</small></button>
 <button onclick="start(6)">⑥ 接收机关闭 <small>手动断开接收机电源；记录NO_ACK及重传</small></button>
@@ -37,8 +37,8 @@ function act(action){request({action})}
 async function importCsv(){try{let f=el('csv').files[0];if(!f)throw Error('请选择CSV');let rows=(await f.text()).replace(/^\uFEFF/,'').trim().split(/\r?\n/);if(rows.shift().trim()!=='t_s,voltage_v,current_a')throw Error('CSV表头必须为 t_s,voltage_v,current_a');let samples=rows.filter(x=>x.trim()).map(x=>{let v=x.split(',').map(Number);if(v.length!==3||v.some(x=>!Number.isFinite(x)))throw Error('CSV采样行无效');return {t_s:v[0],voltage_v:v[1],current_a:v[2]}});await request({action:'samples',channel:el('channel').value,samples})}catch(e){el('message').textContent=e.message}}
 async function refresh(){try{let [a,s,l]=await Promise.all(['/test/state','/stats','/logs'].map(u=>fetch(u).then(r=>r.json())));const names={pending:'等待板端确认',running:'运行中（板端已确认）',armed:'已待命，请实际断电/上电并标记',stopping:'正在停止，等待板端确认',stopped:'已停止（板端已确认）',unconfirmed:'未收到开始确认',stop_failed:'停止尚未确认',complete:'本次上电首帧成功',interrupted:'上次测试因服务重启中断',failed:'命令失败'};
 if(a.active)el('message').textContent=(names[a.active.status]||a.active.status)+(a.active.error?'：'+a.active.error:'');
-const ready=s.firmware_mode==='test'&&a.board.proto===2;
+const ready=s.firmware_mode==='test'&&a.board.proto===3&&Date.now()/1000-a.board.received_at<15;
 document.querySelectorAll('.cases button').forEach((b,i)=>b.disabled=busy||(i!==0&&!ready)||(a.active&&!a.active.ended));
-el('result').textContent=JSON.stringify(a,null,2);el('status').textContent=`来源 ${s.receiver.source} · 图像口 ${s.receiver.port} (${s.serial_ok?'已连接':'未连接'}) · 控制口 ${s.receiver.control_port} · TX状态口 ${s.sender.connected?(s.sender.last?'已收到日志':'已打开但暂无日志'):'未连接'} · 固件 ${s.firmware_mode==='test'?'测试版':s.firmware_mode==='stream'?'原图传版（8项测试需先烧录测试固件）':'等待识别'}`;el('imageStatus').textContent=`累计有效帧 ${s.frames} · 图像年龄 ${s.frame_age??'—'} 秒 · 校验错误 ${s.bad_crc} · 不完整无线帧 ${s.radio_incomplete}`;el('logs').textContent=JSON.stringify(l,null,2)}catch(e){el('message').textContent='服务连接失败：'+e.message}}
+el('result').textContent=JSON.stringify(a,null,2);el('status').textContent=`接收端 ${s.receiver.port} (${s.serial_ok?'已连接':'未连接'}) · 控制/发送端状态：433 MHz ${s.control_age===null?'等待':s.control_age+'秒前收到'} · ${s.sender.last||'等待发送板状态'} · 固件 ${ready?'测试版已无线确认':s.firmware_mode==='stream'?'原图传版（8项测试需先烧录测试版）':'等待无线确认'}`;el('imageStatus').textContent=`累计有效帧 ${s.frames} · 图像年龄 ${s.frame_age??'—'} 秒 · 校验错误 ${s.bad_crc} · 不完整无线帧 ${s.radio_incomplete}`;el('logs').textContent=JSON.stringify(l,null,2)}catch(e){el('message').textContent='服务连接失败：'+e.message}}
 refresh();setInterval(refresh,1500);
 </script></html>

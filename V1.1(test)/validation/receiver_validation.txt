@@ -1,25 +1,20 @@
-[����] [RF433 RX] READY
-[����] [RF433 RX] READY
-[����] [RF433 RX] READY
-[����] [RF433 RX] READY
-[����] [RF433 RX] READY
-[����] [RF433 RX] READY
-[����] [RF433 RX] READY
-[����] [RF433 RX] READY
-[����] [RF433 RX] READY
-[����] [RF433 RX] READY
-[����] [RF433 RX] READY
-[����] [RF433 RX] READY
-[����] [RF433 RX] READY
-[����] [RF433 RX] READY
-[����] [RF433 RX] READY
-[����] [RF433 RX] READY
-[����] [RF433 RX] READY
-[����] [RF433 RX] READY
-[����] [RF433 RX] READY
-...
-[����] [RF433 RX] READY
-----------------------------------------------------------------------
-Ran 3 tests in 0.794s
-
-OK
+[板子] [RF433 RX] READY
+[板子] [RF433 RX] READY
+[板子] [RF433 RX] READY
+[板子] [RF433 RX] READY
+[板子] [RF433 RX] READY
+[板子] [RF433 RX] READY
+[板子] [RF433 RX] READY
+[板子] [RF433 RX] READY
+[板子] [RF433 RX] READY
+[板子] [RF433 RX] READY
+[板子] [RF433 RX] READY
+[板子] [RF433 RX] READY
+[板子] [RF433 RX] READY
+[板子] [RF433 RX] READY
+[板子] [RF433 RX] READY
+[板子] [RF433 RX] READY
+[板子] [RF433 RX] READY
+[板子] [RF433 RX] READY
+[板子] [RF433 RX] READY
+[板子] [RF433 RX] READY

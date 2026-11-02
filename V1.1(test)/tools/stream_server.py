@@ -8,8 +8,8 @@
     python tools/stream_server.py /dev/ttyACM0            # Linux
     python tools/stream_server.py --source cc1310 --stm32-port COM22 --cc1310-port COM20
 
-网页可选择接收来源、串口和波特率。CC1310 默认 115200；相机控制命令
-始终通过 STM32 串口发送，接收 CC1310 时也会保持该控制口连接。
+网页可选择接收来源、串口和波特率。选择433 MHz接收时，电脑只打开接收端
+CC1310串口，控制命令和发送端状态沿433 MHz无线链路往返。
 
 然后浏览器打开   http://localhost:8080   （脚本会自动帮你开）
 
@@ -157,6 +157,8 @@ class Latest:
         self.ser = None
         self.receiver = {"source": "stm32", "port": "COM30", "baud": 1000000,
                          "control_port": "COM30", "control_baud": 1000000}
+        self.control_transport = "serial"
+        self.control_last = 0
         self.receiver_version = 0
         self.source_defaults = {}
         self.radio_packets = self.radio_incomplete = 0
@@ -193,7 +195,17 @@ class Latest:
                 ser = self.ser
                 if ser is None:
                     return "控制串口没打开"
-                ser.write(text.encode())
+                raw = text.encode("ascii")
+                if self.receiver["source"] == "rf433":
+                    if len(raw) > 160:
+                        return "无线控制命令超过160字节"
+                    body = b"WRC1" + len(raw).to_bytes(2, "little") + raw
+                    check = 2166136261
+                    for byte in body:
+                        check = ((check ^ byte) * 16777619) & 0xffffffff
+                    ser.write(body + check.to_bytes(4, "little"))
+                else:
+                    ser.write(raw)
                 ser.flush()
             events.add("相机控制：" + text.strip())
             return None
@@ -205,6 +217,8 @@ class Latest:
             up = time.time() - self.t0
             return {
                 "receiver": dict(self.receiver),
+                "control_transport": self.control_transport,
+                "control_age": round(time.time()-self.control_last, 1) if self.control_last else None,
                 "sender": dict(self.sender),
                 "performance": dict(self.performance),
                 "firmware_mode": self.firmware_mode,
@@ -473,6 +487,18 @@ class RadioReader(Reader):
         self.key = None
         self.expected = None
 
+    def _echo(self, raw):
+        # Only checked WTS1 records may confirm a remote command. Bytes skipped
+        # during UART resynchronization can include a damaged status payload.
+        self.log_buffer += raw
+        while b'\n' in self.log_buffer:
+            line, _, rest = self.log_buffer.partition(b'\n')
+            self.log_buffer = bytearray(rest)
+            if line.startswith(b'[RF433 RX]') or line.startswith(b'[RF433]'):
+                self._echo_line(line)
+        if len(self.log_buffer) > 512:
+            self.log_buffer.clear()
+
     def _wire_fill(self, need):
         while len(self.wire) < need:
             if self.version != latest.receiver_version:
@@ -486,7 +512,9 @@ class RadioReader(Reader):
 
     def _record(self):
         while True:
-            i = self.wire.find(b"RFI1")
+            markers = [(self.wire.find(b"RFI1"), b"RFI1"), (self.wire.find(b"WTS1"), b"WTS1")]
+            markers = [(i, marker) for i, marker in markers if i >= 0]
+            i, marker = min(markers, default=(-1, None), key=lambda item: item[0])
             if i >= 0:
                 self._echo(bytes(self.wire[:i]))
                 del self.wire[:i]
@@ -499,7 +527,12 @@ class RadioReader(Reader):
         if not self._wire_fill(6):
             return None
         n = int.from_bytes(self.wire[4:6], "little")
-        if not 20 <= n <= 244:
+        if marker == b"WTS1":
+            if not 1 <= n <= 224:
+                del self.wire[:1]
+                latest.resyncs += 1
+                return None
+        elif not 20 <= n <= 244:
             del self.wire[:1]
             latest.resyncs += 1
             return None
@@ -507,11 +540,25 @@ class RadioReader(Reader):
             return None
         packet = bytes(self.wire[6:6+n])
         check = int.from_bytes(self.wire[6+n:10+n], "little")
-        if sum(packet) & 0xffffffff != check:
+        valid_check = (sum(packet) & 0xffffffff == check) if marker == b"RFI1" else False
+        if marker == b"WTS1":
+            value = 2166136261
+            for byte in self.wire[:6+n]:
+                value = ((value ^ byte) * 16777619) & 0xffffffff
+            valid_check = value == check
+        if not valid_check:
             del self.wire[:1]
             latest.bad_crc += 1
             return None
         del self.wire[:n+10]
+        if marker == b"WTS1":
+            latest.control_transport = "433 MHz 双向无线"
+            latest.control_last = time.time()
+            latest.sender.update(connected=True, port="433 MHz", last=packet.decode("ascii", "replace").strip())
+            feed_performance(packet)
+            if b'[RF433 TX]' in packet:
+                events.add('发送端无线日志：'+packet.decode('ascii', 'replace').strip())
+            return None
         magic, ver, kind, session, frame, offset, size, flags, reserved = struct.unpack("<2sBBIIIHBB", packet[:20])
         if (magic != b"RI" or ver != 1 or kind != 1 or reserved or flags & ~3
                 or not 1 <= size <= 224 or n != size+20
@@ -586,86 +633,14 @@ def drain_control(ser, stop):
         pass  # The main worker owns reconnect and closes the handle.
 
 
-def radio_control_worker():
-    """Keep camera controls available even before the RF receiver is plugged in."""
+def wireless_query_worker():
+    """Periodic query through the same receiver port; never opens a sender UART."""
     while True:
-        if latest.receiver["source"] != "rf433":
-            time.sleep(0.2)
-            continue
-        cfg, version = dict(latest.receiver), latest.receiver_version
-        control = None
-        try:
-            for _ in range(10):
-                if latest.ser is None or version != latest.receiver_version:
-                    break
-                time.sleep(0.05)
-            if version != latest.receiver_version:
-                continue
-            with latest.tx_lock:
-                control = serial.Serial(cfg["control_port"], cfg["control_baud"],
-                                        timeout=0.3, write_timeout=1)
-                latest.ser = control
-            events.add("相机控制口已连接：" + cfg["control_port"])
-            latest.send_cmd("V0\n")
-            latest.send_cmd("T1\n")
-            latest.send_cmd("H0\n")
-            last_query = 0
-            while version == latest.receiver_version:
-                if time.monotonic()-last_query > 5:
-                    latest.send_cmd("H0\n")
-                    last_query = time.monotonic()
-                feed_performance(control.read(max(1, min(65536, control.in_waiting))))
-        except Exception as e:
-            events.add("相机控制口：" + str(e), "WARN")
-            time.sleep(1)
-        finally:
-            with latest.tx_lock:
-                if latest.ser is control:
-                    latest.ser = None
-                if control is not None:
-                    control.close()
-
-
-def sender_status_worker():
-    """COM20 is TX-board telemetry, distinct from the RF receiver data port."""
-    last_error = None
-    while True:
-        if latest.receiver["source"] != "rf433":
-            latest.sender["connected"] = False
-            time.sleep(0.2)
-            continue
-        version = latest.receiver_version
-        try:
-            with serial.Serial(latest.sender_port, 115200, timeout=0.3) as ser:
-                latest.sender.update(connected=True, port=latest.sender_port)
-                last_error = None
-                events.add("发送板状态口已连接：" + latest.sender_port)
-                pending = bytearray()
-                while version == latest.receiver_version:
-                    pending += ser.read(max(1, min(4096, ser.in_waiting)))
-                    while b"\n" in pending:
-                        line, _, rest = pending.partition(b"\n")
-                        pending = bytearray(rest)
-                        try:
-                            text = line.decode("ascii").strip()
-                        except UnicodeDecodeError:
-                            continue
-                        if text.startswith("[RF433"):
-                            experiments.telemetry(line + b"\n", source='tx')
-                            latest.sender["last"] = text
-                            events.add("发送板：" + text, "WARN" if "NO_ACK" in text else "INFO")
-                    if len(pending) > 1024:
-                        pending.clear()
-        except Exception as e:
-            missing = latest.sender_port.upper() not in {p.device.upper() for p in list_ports.comports()}
-            message = ("发送板调试口 %s 未接入（可选，不影响无线图像接收）" % latest.sender_port
-                       if missing else "发送板状态口：" + str(e))
-            if message != last_error:
-                events.add(message, "INFO" if missing else "WARN")
-                last_error = message
-            time.sleep(1)
-        finally:
-            latest.sender["connected"] = False
+        if latest.receiver['source'] == 'rf433' and latest.ser is not None:
+            error = latest.send_cmd('H0\n')
+            if error:
+                events.add('无线状态查询：'+error, 'WARN')
+        time.sleep(5)
 
 
 def serial_worker(port, baud, jpeg_quality):
@@ -690,9 +665,7 @@ def serial_worker(port, baud, jpeg_quality):
                 ser = serial.Serial(cfg["port"], cfg["baud"], timeout=0.3, write_timeout=1)
                 handles.append(ser)
                 control = ser
-                if cfg["source"] == "rf433":
-                    control = None  # radio_control_worker owns the STM32 port.
-                elif cfg["control_port"] != cfg["port"]:
+                if cfg["source"] != "rf433" and cfg["control_port"] != cfg["port"]:
                     control = serial.Serial(cfg["control_port"], cfg["control_baud"],
                                             timeout=0.3, write_timeout=1)
                     handles.append(control)
@@ -720,6 +693,11 @@ def serial_worker(port, baud, jpeg_quality):
             print("[接收] %s %s @ %d; 控制 %s" %
                   (cfg["source"], cfg["port"], cfg["baud"], cfg["control_port"]))
             events.add("图像串口已连接：%s %s @ %d" % (cfg["source"], cfg["port"], cfg["baud"]))
+            if cfg["source"] == "rf433":
+                latest.control_transport = "433 MHz 双向无线"
+                error = latest.send_cmd("H0\n")
+                if error:
+                    raise serial.SerialException(error)
             last_error = None
             rd = (RadioReader if cfg["source"] == "rf433" else Reader)(ser, jpeg_quality)
             rd.version = version
@@ -1057,10 +1035,12 @@ setInterval(async () => {
       : 'OV3660 → STM32 → ' + c.port + ' → 浏览器';
     document.getElementById('connectionStatus').textContent =
       (s.serial_ok ? '已连接 ' : '未连接 ') + c.port + ' @ ' + c.baud +
-      '；控制串口 ' + c.control_port + (s.serial_err ? '；' + s.serial_err : '') +
+      (c.source === 'rf433' ? '；控制与发送端状态走433 MHz无线链路' :
+        '；控制串口 ' + c.control_port) + (s.serial_err ? '；' + s.serial_err : '') +
       (s.has_frame ? '' : '；等待完整新帧…');
     document.getElementById('radioStatus').textContent = c.source === 'rf433'
-      ? ('发送板日志口 ' + s.sender.port + (s.sender.connected ? ' 已连接' : ' 未连接（可选）') +
+      ? ('发送端无线状态 ' + (s.sender.connected ? '已收到' : '等待') +
+         (s.control_age === null ? '' : '，' + s.control_age + '秒前') +
          '；无线分包 ' + s.radio_packets + '；不完整图像 ' + s.radio_incomplete +
          (s.sender.last.includes('NO_ACK') ? '；尚未收到接收板确认' : '')) : '';
     if (s.frame_age > 3) { s.fps = 0; s.kbps = 0; }
@@ -1187,17 +1167,14 @@ class Handler(BaseHTTPRequestHandler):
             source, port, baud = q["source"], q["port"], int(q["baud"])
             if source not in ("stm32", "cc1310", "rf433") or not port or baud not in (115200, 460800, 921600, 1000000, 2000000):
                 raise ValueError("串口参数无效")
-            if source == "rf433" and port.upper() == latest.sender_port.upper():
-                raise ValueError("这是发送板状态口；无线图像请选择接收板的应用串口")
-            # Keep capture controls on the STM32; CC1310 RX is not a control tunnel.
             cfg = dict(latest.receiver, source=source, port=port, baud=baud)
             if source == "stm32":
+                cfg.update(control_port=port, control_baud=baud)
+            elif source == "rf433":
                 cfg.update(control_port=port, control_baud=baud)
             else:
                 cfg.update(control_port=latest.source_defaults["stm32"]["port"],
                            control_baud=latest.source_defaults["stm32"]["baud"])
-                if port == cfg["control_port"]:
-                    raise ValueError("CC1310 接收口不能与 STM32 控制口相同")
             with latest.cond:
                 latest.receiver = cfg
                 latest.source_defaults[source] = {"port": port, "baud": baud}
@@ -1434,16 +1411,15 @@ def main():
                               "cc1310": {"port": cc_port, "baud": a.cc1310_baud},
                               "rf433": {"port": rf_port, "baud": a.rf_baud}}
     latest.receiver = dict(latest.source_defaults[a.source], source=a.source,
-                           control_port=stm_port, control_baud=a.baud)
+                           control_port=(rf_port if a.source == "rf433" else stm_port),
+                           control_baud=(a.rf_baud if a.source == "rf433" else a.baud))
     latest.sender_port = a.tx_status_port
     latest.sender["port"] = a.tx_status_port
-    if a.source == "rf433" and rf_port.upper() in (stm_port.upper(), a.tx_status_port.upper()):
-        ap.error("无线接收口必须与 STM32 控制口、发送板状态口不同")
     events.add("服务启动：图像来源 %s；接收 %s" % (a.source, latest.receiver["port"]))
     threading.Thread(target=serial_worker,
                      args=(stm_port, a.baud, a.quality), daemon=True).start()
-    threading.Thread(target=radio_control_worker, daemon=True).start()
-    threading.Thread(target=sender_status_worker, daemon=True).start()
+
+    threading.Thread(target=wireless_query_worker, daemon=True).start()
 
     url = "http://localhost:%d" % a.http_port
     srv = ThreadingHTTPServer(("127.0.0.1", a.http_port), Handler)

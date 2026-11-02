@@ -25,6 +25,8 @@ class ChunkSerial:
 class RadioTests(unittest.TestCase):
     def setUp(self):
         s.latest = s.Latest()
+        s.experiments.board = {}
+        s.experiments.telemetry_tail = {}
 
     def receive(self, wire, seed=1):
         rd = s.RadioReader(ChunkSerial(wire, seed), 85)
@@ -66,6 +68,47 @@ class RadioTests(unittest.TestCase):
         got = self.receive(record(9,1000,3)+record(10,0xffffffff,1)+raw)
         self.assertEqual(len(got),1)
         self.assertGreater(s.latest.radio_incomplete,0)
+
+    def test_wireless_status_mixed_with_images_and_corruption(self):
+        def status(text):
+            data=text.encode('ascii')
+            body=b'WTS1'+struct.pack('<H',len(data))+data
+            value=2166136261
+            for byte in body:
+                value=((value^byte)*16777619)&0xffffffff
+            return body+struct.pack('<I',value)
+        raw=Path(__file__).with_name('c_uart_fixture.bin').read_bytes()
+        good=status('[TEST] event=status proto=3 rid=713 case=2 led=0 interval_ms=10000 standby=1\r\n')
+        bad=bytearray(good);bad[20]^=1
+        # A timeout at every thirteenth read exercises partial status records.
+        frames=self.receive(bytes(bad)+raw[:254]+good+raw[254:]+good)
+        self.assertEqual(len(frames),1)
+        self.assertEqual(s.experiments.board['rid'],713)
+        self.assertEqual(s.experiments.board['proto'],3)
+        self.assertEqual(s.latest.firmware_mode,'test')
+        self.assertIsNotNone(s.latest.snapshot_stats()['control_age'])
+        self.assertEqual(s.latest.bad_crc,1)
+
+    def test_outbound_wireless_command_envelope(self):
+        class Port:
+            def write(self,data): self.data=data
+            def flush(self): pass
+        port=Port();s.latest.ser=port;s.latest.receiver['source']='rf433'
+        self.assertIsNone(s.latest.send_cmd('A713\nE0\nH0\n'))
+        self.assertEqual(port.data[:4],b'WRC1')
+        size=int.from_bytes(port.data[4:6],'little')
+        self.assertEqual(port.data[6:6+size],b'A713\nE0\nH0\n')
+        value=2166136261
+        for byte in port.data[:-4]:value=((value^byte)*16777619)&0xffffffff
+        self.assertEqual(int.from_bytes(port.data[-4:],'little'),value)
+        self.assertIsNotNone(s.latest.send_cmd('X'*161))
+
+    def test_unframed_or_bad_status_cannot_confirm_command(self):
+        text=b'[TEST] event=status proto=3 rid=999 case=5 led=100\r\n'
+        bad=b'WTS1'+struct.pack('<H',len(text))+text+b'\x00'*4
+        self.receive(bad+text+b'noise')
+        self.assertEqual(s.experiments.board,{})
+        self.assertEqual(s.latest.firmware_mode,'unknown')
 
 
 if __name__ == "__main__":
