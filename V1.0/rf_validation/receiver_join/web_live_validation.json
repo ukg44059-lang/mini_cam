@@ -1,0 +1,39 @@
+{
+  "receiver": {
+    "port": "COM25",
+    "baud": 115200,
+    "source": "rf433",
+    "control_port": "COM22",
+    "control_baud": 2000000
+  },
+  "sender": {
+    "connected": false,
+    "port": "COM20",
+    "last": ""
+  },
+  "radio_packets": 3038,
+  "radio_incomplete": 0,
+  "frame_age": 0.6,
+  "width": 160,
+  "height": 120,
+  "frames": 203,
+  "dropped": 0,
+  "bad_crc": 0,
+  "resyncs": 0,
+  "fps": 0.92,
+  "kbps": 1.9,
+  "jpeg_bytes": 1558,
+  "jpeg_avg": 1552,
+  "raw_bytes": 38400,
+  "ratio": 24.6,
+  "quality": 85,
+  "bpp": 0,
+  "hw_jpeg": true,
+  "jpeg_qs": 12,
+  "want_res": null,
+  "want_fps": 0,
+  "uptime": 218,
+  "serial_ok": true,
+  "serial_err": "",
+  "has_frame": true
+}

@@ -1,0 +1,22 @@
+{
+  "good": 91,
+  "bad": [
+    {
+      "offset": 908143,
+      "seq": 212,
+      "bytes": 12888,
+      "expected": 2576914326,
+      "actual": 1407434,
+      "next_magic": 12357
+    },
+    {
+      "offset": 1113838,
+      "seq": 228,
+      "bytes": 12874,
+      "expected": 263173,
+      "actual": 1382944,
+      "next_magic": 12669
+    }
+  ],
+  "total_bytes": 1203826
+}

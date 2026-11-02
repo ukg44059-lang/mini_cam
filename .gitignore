@@ -1,0 +1,18 @@
+**/build*/
+**/__pycache__/
+*.py[cod]
+*.o
+*.d
+*.lst
+*.map
+*.su
+*.log
+*.pid
+**/captures/
+**/test_results/
+.venv/
+.env
+.env.*
+.vscode/
+
+# Firmware snapshots and deterministic protocol fixture are deliberately tracked.

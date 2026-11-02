@@ -1,0 +1,2 @@
+# Preserve snapshot bytes on every platform, including original CRLF sources.
+* -text

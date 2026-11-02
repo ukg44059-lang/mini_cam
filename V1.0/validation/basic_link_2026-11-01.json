@@ -1,0 +1,64 @@
+{
+  "checked_utc": "2026-11-02T02:27:27.804923+00:00",
+  "seconds": 60,
+  "ports": {
+    "stm32": [
+      "COM30",
+      1000000
+    ],
+    "tx": [
+      "COM34",
+      115200
+    ],
+    "rx": [
+      "COM20",
+      921600
+    ]
+  },
+  "summary": {
+    "stm32": {
+      "frames": 117,
+      "bytes": 1415667,
+      "fps": 1.95,
+      "bad_checksum": 0,
+      "incomplete": 0,
+      "sequence_gaps": 0,
+      "dimensions": [
+        [
+          480,
+          360,
+          0
+        ]
+      ]
+    },
+    "tx": {
+      "bytes": 0,
+      "log": ""
+    },
+    "rx": {
+      "frames": 116,
+      "bytes": 1604922,
+      "fps": 1.933,
+      "bad_checksum": 0,
+      "incomplete": 0,
+      "sequence_gaps": 0,
+      "dimensions": [
+        [
+          480,
+          360,
+          0
+        ]
+      ]
+    }
+  },
+  "byte_identical_frames": 116,
+  "radio_frames": 116,
+  "serial_errors": [],
+  "test_firmware_telemetry": false,
+  "legacy_quality_confirmation": true,
+  "firmware_flashed": false,
+  "limits": [
+    "No physical cold boot/power disconnection or instrument power measurement performed"
+  ],
+  "evidence_scope": "Live basic stream firmware, not V1.1 test modes; no archived binary flashed during import."
+}

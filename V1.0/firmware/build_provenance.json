@@ -1,0 +1,37 @@
+{
+  "built_at": "2026-11-01T20:19:52.131933-07:00",
+  "version": "V1.0",
+  "compiler": "arm-none-eabi-gcc.exe (GNU Tools for STM32 7-2018-q2-update.20190328-1800) 7.3.1 20180622 (release) [ARM/embedded-7-branch revision 261907]",
+  "build_command": "./Build-Version.ps1 -Version 'V1.0'",
+  "configuration": [
+    {
+      "role": "stm32",
+      "make_config": "stream|1000000|480X360|dual|-O2|1"
+    },
+    {
+      "role": "tx",
+      "make_config": "rf_image_tx|433|-O2|1|||500|115200|300"
+    },
+    {
+      "role": "rx",
+      "make_config": "rf_image_rx|433|-O2|1|5|3|500|921600|300"
+    }
+  ],
+  "receiver_uart_pins": {
+    "tx": 5,
+    "rx": 3
+  },
+  "flashed_during_import": false,
+  "flash_matches_running_hardware": "Not checked; these are rebuilt artifacts, not a readback of running Flash.",
+  "sha256": {
+    "cc1310_rf_image_rx.bin": "816fd18c4f4aa1dbcb4dba51d3b69b8efce9c2a15587ff348571566f3fc375b3",
+    "cc1310_rf_image_rx.elf": "1a2d2e2206b3bb7b527413a4df21f3eff6b2de8f13e315b534543aa7337f22c0",
+    "cc1310_rf_image_rx.hex": "36c7fe70f3e5294a74ecf5f6c374d1f285ea3c653575a897c7cf52342b2b7729",
+    "cc1310_rf_image_tx.bin": "0a06e2b521a7ad7e336dea3b24a429ad0809d683cdcea4853298a7a111081919",
+    "cc1310_rf_image_tx.elf": "a6306441cf2ebbfc83304fe8f785290f6de0ab941ea7ec938f1652b3e6af00f4",
+    "cc1310_rf_image_tx.hex": "78dbaa1094bbd7581d92af1673c06d4e4db4da78c687892ec56f75c7c63ec524",
+    "STM32U575_stream.bin": "da740fe9b4c8758b224194cabd197aca3c86852d3cfca427c235eb2638495575",
+    "STM32U575_stream.elf": "2ad02d88fc0b7e3d4ed74211a0e8878ae65f3eaf1c25129a31bfd7f6b2a84dba",
+    "STM32U575_stream.hex": "0aea8e4afa0cc5be948535572b8e66ef5aec0d94747a23c6453ec672c79b829b"
+  }
+}

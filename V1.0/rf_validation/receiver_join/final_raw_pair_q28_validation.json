@@ -1,0 +1,18 @@
+{
+  "seconds": 35,
+  "qs": 28,
+  "errors": [],
+  "direct": {
+    "frames": 70,
+    "bad_crc": 6,
+    "incomplete": 0
+  },
+  "radio": {
+    "frames": 72,
+    "bad_crc": 0,
+    "incomplete": 0
+  },
+  "matched": 69,
+  "radio_frames": 72,
+  "sequence_gaps": 0
+}
