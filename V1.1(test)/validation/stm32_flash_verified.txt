@@ -1,0 +1,39 @@
+xPack Open On-Chip Debugger 0.12.0+dev-01850-geb6f2745b-dirty (2025-02-07-10:08)
+Licensed under GNU GPL v2
+For bug reports, read
+	http://openocd.org/doc/doxygen/bugs.html
+Info : auto-selecting first available session transport "swd". To override use 'transport select <transport>'.
+DEPRECATED! use 'gdb port', not 'gdb_port'
+DEPRECATED! use 'tcl port' not 'tcl_port'
+DEPRECATED! use 'telnet port', not 'telnet_port'
+Info : Using CMSIS-DAPv2 interface with VID:PID=0xfaed:0x4870, serial=507874111588
+Info : CMSIS-DAP: SWD supported
+Info : CMSIS-DAP: JTAG supported
+Info : CMSIS-DAP: Atomic commands supported
+Info : CMSIS-DAP: UART via USB COM port supported
+Info : CMSIS-DAP: FW Version = Horco v0.2
+Info : CMSIS-DAP: Interface Initialised (SWD)
+Info : SWCLK/TCK = 1 SWDIO/TMS = 1 TDI = 1 TDO = 1 nTRST = 0 nRESET = 1
+Info : CMSIS-DAP: Interface ready
+Info : clock speed 500 kHz
+Info : SWD DPIDR 0x0be12477
+Info : [stm32u5x.cpu] Cortex-M33 r0p4 processor detected
+Info : [stm32u5x.cpu] target has 8 breakpoints, 4 watchpoints
+Info : [stm32u5x.cpu] Examination succeed
+Info : [stm32u5x.cpu] gdb port disabled
+CPU in Non-Secure state
+[stm32u5x.cpu] halted due to breakpoint, current mode: Thread 
+xPSR: 0xf9000000 pc: 0x08008998 msp: 0x200c0000
+** Programming Started **
+Info : device idcode = 0x20016482 (STM32U57/U58xx - Rev X : 0x2001)
+Info : TZEN = 0 : TrustZone disabled by option bytes
+Info : RDP level 0 (0xAA)
+Info : flash size = 2048 KiB
+Info : flash mode : dual-bank
+Info : Padding image section 1 at 0x0800aba8 with 8 bytes (bank write end alignment)
+Warn : Adding extra erase range, 0x0800abb0 .. 0x0800bfff
+** Programming Finished **
+** Verify Started **
+** Verified OK **
+** Resetting Target **
+shutdown command invoked

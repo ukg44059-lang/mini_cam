@@ -1,25 +1,25 @@
+[����] [RF433 RX] READY
+[����] [RF433 RX] READY
+[����] [RF433 RX] READY
+[����] [RF433 RX] READY
+[����] [RF433 RX] READY
+[����] [RF433 RX] READY
+[����] [RF433 RX] READY
+[����] [RF433 RX] READY
+[����] [RF433 RX] READY
+[����] [RF433 RX] READY
+[����] [RF433 RX] READY
+[����] [RF433 RX] READY
+[����] [RF433 RX] READY
+[����] [RF433 RX] READY
+[����] [RF433 RX] READY
+[����] [RF433 RX] READY
+[����] [RF433 RX] READY
+[����] [RF433 RX] READY
+[����] [RF433 RX] READY
 ...
 [����] [RF433 RX] READY
-[����] [RF433 RX] READY
-[����] [RF433 RX] READY
 ----------------------------------------------------------------------
-[����] [RF433 RX] READY
-[����] [RF433 RX] READY
-[����] [RF433 RX] READY
-[����] [RF433 RX] READY
-[����] [RF433 RX] READY
-Ran 3 tests in 0.717s
+Ran 3 tests in 0.794s
 
 OK
-[����] [RF433 RX] READY
-[����] [RF433 RX] READY
-[����] [RF433 RX] READY
-[����] [RF433 RX] READY
-[����] [RF433 RX] READY
-[����] [RF433 RX] READY
-[����] [RF433 RX] READY
-[����] [RF433 RX] READY
-[����] [RF433 RX] READY
-[����] [RF433 RX] READY
-[����] [RF433 RX] READY
-[����] [RF433 RX] READY

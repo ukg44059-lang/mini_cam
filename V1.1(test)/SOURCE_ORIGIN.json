@@ -3010,5 +3010,5 @@
     "cc1310/Makefile",
     "tools/validate_test_console.py"
   ],
-  "adaptation_note": "Build wrappers use relative OpenOCD and configurable make; test documentation/report output paths adapted. Application C/header sources match import exactly."
+  "adaptation_note": "Original source hashes preserve first-import provenance. v1.1-test.1 intentionally updates STM32 test protocol, PC test controls and documentation; use tag-specific SNAPSHOT.json for the current files."
 }

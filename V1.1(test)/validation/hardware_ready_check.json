@@ -1,0 +1,959 @@
+{
+  "ok": true,
+  "stm32_test_firmware_flashed": true,
+  "cases": [
+    {
+      "case": 2,
+      "phase": "wait",
+      "board": {
+        "proto": 2,
+        "rid": 802869,
+        "case": 2,
+        "led": 0,
+        "interval_ms": 10000,
+        "standby": 1,
+        "captures": 0,
+        "sends": 0,
+        "received_at": 1793602927.260466
+      },
+      "new_wireless_frames": 0,
+      "bad_crc_delta": 0,
+      "incomplete_delta": 0,
+      "events": [
+        {
+          "t_s": 0.0,
+          "kind": "command_sent"
+        },
+        {
+          "t_s": 0.219,
+          "kind": "board",
+          "text": "[TEST] event=states camera=soft_standby_when_idle mcu=Sleep_SysTick1ms tx=SPI_poll_RFcore_on rx=continuous_receive_external led_pwm_hz=50"
+        },
+        {
+          "t_s": 0.219,
+          "kind": "board",
+          "text": "[TEST] event=case case=2 tick=86748 width=480 height=360 qs=12 led=0 interval_ms=10000"
+        },
+        {
+          "t_s": 0.219,
+          "kind": "board_confirmed",
+          "proto": 2,
+          "rid": 802869,
+          "case": 2,
+          "led": 0,
+          "interval_ms": 10000,
+          "standby": 1,
+          "captures": 0,
+          "sends": 0
+        },
+        {
+          "t_s": 0.219,
+          "kind": "board",
+          "text": "[TEST] event=status proto=2 rid=802869 case=2 led=0 interval_ms=10000 standby=1 captures=0 sends=0"
+        },
+        {
+          "t_s": 0.219,
+          "kind": "board_confirmed",
+          "proto": 2,
+          "rid": 802869,
+          "case": 2,
+          "led": 0,
+          "interval_ms": 10000,
+          "standby": 1,
+          "captures": 0,
+          "sends": 0
+        },
+        {
+          "t_s": 0.234,
+          "kind": "board",
+          "text": "[TEST] event=status proto=2 rid=802869 case=2 led=0 interval_ms=10000 standby=1 captures=0 sends=0"
+        },
+        {
+          "t_s": 1.469,
+          "kind": "board_confirmed",
+          "proto": 2,
+          "rid": 802869,
+          "case": 2,
+          "led": 0,
+          "interval_ms": 10000,
+          "standby": 1,
+          "captures": 0,
+          "sends": 0
+        },
+        {
+          "t_s": 1.469,
+          "kind": "board",
+          "text": "[TEST] event=status proto=2 rid=802869 case=2 led=0 interval_ms=10000 standby=1 captures=0 sends=0"
+        },
+        {
+          "t_s": 3.266,
+          "kind": "board_confirmed",
+          "proto": 2,
+          "rid": 802869,
+          "case": 2,
+          "led": 0,
+          "interval_ms": 10000,
+          "standby": 1,
+          "captures": 0,
+          "sends": 0
+        },
+        {
+          "t_s": 3.266,
+          "kind": "board",
+          "text": "[TEST] event=status proto=2 rid=802869 case=2 led=0 interval_ms=10000 standby=1 captures=0 sends=0"
+        }
+      ],
+      "stop_confirmed": true
+    },
+    {
+      "case": 3,
+      "phase": "wait",
+      "board": {
+        "proto": 2,
+        "rid": 802871,
+        "case": 3,
+        "led": 0,
+        "interval_ms": 10000,
+        "standby": 0,
+        "captures": 11,
+        "sends": 0,
+        "received_at": 1793602930.6354363
+      },
+      "new_wireless_frames": 0,
+      "bad_crc_delta": 0,
+      "incomplete_delta": 0,
+      "events": [
+        {
+          "t_s": 0.0,
+          "kind": "command_sent"
+        },
+        {
+          "t_s": 0.219,
+          "kind": "board",
+          "text": "[TEST] event=states camera=soft_standby_when_idle mcu=Sleep_SysTick1ms tx=SPI_poll_RFcore_on rx=continuous_receive_external led_pwm_hz=50"
+        },
+        {
+          "t_s": 0.219,
+          "kind": "board",
+          "text": "[TEST] event=case case=3 tick=90700 width=480 height=360 qs=12 led=0 interval_ms=10000"
+        },
+        {
+          "t_s": 0.219,
+          "kind": "board_confirmed",
+          "proto": 2,
+          "rid": 802871,
+          "case": 3,
+          "led": 0,
+          "interval_ms": 10000,
+          "standby": 0,
+          "captures": 0,
+          "sends": 0
+        },
+        {
+          "t_s": 0.235,
+          "kind": "board",
+          "text": "[TEST] event=status proto=2 rid=802871 case=3 led=0 interval_ms=10000 standby=0 captures=0 sends=0"
+        },
+        {
+          "t_s": 0.688,
+          "kind": "board",
+          "text": "[TEST] event=frame case=3 tick=91158 bytes=11255 capture_ms=457 send_ms=0 spi_ok=0 captures=1 sends=0"
+        },
+        {
+          "t_s": 0.688,
+          "kind": "board_confirmed",
+          "proto": 2,
+          "rid": 802871,
+          "case": 3,
+          "led": 0,
+          "interval_ms": 10000,
+          "standby": 0,
+          "captures": 1,
+          "sends": 0
+        },
+        {
+          "t_s": 0.688,
+          "kind": "board",
+          "text": "[TEST] event=status proto=2 rid=802871 case=3 led=0 interval_ms=10000 standby=0 captures=1 sends=0"
+        },
+        {
+          "t_s": 0.797,
+          "kind": "board",
+          "text": "[TEST] event=frame case=3 tick=91271 bytes=11355 capture_ms=112 send_ms=0 spi_ok=0 captures=2 sends=0"
+        },
+        {
+          "t_s": 0.907,
+          "kind": "board",
+          "text": "[TEST] event=frame case=3 tick=91383 bytes=11356 capture_ms=111 send_ms=0 spi_ok=0 captures=3 sends=0"
+        },
+        {
+          "t_s": 1.016,
+          "kind": "board",
+          "text": "[TEST] event=frame case=3 tick=91496 bytes=11353 capture_ms=112 send_ms=0 spi_ok=0 captures=4 sends=0"
+        },
+        {
+          "t_s": 1.313,
+          "kind": "board",
+          "text": "[TEST] event=frame case=3 tick=91778 bytes=11307 capture_ms=281 send_ms=0 spi_ok=0 captures=5 sends=0"
+        },
+        {
+          "t_s": 1.969,
+          "kind": "board",
+          "text": "[TEST] event=frame case=3 tick=92453 bytes=11301 capture_ms=674 send_ms=0 spi_ok=0 captures=6 sends=0"
+        },
+        {
+          "t_s": 2.204,
+          "kind": "board",
+          "text": "[TEST] event=frame case=3 tick=92679 bytes=11312 capture_ms=225 send_ms=0 spi_ok=0 captures=7 sends=0"
+        },
+        {
+          "t_s": 2.313,
+          "kind": "board",
+          "text": "[TEST] event=frame case=3 tick=92791 bytes=11329 capture_ms=111 send_ms=0 spi_ok=0 captures=8 sends=0"
+        },
+        {
+          "t_s": 2.485,
+          "kind": "board",
+          "text": "[TEST] event=frame case=3 tick=92960 bytes=11307 capture_ms=168 send_ms=0 spi_ok=0 captures=9 sends=0"
+        },
+        {
+          "t_s": 2.594,
+          "kind": "board",
+          "text": "[TEST] event=frame case=3 tick=93073 bytes=11361 capture_ms=112 send_ms=0 spi_ok=0 captures=10 sends=0"
+        },
+        {
+          "t_s": 2.704,
+          "kind": "board",
+          "text": "[TEST] event=frame case=3 tick=93186 bytes=11329 capture_ms=112 send_ms=0 spi_ok=0 captures=11 sends=0"
+        },
+        {
+          "t_s": 2.704,
+          "kind": "board_confirmed",
+          "proto": 2,
+          "rid": 802871,
+          "case": 3,
+          "led": 0,
+          "interval_ms": 10000,
+          "standby": 0,
+          "captures": 11,
+          "sends": 0
+        },
+        {
+          "t_s": 2.719,
+          "kind": "board",
+          "text": "[TEST] event=status proto=2 rid=802871 case=3 led=0 interval_ms=10000 standby=0 captures=11 sends=0"
+        },
+        {
+          "t_s": 3.204,
+          "kind": "board",
+          "text": "[TEST] event=frame case=3 tick=93692 bytes=11299 capture_ms=505 send_ms=0 spi_ok=0 captures=12 sends=0"
+        }
+      ],
+      "stop_confirmed": true
+    },
+    {
+      "case": 4,
+      "phase": "wait",
+      "board": {
+        "proto": 2,
+        "rid": 802873,
+        "case": 4,
+        "led": 0,
+        "interval_ms": 10000,
+        "standby": 0,
+        "captures": 7,
+        "sends": 7,
+        "received_at": 1793602935.6767445
+      },
+      "new_wireless_frames": 11,
+      "bad_crc_delta": 0,
+      "incomplete_delta": 0,
+      "events": [
+        {
+          "t_s": 0.0,
+          "kind": "command_sent"
+        },
+        {
+          "t_s": 0.219,
+          "kind": "board",
+          "text": "[TEST] event=states camera=soft_standby_when_idle mcu=Sleep_SysTick1ms tx=SPI_poll_RFcore_on rx=continuous_receive_external led_pwm_hz=50"
+        },
+        {
+          "t_s": 0.219,
+          "kind": "board",
+          "text": "[TEST] event=case case=4 tick=95048 width=480 height=360 qs=12 led=0 interval_ms=10000"
+        },
+        {
+          "t_s": 0.219,
+          "kind": "board_confirmed",
+          "proto": 2,
+          "rid": 802873,
+          "case": 4,
+          "led": 0,
+          "interval_ms": 10000,
+          "standby": 0,
+          "captures": 0,
+          "sends": 0
+        },
+        {
+          "t_s": 0.219,
+          "kind": "board",
+          "text": "[TEST] event=status proto=2 rid=802873 case=4 led=0 interval_ms=10000 standby=0 captures=0 sends=0"
+        },
+        {
+          "t_s": 0.703,
+          "kind": "board",
+          "text": "[TEST] event=frame case=4 tick=95525 bytes=11373 capture_ms=119 send_ms=357 spi_ok=1 captures=1 sends=1"
+        },
+        {
+          "t_s": 0.703,
+          "kind": "board_confirmed",
+          "proto": 2,
+          "rid": 802873,
+          "case": 4,
+          "led": 0,
+          "interval_ms": 10000,
+          "standby": 0,
+          "captures": 1,
+          "sends": 1
+        },
+        {
+          "t_s": 0.703,
+          "kind": "board",
+          "text": "[TEST] event=status proto=2 rid=802873 case=4 led=0 interval_ms=10000 standby=0 captures=1 sends=1"
+        },
+        {
+          "t_s": 0.719,
+          "kind": "first_valid_wireless_image"
+        },
+        {
+          "t_s": 1.156,
+          "kind": "board",
+          "text": "[TEST] event=frame case=4 tick=95982 bytes=11461 capture_ms=93 send_ms=363 spi_ok=1 captures=2 sends=2"
+        },
+        {
+          "t_s": 1.156,
+          "kind": "board",
+          "text": "[RF433 TX] FRAME_OK frame=14089 bytes=11479 frames_ok=14080 retries=71"
+        },
+        {
+          "t_s": 1.61,
+          "kind": "board",
+          "text": "[TEST] event=frame case=4 tick=96432 bytes=11517 capture_ms=86 send_ms=363 spi_ok=1 captures=3 sends=3"
+        },
+        {
+          "t_s": 2.063,
+          "kind": "board",
+          "text": "[TEST] event=frame case=4 tick=96883 bytes=11479 capture_ms=87 send_ms=363 spi_ok=1 captures=4 sends=4"
+        },
+        {
+          "t_s": 2.5,
+          "kind": "board",
+          "text": "[TEST] event=frame case=4 tick=97334 bytes=11535 capture_ms=86 send_ms=364 spi_ok=1 captures=5 sends=5"
+        },
+        {
+          "t_s": 2.953,
+          "kind": "board",
+          "text": "[TEST] event=frame case=4 tick=97785 bytes=11542 capture_ms=86 send_ms=364 spi_ok=1 captures=6 sends=6"
+        },
+        {
+          "t_s": 3.406,
+          "kind": "board",
+          "text": "[TEST] event=frame case=4 tick=98236 bytes=11524 capture_ms=86 send_ms=364 spi_ok=1 captures=7 sends=7"
+        },
+        {
+          "t_s": 3.406,
+          "kind": "board_confirmed",
+          "proto": 2,
+          "rid": 802873,
+          "case": 4,
+          "led": 0,
+          "interval_ms": 10000,
+          "standby": 0,
+          "captures": 7,
+          "sends": 7
+        },
+        {
+          "t_s": 3.422,
+          "kind": "board",
+          "text": "[TEST] event=status proto=2 rid=802873 case=4 led=0 interval_ms=10000 standby=0 captures=7 sends=7"
+        },
+        {
+          "t_s": 3.86,
+          "kind": "board",
+          "text": "[TEST] event=frame case=4 tick=98685 bytes=11516 capture_ms=85 send_ms=363 spi_ok=1 captures=8 sends=8"
+        },
+        {
+          "t_s": 4.297,
+          "kind": "board",
+          "text": "[TEST] event=frame case=4 tick=99137 bytes=11563 capture_ms=87 send_ms=364 spi_ok=1 captures=9 sends=9"
+        },
+        {
+          "t_s": 4.75,
+          "kind": "board",
+          "text": "[TEST] event=frame case=4 tick=99587 bytes=11612 capture_ms=85 send_ms=364 spi_ok=1 captures=10 sends=10"
+        },
+        {
+          "t_s": 5.203,
+          "kind": "board",
+          "text": "[TEST] event=frame case=4 tick=100044 bytes=11652 capture_ms=86 send_ms=370 spi_ok=1 captures=11 sends=11"
+        }
+      ],
+      "stop_confirmed": true
+    },
+    {
+      "case": 5,
+      "phase": "wait",
+      "board": {
+        "proto": 2,
+        "rid": 802875,
+        "case": 5,
+        "led": 20,
+        "interval_ms": 10000,
+        "standby": 0,
+        "captures": 8,
+        "sends": 8,
+        "received_at": 1793602942.3336775
+      },
+      "new_wireless_frames": 7,
+      "bad_crc_delta": 0,
+      "incomplete_delta": 0,
+      "events": [
+        {
+          "t_s": 0.0,
+          "kind": "command_sent"
+        },
+        {
+          "t_s": 0.219,
+          "kind": "board",
+          "text": "[TEST] event=states camera=soft_standby_when_idle mcu=Sleep_SysTick1ms tx=SPI_poll_RFcore_on rx=continuous_receive_external led_pwm_hz=50"
+        },
+        {
+          "t_s": 0.219,
+          "kind": "board",
+          "text": "[TEST] event=case case=5 tick=100971 width=480 height=360 qs=12 led=0 interval_ms=10000"
+        },
+        {
+          "t_s": 0.219,
+          "kind": "board",
+          "text": "[TEST] event=status proto=2 rid=802875 case=5 led=0 interval_ms=10000 standby=0 captures=0 sends=0"
+        },
+        {
+          "t_s": 0.688,
+          "kind": "board",
+          "text": "[TEST] event=frame case=5 tick=101454 bytes=11513 capture_ms=119 send_ms=363 spi_ok=1 captures=1 sends=1"
+        },
+        {
+          "t_s": 0.703,
+          "kind": "board",
+          "text": "[TEST] event=led duty=20"
+        },
+        {
+          "t_s": 0.703,
+          "kind": "board_confirmed",
+          "proto": 2,
+          "rid": 802875,
+          "case": 5,
+          "led": 20,
+          "interval_ms": 10000,
+          "standby": 0,
+          "captures": 1,
+          "sends": 1
+        },
+        {
+          "t_s": 0.703,
+          "kind": "board",
+          "text": "[TEST] event=status proto=2 rid=802875 case=5 led=20 interval_ms=10000 standby=0 captures=1 sends=1"
+        },
+        {
+          "t_s": 0.719,
+          "kind": "first_valid_wireless_image"
+        },
+        {
+          "t_s": 0.797,
+          "kind": "board",
+          "text": "[RF433 RX] FRAME_OK frame=14100 bytes=11531 frames=39472 duplicates=26 queue=306 pressure=0"
+        },
+        {
+          "t_s": 1.141,
+          "kind": "board",
+          "text": "[TEST] event=frame case=5 tick=101906 bytes=11535 capture_ms=86 send_ms=364 spi_ok=1 captures=2 sends=2"
+        },
+        {
+          "t_s": 1.609,
+          "kind": "board",
+          "text": "[TEST] event=frame case=5 tick=102376 bytes=12114 capture_ms=85 send_ms=384 spi_ok=1 captures=3 sends=3"
+        },
+        {
+          "t_s": 2.125,
+          "kind": "board",
+          "text": "[TEST] event=frame case=5 tick=102883 bytes=12140 capture_ms=121 send_ms=384 spi_ok=1 captures=4 sends=4"
+        },
+        {
+          "t_s": 2.625,
+          "kind": "board",
+          "text": "[TEST] event=frame case=5 tick=103390 bytes=12208 capture_ms=121 send_ms=384 spi_ok=1 captures=5 sends=5"
+        },
+        {
+          "t_s": 2.625,
+          "kind": "board_confirmed",
+          "proto": 2,
+          "rid": 802875,
+          "case": 5,
+          "led": 20,
+          "interval_ms": 10000,
+          "standby": 0,
+          "captures": 5,
+          "sends": 5
+        },
+        {
+          "t_s": 2.625,
+          "kind": "board",
+          "text": "[TEST] event=status proto=2 rid=802875 case=5 led=20 interval_ms=10000 standby=0 captures=5 sends=5"
+        },
+        {
+          "t_s": 3.141,
+          "kind": "board",
+          "text": "[TEST] event=frame case=5 tick=103905 bytes=12334 capture_ms=121 send_ms=392 spi_ok=1 captures=6 sends=6"
+        },
+        {
+          "t_s": 3.156,
+          "kind": "board",
+          "text": "[RF433 TX] FRAME_OK frame=14105 bytes=12352 frames_ok=14096 retries=71"
+        },
+        {
+          "t_s": 3.641,
+          "kind": "board",
+          "text": "[TEST] event=frame case=5 tick=104397 bytes=11871 capture_ms=114 send_ms=377 spi_ok=1 captures=7 sends=7"
+        },
+        {
+          "t_s": 4.141,
+          "kind": "board",
+          "text": "[TEST] event=frame case=5 tick=104903 bytes=11897 capture_ms=127 send_ms=377 spi_ok=1 captures=8 sends=8"
+        },
+        {
+          "t_s": 4.141,
+          "kind": "board_confirmed",
+          "proto": 2,
+          "rid": 802875,
+          "case": 5,
+          "led": 20,
+          "interval_ms": 10000,
+          "standby": 0,
+          "captures": 8,
+          "sends": 8
+        },
+        {
+          "t_s": 4.141,
+          "kind": "board",
+          "text": "[TEST] event=status proto=2 rid=802875 case=5 led=20 interval_ms=10000 standby=0 captures=8 sends=8"
+        }
+      ],
+      "stop_confirmed": true
+    },
+    {
+      "case": 7,
+      "phase": "wait",
+      "board": {
+        "proto": 2,
+        "rid": 802877,
+        "case": 7,
+        "led": 0,
+        "interval_ms": 2000,
+        "standby": 1,
+        "captures": 2,
+        "sends": 2,
+        "received_at": 1793602945.8977711
+      },
+      "new_wireless_frames": 3,
+      "bad_crc_delta": 0,
+      "incomplete_delta": 0,
+      "events": [
+        {
+          "t_s": 0.0,
+          "kind": "command_sent"
+        },
+        {
+          "t_s": 0.218,
+          "kind": "board",
+          "text": "[TEST] event=states camera=soft_standby_when_idle mcu=Sleep_SysTick1ms tx=SPI_poll_RFcore_on rx=continuous_receive_external led_pwm_hz=50"
+        },
+        {
+          "t_s": 0.218,
+          "kind": "board",
+          "text": "[TEST] event=case case=7 tick=105930 width=480 height=360 qs=12 led=0 interval_ms=2000"
+        },
+        {
+          "t_s": 0.234,
+          "kind": "board",
+          "text": "[TEST] event=cycle_start tick=105931"
+        },
+        {
+          "t_s": 0.234,
+          "kind": "board_confirmed",
+          "proto": 2,
+          "rid": 802877,
+          "case": 7,
+          "led": 0,
+          "interval_ms": 2000,
+          "standby": 0,
+          "captures": 0,
+          "sends": 0
+        },
+        {
+          "t_s": 0.234,
+          "kind": "board",
+          "text": "[TEST] event=status proto=2 rid=802877 case=7 led=0 interval_ms=2000 standby=0 captures=0 sends=0"
+        },
+        {
+          "t_s": 0.718,
+          "kind": "board",
+          "text": "[TEST] event=frame case=7 tick=106427 bytes=11864 capture_ms=119 send_ms=377 spi_ok=1 captures=1 sends=1"
+        },
+        {
+          "t_s": 0.734,
+          "kind": "board",
+          "text": "[TEST] event=cycle_wait tick=106432 due=107930"
+        },
+        {
+          "t_s": 0.734,
+          "kind": "board_confirmed",
+          "proto": 2,
+          "rid": 802877,
+          "case": 7,
+          "led": 0,
+          "interval_ms": 2000,
+          "standby": 1,
+          "captures": 1,
+          "sends": 1
+        },
+        {
+          "t_s": 0.734,
+          "kind": "board",
+          "text": "[TEST] event=status proto=2 rid=802877 case=7 led=0 interval_ms=2000 standby=1 captures=1 sends=1"
+        },
+        {
+          "t_s": 0.734,
+          "kind": "first_valid_wireless_image"
+        },
+        {
+          "t_s": 2.218,
+          "kind": "board",
+          "text": "[TEST] event=cycle_start tick=107930"
+        },
+        {
+          "t_s": 2.765,
+          "kind": "board",
+          "text": "[TEST] event=frame case=7 tick=108468 bytes=11733 capture_ms=168 send_ms=370 spi_ok=1 captures=2 sends=2"
+        },
+        {
+          "t_s": 2.765,
+          "kind": "board",
+          "text": "[TEST] event=cycle_wait tick=108473 due=109930"
+        },
+        {
+          "t_s": 2.765,
+          "kind": "board_confirmed",
+          "proto": 2,
+          "rid": 802877,
+          "case": 7,
+          "led": 0,
+          "interval_ms": 2000,
+          "standby": 1,
+          "captures": 2,
+          "sends": 2
+        },
+        {
+          "t_s": 2.781,
+          "kind": "board",
+          "text": "[TEST] event=status proto=2 rid=802877 case=7 led=0 interval_ms=2000 standby=1 captures=2 sends=2"
+        },
+        {
+          "t_s": 4.218,
+          "kind": "board",
+          "text": "[TEST] event=cycle_start tick=109930"
+        },
+        {
+          "t_s": 4.75,
+          "kind": "board",
+          "text": "[TEST] event=frame case=7 tick=110455 bytes=11390 capture_ms=168 send_ms=357 spi_ok=1 captures=3 sends=3"
+        },
+        {
+          "t_s": 4.75,
+          "kind": "board",
+          "text": "[TEST] event=cycle_wait tick=110460 due=111930"
+        },
+        {
+          "t_s": 6.218,
+          "kind": "board",
+          "text": "[TEST] event=cycle_start tick=111930"
+        }
+      ],
+      "stop_confirmed": true
+    },
+    {
+      "case": 8,
+      "phase": "wait",
+      "board": {
+        "proto": 2,
+        "rid": 802879,
+        "case": 8,
+        "led": 0,
+        "interval_ms": 10000,
+        "standby": 1,
+        "captures": 0,
+        "sends": 0,
+        "received_at": 1793602953.737355
+      },
+      "new_wireless_frames": 0,
+      "bad_crc_delta": 0,
+      "incomplete_delta": 0,
+      "events": [
+        {
+          "t_s": 0.0,
+          "kind": "command_sent"
+        },
+        {
+          "t_s": 0.219,
+          "kind": "board",
+          "text": "[TEST] event=states camera=soft_standby_when_idle mcu=Sleep_SysTick1ms tx=SPI_poll_RFcore_on rx=continuous_receive_external led_pwm_hz=50"
+        },
+        {
+          "t_s": 0.219,
+          "kind": "board",
+          "text": "[TEST] event=case case=8 tick=113084 width=480 height=360 qs=12 led=0 interval_ms=10000"
+        },
+        {
+          "t_s": 0.219,
+          "kind": "board_confirmed",
+          "proto": 2,
+          "rid": 802879,
+          "case": 8,
+          "led": 0,
+          "interval_ms": 10000,
+          "standby": 1,
+          "captures": 0,
+          "sends": 0
+        },
+        {
+          "t_s": 0.219,
+          "kind": "board",
+          "text": "[TEST] event=status proto=2 rid=802879 case=8 led=0 interval_ms=10000 standby=1 captures=0 sends=0"
+        },
+        {
+          "t_s": 0.219,
+          "kind": "board_confirmed",
+          "proto": 2,
+          "rid": 802879,
+          "case": 8,
+          "led": 0,
+          "interval_ms": 10000,
+          "standby": 1,
+          "captures": 0,
+          "sends": 0
+        },
+        {
+          "t_s": 0.219,
+          "kind": "board",
+          "text": "[TEST] event=status proto=2 rid=802879 case=8 led=0 interval_ms=10000 standby=1 captures=0 sends=0"
+        },
+        {
+          "t_s": 0.531,
+          "kind": "board_confirmed",
+          "proto": 2,
+          "rid": 802879,
+          "case": 8,
+          "led": 0,
+          "interval_ms": 10000,
+          "standby": 1,
+          "captures": 0,
+          "sends": 0
+        },
+        {
+          "t_s": 0.547,
+          "kind": "board",
+          "text": "[TEST] event=status proto=2 rid=802879 case=8 led=0 interval_ms=10000 standby=1 captures=0 sends=0"
+        },
+        {
+          "t_s": 3.453,
+          "kind": "board_confirmed",
+          "proto": 2,
+          "rid": 802879,
+          "case": 8,
+          "led": 0,
+          "interval_ms": 10000,
+          "standby": 1,
+          "captures": 0,
+          "sends": 0
+        },
+        {
+          "t_s": 3.453,
+          "kind": "board",
+          "text": "[TEST] event=status proto=2 rid=802879 case=8 led=0 interval_ms=10000 standby=1 captures=0 sends=0"
+        }
+      ],
+      "stop_confirmed": true
+    },
+    {
+      "case": 8,
+      "phase": "active",
+      "board": {
+        "proto": 2,
+        "rid": 802881,
+        "case": 4,
+        "led": 0,
+        "interval_ms": 10000,
+        "standby": 0,
+        "captures": 8,
+        "sends": 8,
+        "received_at": 1793602958.3359904
+      },
+      "new_wireless_frames": 7,
+      "bad_crc_delta": 0,
+      "incomplete_delta": 0,
+      "events": [
+        {
+          "t_s": 0.0,
+          "kind": "command_sent"
+        },
+        {
+          "t_s": 0.219,
+          "kind": "board",
+          "text": "[TEST] event=states camera=soft_standby_when_idle mcu=Sleep_SysTick1ms tx=SPI_poll_RFcore_on rx=continuous_receive_external led_pwm_hz=50"
+        },
+        {
+          "t_s": 0.219,
+          "kind": "board",
+          "text": "[TEST] event=case case=4 tick=117238 width=480 height=360 qs=12 led=0 interval_ms=10000"
+        },
+        {
+          "t_s": 0.219,
+          "kind": "board_confirmed",
+          "proto": 2,
+          "rid": 802881,
+          "case": 4,
+          "led": 0,
+          "interval_ms": 10000,
+          "standby": 0,
+          "captures": 0,
+          "sends": 0
+        },
+        {
+          "t_s": 0.219,
+          "kind": "board",
+          "text": "[TEST] event=status proto=2 rid=802881 case=4 led=0 interval_ms=10000 standby=0 captures=0 sends=0"
+        },
+        {
+          "t_s": 0.704,
+          "kind": "board",
+          "text": "[TEST] event=frame case=4 tick=117722 bytes=11606 capture_ms=119 send_ms=364 spi_ok=1 captures=1 sends=1"
+        },
+        {
+          "t_s": 0.704,
+          "kind": "board_confirmed",
+          "proto": 2,
+          "rid": 802881,
+          "case": 4,
+          "led": 0,
+          "interval_ms": 10000,
+          "standby": 0,
+          "captures": 1,
+          "sends": 1
+        },
+        {
+          "t_s": 0.719,
+          "kind": "board",
+          "text": "[TEST] event=status proto=2 rid=802881 case=4 led=0 interval_ms=10000 standby=0 captures=1 sends=1"
+        },
+        {
+          "t_s": 0.719,
+          "kind": "first_valid_wireless_image"
+        },
+        {
+          "t_s": 1.157,
+          "kind": "board",
+          "text": "[TEST] event=frame case=4 tick=118179 bytes=11640 capture_ms=86 send_ms=370 spi_ok=1 captures=2 sends=2"
+        },
+        {
+          "t_s": 1.657,
+          "kind": "board",
+          "text": "[TEST] event=frame case=4 tick=118680 bytes=11622 capture_ms=136 send_ms=364 spi_ok=1 captures=3 sends=3"
+        },
+        {
+          "t_s": 1.657,
+          "kind": "board_confirmed",
+          "proto": 2,
+          "rid": 802881,
+          "case": 4,
+          "led": 0,
+          "interval_ms": 10000,
+          "standby": 0,
+          "captures": 3,
+          "sends": 3
+        },
+        {
+          "t_s": 1.672,
+          "kind": "board",
+          "text": "[TEST] event=status proto=2 rid=802881 case=4 led=0 interval_ms=10000 standby=0 captures=3 sends=3"
+        },
+        {
+          "t_s": 2.11,
+          "kind": "board",
+          "text": "[TEST] event=frame case=4 tick=119130 bytes=11551 capture_ms=85 send_ms=364 spi_ok=1 captures=4 sends=4"
+        },
+        {
+          "t_s": 2.219,
+          "kind": "board",
+          "text": "[RF433 RX] FRAME_OK frame=14116 bytes=11569 frames=39488 duplicates=26 queue=306 pressure=0"
+        },
+        {
+          "t_s": 2.563,
+          "kind": "board",
+          "text": "[TEST] event=frame case=4 tick=119581 bytes=11558 capture_ms=86 send_ms=364 spi_ok=1 captures=5 sends=5"
+        },
+        {
+          "t_s": 3.016,
+          "kind": "board",
+          "text": "[TEST] event=frame case=4 tick=120031 bytes=11576 capture_ms=85 send_ms=364 spi_ok=1 captures=6 sends=6"
+        },
+        {
+          "t_s": 3.454,
+          "kind": "board",
+          "text": "[TEST] event=frame case=4 tick=120482 bytes=11579 capture_ms=86 send_ms=364 spi_ok=1 captures=7 sends=7"
+        },
+        {
+          "t_s": 3.907,
+          "kind": "board",
+          "text": "[TEST] event=frame case=4 tick=120932 bytes=11583 capture_ms=85 send_ms=364 spi_ok=1 captures=8 sends=8"
+        },
+        {
+          "t_s": 3.907,
+          "kind": "board_confirmed",
+          "proto": 2,
+          "rid": 802881,
+          "case": 4,
+          "led": 0,
+          "interval_ms": 10000,
+          "standby": 0,
+          "captures": 8,
+          "sends": 8
+        },
+        {
+          "t_s": 3.907,
+          "kind": "board",
+          "text": "[TEST] event=status proto=2 rid=802881 case=4 led=0 interval_ms=10000 standby=0 captures=8 sends=8"
+        }
+      ],
+      "stop_confirmed": true
+    }
+  ],
+  "not_performed": [
+    "physical_power_boot_5x",
+    "receiver_power_off",
+    "external_power_measurement",
+    "PWM_electrical_measurement"
+  ],
+  "existing_cc1310_firmware_retained": true,
+  "recorded_at": "2026-11-02T00:07:30.289391-07:00",
+  "scope": "Short functional checks, not power measurements. TX updated and rechecked afterwards; see post_tx_update.json."
+}

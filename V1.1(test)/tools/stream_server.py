@@ -608,7 +608,12 @@ def radio_control_worker():
             events.add("相机控制口已连接：" + cfg["control_port"])
             latest.send_cmd("V0\n")
             latest.send_cmd("T1\n")
+            latest.send_cmd("H0\n")
+            last_query = 0
             while version == latest.receiver_version:
+                if time.monotonic()-last_query > 5:
+                    latest.send_cmd("H0\n")
+                    last_query = time.monotonic()
                 feed_performance(control.read(max(1, min(65536, control.in_waiting))))
         except Exception as e:
             events.add("相机控制口：" + str(e), "WARN")
@@ -646,7 +651,7 @@ def sender_status_worker():
                         except UnicodeDecodeError:
                             continue
                         if text.startswith("[RF433"):
-                            experiments.telemetry(line + b"\n")
+                            experiments.telemetry(line + b"\n", source='tx')
                             latest.sender["last"] = text
                             events.add("发送板：" + text, "WARN" if "NO_ACK" in text else "INFO")
                     if len(pending) > 1024:
@@ -1112,7 +1117,7 @@ class Handler(BaseHTTPRequestHandler):
         if path == "/":
             self._send(200, "text/html; charset=utf-8", TEST_PAGE.encode("utf-8"))
         elif path == "/viewer":
-            self._send(200, "text/html; charset=utf-8", PAGE.encode("utf-8"))
+            self._send(200, "text/html; charset=utf-8", PAGE.replace("<body>", '<body><div style="padding:16px;background:#dff4ee"><a href="/">进入 V1.1(test) 八项测试控制台</a></div>').encode("utf-8"))
         elif path == "/test/state":
             self._send(200, "application/json", json.dumps(experiments.state()).encode())
         elif path == "/test/guide":

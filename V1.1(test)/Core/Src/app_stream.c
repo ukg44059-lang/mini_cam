@@ -696,6 +696,17 @@ static unsigned test_case = 1U;
 static volatile unsigned test_led_duty;
 static uint32_t test_interval = 10000U, test_due, test_captures, test_sends;
 static bool test_standby, test_changed = true;
+static uint32_t test_request;
+static bool test_report = true;
+
+static void test_status(void)
+{
+  printf("[TEST] event=status proto=2 rid=%lu case=%u led=%u interval_ms=%lu standby=%u captures=%lu sends=%lu\r\n",
+    (unsigned long)test_request, test_case, test_led_duty,
+    (unsigned long)test_interval, test_standby,
+    (unsigned long)test_captures, (unsigned long)test_sends);
+  test_report = false;
+}
 
 void Test_LedTick(void)
 {
@@ -725,15 +736,20 @@ static bool test_command(const char *line)
   char *end;
   unsigned long value;
   /* Experiment parameters are locked; legacy UI commands cannot alter them. */
-  if (!strchr("ELI", line[0]) || !line[1]) return true;
+  if (!strchr("AHELI", line[0]) || !line[1]) return true;
   value = strtoul(line + 1, &end, 10);
   if (*end) return true;
-  if (line[0] == 'E' && value <= 8U) {
+  if (line[0] == 'A' && value <= 999999U) {
+    test_request = (uint32_t)value;
+  } else if (line[0] == 'H' && value == 0U) {
+    test_report = true;
+  } else if (line[0] == 'E' && value <= 8U) {
     test_case = (unsigned)value;
-    test_changed = true;
+    test_changed = true; test_report = true;
     if (test_case != 5U) test_led_duty = 0;
   } else if (line[0] == 'L' && value <= 100U && test_case == 5U) {
     test_led_duty = (unsigned)(value / 5U * 5U);
+    test_report = true;
     printf("[TEST] event=led duty=%u\r\n", test_led_duty);
   } else if (line[0] == 'I' && value >= 1U && value <= 3600U) {
     test_interval = (uint32_t)value * 1000U;
@@ -762,18 +778,24 @@ static void test_run(void)
   if (test_case == 0U || test_case == 2U || test_case == 8U ||
       (test_case == 7U && (int32_t)(HAL_GetTick() - test_due) < 0)) {
     test_sensor(true);
+    if (test_report) test_status();
     /* SysTick and UART remain live; this is Sleep, not Stop/Standby mode. */
     __WFI();
     return;
   }
-  test_sensor(false);
   start = HAL_GetTick();
+  if (test_case != 7U) {
+    test_sensor(false);
+    if (test_report) test_status();
+  }
   if (test_case == 7U) {
     /* Start-to-start period. If a cycle overruns, skip missed slots. */
     do { test_due += test_interval; }
     while ((int32_t)(start - test_due) >= 0);
     printf("[TEST] event=cycle_start tick=%lu\r\n", (unsigned long)start);
   }
+  test_sensor(false);
+  if (test_report) test_status();
   len = CAM_CaptureJpeg(s_buf[0], s_frame_bytes, STREAM_CAP_TIMEOUT);
   capture_ms = HAL_GetTick() - start;
   if (len) {

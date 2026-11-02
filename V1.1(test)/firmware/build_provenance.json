@@ -1,5 +1,5 @@
 {
-  "built_at": "2026-11-01T20:19:55.018990-07:00",
+  "built_at": "2026-11-02T00:07:30.289391-07:00",
   "version": "V1.1(test)",
   "compiler": "arm-none-eabi-gcc.exe (GNU Tools for STM32 7-2018-q2-update.20190328-1800) 7.3.1 20180622 (release) [ARM/embedded-7-branch revision 261907]",
   "build_command": "./Build-Version.ps1 -Version 'V1.1(test)'",
@@ -30,8 +30,15 @@
     "cc1310_rf_image_tx.bin": "70f1cb376c3d40b1cebb80cfc2c17b53bc4cb74d49fe31008bda20601b7adb0d",
     "cc1310_rf_image_tx.elf": "fe0d1e28f564d5e135cc04105f949a52bf0590327ae29e1f074e90904dcadc57",
     "cc1310_rf_image_tx.hex": "83e17d47a4d6caf3c281be73df0d108b59819453b26d74a3a63154334139b412",
-    "STM32U575_stream.bin": "02fd462d28da34fd8573a58bd3aff1815c00ecccb13b355f1f86fc4c90e0edf8",
-    "STM32U575_stream.elf": "6dae04bfaef7e73c88406fe4fb59ea168b40cf32d69b6d408ba912b244d21a2c",
-    "STM32U575_stream.hex": "700a5822fc58525eb75481052a87f04bde9dd84f3ff04524d0dc65bdbd95b989"
-  }
+    "STM32U575_stream.bin": "6ae1e55a371b5f887e92ce3793ddc0fecfe7c5ff3b388420e021fd503f76d9d9",
+    "STM32U575_stream.elf": "6fd9b54a2618f50f4c44ac441fcad399693766ebe38a29b0c955695dc0de65ac",
+    "STM32U575_stream.hex": "77e867721a3a1916daa0c4d579aaeae3702d7ea5b117cb90e9b91ceb3fc82d9c"
+  },
+  "tag": "v1.1-test.1",
+  "flashed_during_update": [
+    "stm32",
+    "tx"
+  ],
+  "rx_firmware": "Existing compatible image receiver retained",
+  "flash_verification": "STM32 and TX: OpenOCD Verified OK"
 }

@@ -19,11 +19,31 @@ def run():
             self.commands = []
         def write(self, data):
             self.commands.append(data.decode())
+            if self.auto_ack:
+                import re
+                command = data.decode()
+                match = re.search(r'A(\d+)\n', command)
+                if match:
+                    self.rid = int(match[1])
+                match = re.search(r'E(\d+)\n', command)
+                if match:
+                    self.case = int(match[1])
+                match = re.search(r'I(\d+)\n', command)
+                if match:
+                    self.interval = int(match[1])*1000
+                match = re.search(r'L(\d+)\n', command)
+                self.duty = int(match[1]) if match else 0
+                tc.experiments.telemetry(('[TEST] event=status proto=2 rid=%d case=%d led=%d interval_ms=%d standby=0\n' %
+                                         (self.rid, self.case, self.duty, self.interval)).encode())
+        auto_ack = True
+        rid, case, duty, interval = 0, 0, 0, 10000
         def flush(self):
             pass
     serial = FakeSerial()
     latest = server.latest
     latest.ser = serial
+    latest.firmware_mode = 'test'
+    tc.experiments.board = dict(proto=2)
     latest.receiver['source'] = 'rf433'
     http = ThreadingHTTPServer(('127.0.0.1', 0), server.Handler)
     thread = threading.Thread(target=http.serve_forever, daemon=True)
@@ -50,7 +70,8 @@ def run():
                 if case == 5:
                     assert 'L35\n' in command
                 post(dict(action='stop'))
-                assert serial.commands[-1] == 'E0\n'
+                assert 'E0\n' in serial.commands[-1]
+                assert tc.experiments.active['status'] == 'stopped'
             checks.append('②至⑧命令映射及停止下发')
             # Neither an old image before marker nor a wrong-size image counts.
             for _ in range(5):
@@ -86,13 +107,48 @@ def run():
                 export = json.load(r)
                 assert len(export['boots']) == 5
                 assert export['active']['samples']['tx'][1] == [10.0, 3.3, 0.03]
-            assert len(list(Path(folder).glob('*.json'))) == 12
+            assert len([p for p in Path(folder).glob('*.json') if not p.name.startswith('.')]) == 12
             checks.append('HTTP导出与每次实验独立落盘')
             tc.experiments.action(dict(action='reset_boots'), latest)
             tc.experiments.action(dict(action='start', case=6), latest)
             tc.experiments.telemetry(b'[RF433 TX] NO_ACK retries=2 ack_failures=3\r\n')
             assert 'NO_ACK' in tc.experiments.active['events'][-1]['text']
             checks.append('无接收机日志进入测试记录')
+            post(dict(action='stop'))
+            serial.auto_ack = False
+            post(dict(action='start', case=3))
+            a = tc.experiments.active
+            assert a['status'] == 'pending'
+            tc.experiments.telemetry(b'[TEST] event=status proto=2 rid=0 case=3 led=0 interval_ms=10000\n')
+            assert a['status'] == 'pending', 'Old ACK must not confirm a new request'
+            a['ack_deadline'] = 0
+            assert tc.experiments.state()['active']['status'] == 'unconfirmed'
+            serial.auto_ack = True
+            post(dict(action='stop'))
+            assert a['status'] == 'stopped'
+            checks.append('匹配请求确认、拒绝旧确认、超时及停止确认')
+            restored = tc.Experiments()
+            assert len(restored.boots) == 0
+            assert restored.active['status'] == 'stopped'
+            tc.experiments.action(dict(action='start', case=3), latest)
+            tc.experiments.save()
+            restored = tc.Experiments()
+            assert restored.active['status'] == 'interrupted'
+            checks.append('服务重启恢复记录并标记中断')
+            # A failed stop write cannot be reported as an ended test.
+            old_send = latest.send_cmd
+            latest.send_cmd = lambda _: 'disconnected'
+            try:
+                post(dict(action='stop'))
+                raise AssertionError('Stop write should fail')
+            except urllib.error.HTTPError as e:
+                assert e.code == 400
+            finally:
+                latest.send_cmd = old_send
+            assert tc.experiments.active['status'] == 'stop_failed'
+            assert not tc.experiments.active.get('ended')
+            checks.append('停止写入失败不误报已停止')
+
         finally:
             http.shutdown()
             http.server_close()
