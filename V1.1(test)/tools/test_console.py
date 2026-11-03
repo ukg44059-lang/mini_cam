@@ -1,4 +1,4 @@
-"""Experiment sessions, instrument samples and browser controls (no serial owner)."""
+"""Four RF-controlled modes and manually read whole-system input currents."""
 import copy
 import json
 import math
@@ -9,34 +9,30 @@ import uuid
 from datetime import datetime, timezone
 from pathlib import Path
 
-CASES = {
-    1: '上电初始化（5次）', 2: '系统等待', 3: '只采集图像',
-    4: '连续无线图传', 5: '加照明', 6: '接收机关闭',
-    7: '间歇拍照', 8: '接收端持续工作',
-}
+CASES = {1: '完整运行', 2: '不发无线图像', 3: '摄像头待机 / MCU运行', 4: '摄像头待机 / MCU Sleep'}
 OUT = Path(__file__).resolve().parents[1] / 'test_results'
+EXPECTED = {0: (1, 1, 0), 1: (0, 0, 1), 2: (0, 0, 0), 3: (1, 0, 0), 4: (1, 1, 0)}
 
 
 class Experiments:
     def __init__(self):
         self.lock = threading.RLock()
         self.active = None
-        self.history = []
-        self.boots = []
+        self.boots = []  # Preserve historical eight-case exports without reinterpretation.
+        self.readings = []
         self.telemetry_tail = {}
-        self.board = {}
-        self.tx = {}
+        self.board, self.tx = {}, {}
         self.request_id = int(time.time()) % 900000 + 1
+        self.last_save = 0
         state = OUT / '.session_state.json'
         if state.exists():
             saved = json.loads(state.read_text(encoding='utf-8'))
-            self.boots = saved.get('boots', [])
+            self.boots, self.readings = saved.get('boots', []), saved.get('readings', [])
             self.active = saved.get('active')
             if self.active:
                 self.active['_t0'] = time.monotonic()-self.active.get('elapsed_s', 0)
                 if not self.active.get('ended'):
-                    self.active.update(ended=True, status='interrupted', error='服务重启；请重新启动测试并核对板端状态')
-        self.last_save = 0
+                    self.active.update(ended=True, status='interrupted', error='服务重启，请重新确认模式')
 
     def save(self):
         OUT.mkdir(exist_ok=True)
@@ -48,97 +44,95 @@ class Experiments:
             temp.replace(path)
         path = OUT / '.session_state.json'
         temp = path.with_suffix('.tmp')
-        temp.write_text(json.dumps(dict(active=self.active, boots=self.boots), ensure_ascii=False), encoding='utf-8')
+        temp.write_text(json.dumps(dict(active=self.active, boots=self.boots, readings=self.readings),
+                                   ensure_ascii=False), encoding='utf-8')
         temp.replace(path)
 
     def event(self, kind, **data):
         if self.active and not self.active.get('ended'):
-            self.active['events'].append(dict(t_s=round(time.monotonic()-self.active['_t0'], 6),
+            self.active['events'].append(dict(t_s=round(time.monotonic()-self.active['_t0'], 3),
                                                kind=kind, **data))
-            if len(self.active['events']) > 10000:
-                self.active['events'].pop(0)
-                self.active['events_truncated'] = True
+            self.active['events'] = self.active['events'][-1000:]
+
+    def ready(self, latest):
+        if latest.receiver['source'] != 'rf433' or latest.ser is None:
+            raise ValueError('请连接接收端CC1310应用串口并选择433 MHz来源')
+        if self.board.get('proto') != 4:
+            raise ValueError('需要四档测试固件 proto=4；旧版八项测试固件不能使用本页按钮')
+        if time.time()-self.board.get('received_at', 0) > 15:
+            raise ValueError('15秒内没有无线板端状态，请查询状态并检查供电')
 
     def start(self, q, latest):
         case = int(q['case'])
         if case not in CASES:
-            raise ValueError('测试编号必须为1至8')
-        if latest.receiver['source'] != 'rf433':
-            raise ValueError('请先选择433 MHz无线接收来源')
-        if getattr(latest, 'firmware_mode', 'unknown') == 'stream':
-            raise ValueError('检测到原图传固件；请先烧录测试版STM32固件，再运行8项测试。当前可正常查看无线图像。')
-        if case != 1 and (self.board.get('proto') != 3 or
-                           time.time()-self.board.get('received_at', 0) > 15 or latest.ser is None):
-            raise ValueError('尚未收到15秒内的433 MHz发送端确认；请检查双向无线链路并查询状态')
-        duty, interval = int(q.get('duty', 50)), int(q.get('interval', 10))
-        if not 0 <= duty <= 100 or duty % 5 or not 1 <= interval <= 3600:
-            raise ValueError('占空比为0至100的5%档位；周期1至3600秒')
-        phase = q.get('phase', 'wait')
-        if phase not in ('wait', 'active'):
-            raise ValueError('接收状态无效')
-        with self.lock:
-            if self.active and not self.active.get('ended'):
-                raise ValueError('请先停止当前测试')
-            if case == 1 and len(self.boots) >= 5:
-                raise ValueError('已记录5次；请先重置上电组')
-            self.request_id = self.request_id % 999999 + 1
-            request_id = self.request_id
-            expected_case = 4 if case == 8 and phase == 'active' else case
-            self.active = {
-                'id': datetime.now().strftime('%Y%m%d_%H%M%S_') + uuid.uuid4().hex[:6],
-                'case': case, 'name': CASES[case], 'phase': phase,
-                'request_id': request_id, 'expected_case': expected_case,
-                'status': 'armed' if case == 1 else 'pending',
-                'ack_deadline': time.monotonic()+10,
-                'started_utc': datetime.now(timezone.utc).isoformat(), '_t0': time.monotonic(),
-                'settings': dict(width=480, height=360, jpeg_qs=12, rf_mhz=433.92,
-                                 rate_kbps=500, tx_power_register='0x913F',
-                                 led_duty=duty if case == 5 else 0, interval_s=interval,
-                                 pipeline=False, uart_mirror=False),
-                'baseline': latest.snapshot_stats(), 'events': [], 'samples': {},
-                'energy_j': {}, 'frames': 0, 'first_image_s': None,
-                'note': str(q.get('note', ''))[:1000],
-                'clock_note': 't_s uses host monotonic time; boot latency requires physical power marker',
-            }
-            self.event('armed' if case == 1 else 'command_sent')
-            if case != 1:
-                commands = 'A%d\nI%d\nE%d\n' % (request_id, interval, expected_case)
-                if case == 5:
-                    commands += 'L%d\n' % duty
-                commands += 'H0\n'
-                error = latest.send_cmd(commands)
-                if error:
-                    self.active.update(ended=True, status='failed', error=error)
-                    self.save()
-                    raise ValueError(error)
+            raise ValueError('模式编号必须为1至4')
+        self.ready(latest)
+        window = int(q.get('window_s', 30))
+        if not 5 <= window <= 600:
+            raise ValueError('观察时间为5至600秒')
+        if self.active and self.active.get('status') in ('pending', 'stopping'):
+            raise ValueError('正在等待上一条无线确认，请稍候或查询状态')
+        self.request_id = self.request_id % 999999 + 1
+        if self.active and not self.active.get('ended'):
+            self.event('mode_switch_requested', next_case=case)
+            self.active.update(ended=True, status='switched')
             self.save()
-            return self.state()
+        self.active = dict(
+            schema='four_mode_v1', id=datetime.now().strftime('%Y%m%d_%H%M%S_')+uuid.uuid4().hex[:6],
+            case=case, name=CASES[case], request_id=self.request_id, expected_case=case,
+            status='pending', ack_deadline=time.monotonic()+10, _t0=time.monotonic(),
+            started_utc=datetime.now(timezone.utc).isoformat(), settle_s=5, window_s=window,
+            settings=dict(width=480, height=360, jpeg_qs=12, interval_ms=1000, led=0,
+                          rf_mhz=433.92, rate_kbps=500, tx_power_register='0x913F', rf_control=True),
+            events=[], frames=0, readings=[], health_errors=0,
+            baseline=latest.snapshot_stats(), note=str(q.get('note', ''))[:1000])
+        self.event('command_sent')
+        error = latest.send_cmd('A%d\nE%d\nH0\n' % (self.request_id, case))
+        if error:
+            self.active.update(ended=True, status='failed', error=error)
+            self.save()
+            raise ValueError(error)
+        self.save()
+        return self.state()
+
+    @staticmethod
+    def matches(fields, target):
+        return (fields.get('proto') == 4 and fields.get('case') == target and
+                fields.get('led') == 0 and fields.get('interval_ms') == 1000 and
+                fields.get('fault') == 0 and
+                tuple(fields.get(k) for k in ('standby', 'sleep', 'image')) == EXPECTED[target])
 
     def telemetry(self, raw, source='stm32'):
         with self.lock:
-            data = self.telemetry_tail.get(source, b'') + raw
-            lines = data.split(b'\n')
+            lines = (self.telemetry_tail.get(source, b'')+raw).split(b'\n')
             self.telemetry_tail[source] = lines.pop()[-2048:]
             for line in lines:
                 text = line.decode('utf-8', 'replace').strip()
                 fields = {k: int(v) for k, v in re.findall(r'(\w+)=(\d+)', text)}
+                a = self.active
                 if '[RF433 TX]' in text:
                     self.tx.update(fields, last=text)
                 if '[TEST]' in text and 'event=status' in text:
                     self.board = dict(fields, received_at=time.time())
-                    a = self.active
-                    if a and not a.get('ended') and fields.get('rid') == a.get('request_id'):
-                        target = 0 if a.get('status') == 'stopping' else a['expected_case']
-                        settings_match = (target == 0 or
-                            (fields.get('led') == a['settings']['led_duty'] and
-                             fields.get('interval_ms') == a['settings']['interval_s']*1000))
-                        if fields.get('case') == target and settings_match:
+                    if a and not a.get('ended'):
+                        target = 0 if a['status'] in ('stopping', 'stop_failed') else a['expected_case']
+                        matched = fields.get('rid') == a['request_id'] and self.matches(fields, target)
+                        if matched and a['status'] in ('pending', 'unconfirmed', 'stopping', 'stop_failed'):
                             self.event('board_confirmed', **fields)
                             if target == 0:
                                 a.update(ended=True, status='stopped')
                             else:
-                                a['status'] = 'running'
+                                a.update(status='running', confirmed_at=time.monotonic(),
+                                         confirmed_utc=datetime.now(timezone.utc).isoformat())
+                                a.pop('error', None)
                             self.save()
+                        elif a['status'] == 'running' and not matched:
+                            a.update(status='desynced', error='板端重启、模式或参数改变，请重新选择模式')
+                            self.event('board_mismatch', **fields)
+                            self.save()
+                if a and a.get('status') == 'running' and '[TEST] event=frame' in text:
+                    if fields.get('case') == a['case'] and (fields.get('bytes') == 0 or fields.get('skipped', 0)):
+                        a['health_errors'] += 1
                 if '[TEST]' in text or '[RF433' in text:
                     self.event('board', text=text)
             if self.active and not self.active.get('ended') and time.monotonic()-self.last_save > 5:
@@ -148,109 +142,105 @@ class Experiments:
     def frame(self, w, h, bpp):
         with self.lock:
             a = self.active
-            if not a or a.get('ended'):
-                return
-            if a.get('status') not in ('running', 'armed'):
-                return
-            if a['case'] == 1 and 'power_on_s' not in a:
-                return
-            a['frames'] += 1
-            if (w, h, bpp) != (480, 360, 0):
-                self.event('unexpected_image', width=w, height=h, format=bpp)
-                return
-            if a['first_image_s'] is None:
-                a['first_image_s'] = time.monotonic() - a['_t0']
-                if a['case'] == 1:
-                    marker = a.get('power_on_s')
-                    a['power_to_image_s'] = a['first_image_s']-marker if marker is not None else None
-                self.event('first_valid_wireless_image')
-                if a['case'] == 1:
-                    a.update(ended=True, status='complete')
-                    self.boots.append(copy.deepcopy(a))
-                self.save()
+            if a and not a.get('ended') and a.get('status') == 'running':
+                if a['case'] == 1 and (w, h, bpp) == (480, 360, 0):
+                    a['frames'] += 1
+
+    def record(self, q, latest):
+        self.ready(latest)
+        a = self.active
+        if not a or a.get('ended') or a.get('status') != 'running':
+            raise ValueError('请先选择模式并等待板端确认')
+        if not self.matches(self.board, a['case']) or self.board.get('rid') != a['request_id']:
+            raise ValueError('板端确认与当前测试不一致')
+        if time.monotonic()-a['confirmed_at'] < a['settle_s']+a['window_s']:
+            raise ValueError('请等待稳定5秒并完成观察倒计时后记录电表读数')
+        voltage, current = float(q['voltage_v']), float(q['current_ma'])
+        if not all(math.isfinite(n) for n in (voltage, current)) or voltage <= 0 or current < 0:
+            raise ValueError('电压必须为正数，电流为非负数，均须为有限值')
+        if not math.isfinite(voltage*current):
+            raise ValueError('输入功率超出数值范围')
+        if a['case'] == 1 and not a['frames']:
+            raise ValueError('完整运行模式尚未收到有效480×360无线图像，请先检查图传')
+        stats = latest.snapshot_stats()
+        link_errors = sum(max(0, stats.get(k, 0)-a['baseline'].get(k, 0))
+                          for k in ('bad_crc', 'radio_incomplete'))
+        row = dict(id=uuid.uuid4().hex, case=a['case'], name=a['name'], session_id=a['id'],
+                   recorded_utc=datetime.now(timezone.utc).isoformat(), voltage_v=voltage,
+                   current_ma=current, power_mw=voltage*current, input='manual_meter',
+                   note=str(q.get('note', a['note']))[:1000], frames=a['frames'],
+                   settings=copy.deepcopy(a['settings']), observation_s=a['window_s'],
+                   health_errors=a['health_errors'], link_errors=link_errors,
+                   comparable=(a['health_errors'] == 0 and link_errors == 0 and
+                               self.board.get('skipped', 0) == 0),
+                   board=copy.deepcopy(self.board))
+        # Adjacent whole-system mode differences, never component-only readings.
+        if a['case'] > 1 and row['comparable']:
+            reference = next((r for r in reversed(self.readings)
+                              if r['case'] == a['case']-1 and r.get('comparable') and
+                              abs(r['voltage_v']-voltage) <= 0.01 and
+                              r.get('observation_s') == row['observation_s']), None)
+            if reference:
+                row.update(reference_id=reference['id'],
+                           delta_current_ma=reference['current_ma']-current,
+                           delta_power_mw=reference['power_mw']-row['power_mw'])
+        self.readings.append(row)
+        a['readings'].append(copy.deepcopy(row))
+        self.event('manual_meter_record', reading_id=row['id'])
 
     def action(self, q, latest):
-        action = q.get('action', 'start')
-        if action == 'start':
-            return self.start(q, latest)
         with self.lock:
+            action = q.get('action', 'start')
+            if action == 'start':
+                return self.start(q, latest)
             if action == 'query':
                 error = latest.send_cmd('H0\n')
                 if error:
                     raise ValueError(error)
-            elif action == 'reset_boots':
-                if self.active and not self.active.get('ended'):
-                    raise ValueError('先停止当前测试')
-                self.boots.clear()
-            elif action == 'power_on':
-                if not self.active or self.active['case'] != 1 or self.active.get('ended'):
-                    raise ValueError('先开始上电测试，并在断电状态等待')
-                if 'power_on_s' in self.active:
-                    raise ValueError('本次上电时刻已标记')
-                self.active['power_on_s'] = time.monotonic()-self.active['_t0']
-                self.event('physical_power_on_manual_marker')
+            elif action == 'record':
+                self.record(q, latest)
+            elif action == 'new_group':
+                self.readings = []  # Per-mode JSON history remains on disk.
             elif action == 'stop':
+                self.ready(latest)
                 self.request_id = self.request_id % 999999 + 1
-                if self.active and not self.active.get('ended'):
-                    self.active.update(status='stopping', request_id=self.request_id,
-                                       ack_deadline=time.monotonic()+10)
+                if not self.active or self.active.get('ended'):
+                    self.active = dict(id=datetime.now().strftime('%Y%m%d_%H%M%S_')+uuid.uuid4().hex[:6],
+                                       schema='four_mode_v1', _t0=time.monotonic(), case=0,
+                                       expected_case=0, events=[], readings=[], frames=0)
+                self.active.update(status='stopping', request_id=self.request_id,
+                                   ack_deadline=time.monotonic()+10)
                 error = latest.send_cmd('A%d\nE0\nH0\n' % self.request_id)
-                self.event('stop_command', error=error)
+                self.event('pause_command', error=error)
                 if error:
-                    if self.active:
-                        self.active.update(status='stop_failed', error=error)
+                    self.active.update(status='stop_failed', error=error)
                     self.save()
-                    raise ValueError('停止命令失败，板端状态未确认：'+error)
-                if self.active:
-                    self.active['final_stats'] = latest.snapshot_stats()
-            elif action == 'samples':
-                self.add_samples(q)
+                    raise ValueError('暂停失败，板端状态未确认：'+error)
             else:
                 raise ValueError('未知操作')
             self.save()
             return self.state()
 
-    def add_samples(self, q):
-        if not self.active:
-            raise ValueError('尚无测试记录')
-        channel = q.get('channel', 'system')
-        if channel not in ('system', 'camera', 'mcu', 'tx', 'rx'):
-            raise ValueError('测量通道无效')
-        rows = q.get('samples')
-        if not isinstance(rows, list) or not rows or len(rows) > 100000 or len(rows) < 2:
-            raise ValueError('每次提交2至100000个采样点')
-        samples = []
-        for row in rows:
-            t, v, i = (float(row[k]) for k in ('t_s', 'voltage_v', 'current_a'))
-            if not all(math.isfinite(n) for n in (t, v, i)) or t < 0 or v < 0:
-                raise ValueError('采样值必须有限，时间和电压非负')
-            if samples and t <= samples[-1][0]:
-                raise ValueError('采样时间必须严格递增')
-            samples.append([t, v, i])
-        energy = sum((b[0]-a[0])*(a[1]*a[2]+b[1]*b[2])/2
-                     for a, b in zip(samples, samples[1:]))
-        self.active['samples'][channel] = samples
-        self.active['energy_j'][channel] = energy
-        self.event('instrument_import', channel=channel, points=len(samples),
-                   duration_s=samples[-1][0]-samples[0][0], energy_j=energy)
-
     def state(self):
         with self.lock:
-            if self.active and self.active.get('status') in ('pending', 'stopping') and time.monotonic() > self.active['ack_deadline']:
-                if self.active['status'] == 'pending':
-                    self.active['status'] = 'unconfirmed'
-                else:
-                    self.active['status'] = 'stop_failed'
-                self.active['error'] = '10秒内未收到匹配的板端确认；请查询状态或再次停止'
+            a = self.active
+            if a and a.get('status') in ('pending', 'stopping') and time.monotonic() > a['ack_deadline']:
+                a['status'] = 'unconfirmed' if a['status'] == 'pending' else 'stop_failed'
+                a['error'] = '10秒内未收到匹配板端确认，请查询状态或重新选择模式'
                 self.save()
-            a = copy.deepcopy(self.active)
-            if a:
-                a.pop('_t0', None)
-                a['events'] = a['events'][-30:]
-                a['samples'] = {k: len(v) for k, v in a['samples'].items()}
-            return dict(ok=True, board=dict(self.board), tx=dict(self.tx), active=a, boot_count=len(self.boots),
-                        boot_results=[dict(id=b['id'], power_to_image_s=b.get('power_to_image_s'),
-                                           armed_to_image_s=b['first_image_s']) for b in self.boots])
+            result = copy.deepcopy(a)
+            if result:
+                result.pop('_t0', None)
+                result['events'] = result.get('events', [])[-30:]
+                if result.get('status') == 'running':
+                    elapsed = max(0, time.monotonic()-result.pop('confirmed_at'))
+                    result['settle_remaining_s'] = max(0, math.ceil(result['settle_s']-elapsed))
+                    result['observe_remaining_s'] = max(0, math.ceil(result['settle_s']+result['window_s']-elapsed))
+            age = time.time()-self.board.get('received_at', 0)
+            return dict(ok=True, schema='four_mode_v1', board=dict(self.board), tx=dict(self.tx),
+                        active=result, readings=copy.deepcopy(self.readings),
+                        control_ready=(self.board.get('proto') == 4 and age <= 15),
+                        board_age_s=round(age, 1) if self.board else None)
 
 
 experiments = Experiments()

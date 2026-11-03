@@ -1,5 +1,5 @@
 ﻿param(
-    [string]$ReceiverPort = "COM20",
+    [string]$ReceiverPort = "COM42",
     [int]$HttpPort = 8081,
     [string]$Python = "python"
 )

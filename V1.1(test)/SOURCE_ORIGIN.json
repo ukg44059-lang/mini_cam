@@ -3010,5 +3010,5 @@
     "cc1310/Makefile",
     "tools/validate_test_console.py"
   ],
-  "adaptation_note": "Original source hashes preserve first-import provenance. v1.1-test.1 updated STM32 test protocol and PC test controls; v1.1-test.2 adds the wireless control/status bridge across the receiver CC1310, 433 MHz link, transmitter CC1310 and STM32 SPI. Use tag-specific SNAPSHOT.json for current files."
+  "adaptation_note": "Original source hashes preserve first-import provenance. v1.1-test.1 updated STM32 test protocol and PC test controls; v1.1-test.2 adds the wireless control/status bridge across the receiver CC1310, 433 MHz link, transmitter CC1310 and STM32 SPI. Use tag-specific SNAPSHOT.json for current files. v1.1-test.3 replaces the experiment profile with four whole-system input-current modes, protocol 4, matched capture slots and manual meter records. CC1310 wireless control remains active in every mode."
 }

@@ -1,4 +1,4 @@
-"""Explicit opt-in live checks through receiver only; no physical power cycling."""
+"""Explicit live four-mode check using only the receiver UART. No meter values."""
 import argparse
 from contextlib import ExitStack
 from datetime import datetime, timezone
@@ -7,18 +7,17 @@ from pathlib import Path
 import time
 import urllib.request
 import serial
+import serial.tools.list_ports
 
 
 def run():
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument('--run', action='store_true', required=True,
-                    help='Actually switches camera modes and briefly sets LED to 20 percent')
+    ap.add_argument('--run', action='store_true', required=True)
     ap.add_argument('--url', default='http://127.0.0.1:8081')
-    ap.add_argument('--hold-unused-ports', nargs='*', default=['COM30', 'COM34'])
+    ap.add_argument('--hold-unused-ports', nargs='*', default=[])
     args = ap.parse_args()
-    result = dict(started_utc=datetime.now(timezone.utc).isoformat(), checks=[],
-                  physical_power_cycles_tested=False, receiver_power_off_tested=False,
-                  current_or_energy_measured=False)
+    result = dict(schema='four_mode_v1', started_utc=datetime.now(timezone.utc).isoformat(),
+                  checks=[], current_or_energy_measured=False, led_tested=False)
 
     def get(path):
         with urllib.request.urlopen(args.url+path, timeout=4) as r:
@@ -31,54 +30,75 @@ def run():
             return json.load(r)
 
     def wait_status(wanted):
-        deadline = time.monotonic()+12
+        deadline = time.monotonic()+13
         while time.monotonic() < deadline:
             state = get('/test/state')
             if state['active'] and state['active']['status'] == wanted:
                 return state
-            time.sleep(0.15)
+            time.sleep(0.2)
         raise AssertionError('Missing '+wanted+' acknowledgement: '+json.dumps(state))
 
     with ExitStack() as ports:
         for name in args.hold_unused_ports:
             ports.enter_context(serial.Serial(name, 115200, timeout=0.1))
         result['unused_sender_ports_exclusively_held'] = args.hold_unused_ports
+        result['visible_ports'] = [p.device for p in serial.tools.list_ports.comports()]
         initial = get('/stats')
         assert initial['receiver']['source'] == 'rf433'
         assert initial['receiver']['control_port'] == initial['receiver']['port']
         result['receiver'] = initial['receiver']
         try:
-            action(action='stop');wait_status('stopped')
-            for case, phase, duration, image_expected in [
-                (2, 'wait', 2, False), (3, 'wait', 2, False),
-                (4, 'wait', 6, True), (5, 'wait', 3, True),
-                (7, 'wait', 6, True), (8, 'wait', 2, False), (8, 'active', 3, True),
-            ]:
+            # Verify recovery to full image transfer from each reduced mode twice.
+            for case in [1, 2, 1, 3, 1, 4, 1, 2, 3, 4, 1]:
                 action(action='query')
-                action(action='start', case=case, phase=phase, duty=20, interval=2,
-                       note='Wireless-only automated functional check; no power measurement')
+                action(action='start', case=case, note='Automated functional check; no electrical measurement')
                 state = wait_status('running')
+                expected = {1:(0,0,1),2:(0,0,0),3:(1,0,0),4:(1,1,0)}[case]
+                board = state['board']
+                assert board['proto'] == 4 and board['fault'] == 0 and board['led'] == 0
+                assert tuple(board[k] for k in ('standby','sleep','image')) == expected
+                # Drain any image already en route before taking the quiet-mode baseline.
+                time.sleep(1)
+                action(action='query')
+                time.sleep(0.5)
+                before_board = get('/test/state')['board']
                 before = get('/stats')
-                time.sleep(duration)
+                time.sleep(4)
+                action(action='query')
+                time.sleep(0.5)
+                after_state = get('/test/state')
+                after_board = after_state['board']
                 after = get('/stats')
                 count = after['frames']-before['frames']
-                assert (count > 0) if image_expected else (count == 0), (case, phase, count)
+                assert (count > 0) if case == 1 else count == 0, (case, count)
                 assert after['bad_crc'] == before['bad_crc']
-                check = dict(case=case, phase=phase, observed_s=duration, new_images=count,
-                             board=state['board'], bad_crc=after['bad_crc'],
-                             radio_incomplete=after['radio_incomplete'])
+                assert after['radio_incomplete'] == before['radio_incomplete']
+                assert after_state['active']['status'] == 'running'
+                assert after_board['rid'] == state['active']['request_id']
+                delta = after_board['captures']-before_board['captures']
+                assert 3 <= delta <= 6 if case in (1,2) else delta == 0, (case, delta)
+                assert after_board['skipped'] == 0, after_board
+                check = dict(case=case, observed_s=4.5, new_wireless_images=count,
+                             capture_delta=delta, board=after_board,
+                             new_crc_errors=after['bad_crc']-before['bad_crc'],
+                             new_incomplete=after['radio_incomplete']-before['radio_incomplete'])
                 result['checks'].append(check)
                 print(json.dumps(check), flush=True)
-                action(action='stop');wait_status('stopped')
-            result['ok'] = True
-        finally:
             action(action='stop')
-            state = wait_status('stopped')
-            result['final_board'] = state['board']
-            result['final_stats'] = get('/stats')
-            out = Path(__file__).resolve().parents[1]/'validation/wireless_hardware_check.json'
-            out.write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding='utf-8')
-    print('Wireless-only hardware checks PASS', flush=True)
+            stopped = wait_status('stopped')
+            assert stopped['board']['standby'] == 1 and stopped['board']['sleep'] == 1
+            result['pause_confirmed'] = True
+        finally:
+            # Leave the user's image pipeline running at the end of validation.
+            try:
+                action(action='start', case=1, note='实板验证结束，恢复完整运行；等待人工电表测量')
+                result['restored_full'] = wait_status('running')['board']
+            finally:
+                result['completed_utc'] = datetime.now(timezone.utc).isoformat()
+                result['ok'] = len(result['checks']) == 11 and result.get('pause_confirmed', False)
+                output = Path(__file__).resolve().parents[1]/'validation/four_mode_hardware_check.json'
+                output.write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding='utf-8')
+    assert result['ok']
 
 
 if __name__ == '__main__':

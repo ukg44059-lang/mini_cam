@@ -1097,7 +1097,7 @@ class Handler(BaseHTTPRequestHandler):
         if path == "/":
             self._send(200, "text/html; charset=utf-8", TEST_PAGE.encode("utf-8"))
         elif path == "/viewer":
-            self._send(200, "text/html; charset=utf-8", PAGE.replace("<body>", '<body><div style="padding:16px;background:#dff4ee"><a href="/">进入 V1.1(test) 八项测试控制台</a></div>').encode("utf-8"))
+            self._send(200, "text/html; charset=utf-8", PAGE.replace("<body>", '<body><div style="padding:16px;background:#dff4ee"><a href="/">进入 V1.1(test) 四档电流测试台</a></div>').encode("utf-8"))
         elif path == "/test/state":
             self._send(200, "application/json", json.dumps(experiments.state()).encode())
         elif path == "/test/guide":
@@ -1105,7 +1105,7 @@ class Handler(BaseHTTPRequestHandler):
             self._send(200, "text/plain; charset=utf-8", guide.read_bytes())
         elif path == "/test/export":
             with experiments.lock:
-                body = dict(active=experiments.active, boots=experiments.boots)
+                body = dict(schema="four_mode_v1", active=experiments.active, boots=experiments.boots, readings=experiments.readings)
                 payload = json.dumps(body, ensure_ascii=False, indent=2).encode('utf-8')
             self.send_response(200)
             self.send_header("Content-Type", "application/json; charset=utf-8")

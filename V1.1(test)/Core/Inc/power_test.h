@@ -1,6 +1,7 @@
 #ifndef POWER_TEST_H
 #define POWER_TEST_H
 #include <stdint.h>
-/* E1..E8 select case, E0 stops; L0..100 sets LED duty, I1..3600 seconds. */
+/* Protocol 4: E1 full, E2 capture only, E3 camera standby/run, E4 MCU Sleep.
+ * E0 safe pause (same hardware state as E4). Radio control always remains live. */
 void Test_LedTick(void);
 #endif

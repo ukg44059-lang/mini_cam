@@ -1,44 +1,55 @@
-<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>V1.1(test) · 433 MHz 测试控制台</title>
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>四档电流测试 · mini_cam</title>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#edf2f5;color:#182b38;font:15px system-ui,"Microsoft YaHei",sans-serif}main{max-width:1440px;margin:auto;padding:28px}h1{margin:0 0 8px;font-size:28px}p{line-height:1.7}a{color:#006e73}section{background:white;border:1px solid #d6e0e5;border-radius:12px;padding:20px;margin:16px 0}.layout{display:grid;grid-template-columns:1fr 1fr;gap:20px}.cases{display:grid;grid-template-columns:1fr 1fr;gap:10px}button{cursor:pointer;background:#086c70;color:white;border:0;padding:12px;border-radius:7px;font:inherit;text-align:left}button:disabled{opacity:.45;cursor:wait}button:hover{background:#054c50}button small{display:block;font-size:12px;font-weight:normal;opacity:.85;margin-top:5px}.stop{background:#a84030}label{display:inline-block;margin:8px 16px 8px 0}input,select,textarea{padding:8px;border:1px solid #aebfc7;border-radius:5px;font:inherit}textarea{width:100%;height:78px}img{width:100%;min-height:180px;object-fit:contain;background:#182b38;border-radius:8px}pre{white-space:pre-wrap;word-break:break-word;font-size:12px;max-height:430px;overflow:auto;background:#f4f7f8;padding:12px}#message{position:sticky;top:0;padding:12px;background:#fff3cc;z-index:2}.muted{color:#586b76}#status{font-weight:600}@media(max-width:900px){.layout{grid-template-columns:1fr}}
-</style><main>
-<h1>V1.1(test) 测试控制台</h1><p class="muted">433.92 MHz 无线图传 · 480 × 360 · 硬件 JPEG QS 12 · 500 kbps · 固定功率寄存器 0x913F</p>
-<div id="message" role="status">先连接串口，再选择测试。测试记录自动保存至 test_results。</div>
-<section><strong>连接配置</strong> <button onclick="act('query')">查询板端状态</button> <a href="/viewer" target="_blank">查看无线图像</a>
-<p>电脑只连接接收端 CC1310（默认 COM20）。测试命令、STM32确认和发送端日志都通过 433 MHz 双向链路；无需连接 COM30 或 COM34。接收端断电时无法下发命令，重新上电后查询状态。控制轮询会带来少量无线活动。</p><div id="status">正在读取连接状态…</div></section>
-<div class="layout"><div><section><strong>选择实验</strong><p class="muted">切换测试前先停止。按钮表示下发请求，板端确认和有效图像显示在记录中。</p>
-<label>照明占空比 <input id="duty" type="number" min="0" max="100" step="5" value="50" style="width:80px"> %</label>
-<label>间歇周期 <input id="interval" type="number" min="1" max="3600" value="10" style="width:85px"> 秒</label>
-<label>⑧接收阶段 <select id="phase"><option value="wait">等待接收（发送端暂停）</option><option value="active">持续接收图像</option></select></label>
-<textarea id="note" placeholder="记录供电电压、仪表型号、测量位置、接收机开关状态等"></textarea>
-<div class="cases">
-<button onclick="start(1)">① 上电初始化 <small>断电后开始 → 标记上电 → 首张无线图像；重复5次</small></button>
-<button onclick="start(2)">② 系统等待 <small>LED关；摄像头软待机，MCU Sleep，TX等待SPI（保留低频无线控制轮询）</small></button>
-<button onclick="start(3)">③ 只采集图像 <small>摄像头和STM32运行；不发送图像，无线控制状态仍低频轮询</small></button>
-<button onclick="start(4)">④ 连续无线图传 <small>固定参数顺序采集与发送，LED关闭</small></button>
-<button onclick="start(5)">⑤ 加照明 <small>与④相同，仅改变PG14照明占空比</small></button>
-<button onclick="start(6)">⑥ 接收机关闭 <small>手动断开接收机电源；记录NO_ACK及重传</small></button>
-<button onclick="start(7)">⑦ 间歇拍照 <small>每周期采集并发送一张，间隔进入软待机</small></button>
-<button onclick="start(8)">⑧ 接收端持续工作 <small>分别测RX等待接收与持续接收状态</small></button>
-</div><p><button class="stop" onclick="act('stop')">停止测试 / LED关 / 进入等待</button></p>
-<button onclick="act('power_on')">① 标记实际上电时刻</button> <button onclick="act('reset_boots')">重置5次上电组</button>
-<p class="muted">上电时刻由手动按钮标记，包含人工误差；精确延时请使用仪表触发。断电后串口可能重枚举，上位机会重连。固件上电默认发送一张后等待。开始后显示“等待确认”，收到匹配板端状态才显示“运行中”；停止也需板端确认。</p>
-</section><section><strong>仪表采样与能量</strong><p>选择测量通道并导入仪表CSV，按 P=U×I 梯形积分。仅记录软件阶段不会生成电流值；各电源轨须实际分路测量。</p>
-<label>通道 <select id="channel"><option value="system">系统输入</option><option value="camera">摄像头电源轨</option><option value="mcu">MCU电源轨</option><option value="tx">无线发送端</option><option value="rx">无线接收端</option></select></label>
-<input type="file" id="csv" accept=".csv"><button onclick="importCsv()">导入采样</button>
-<p class="muted">CSV表头：t_s,voltage_v,current_a（秒、伏、安），时间严格递增；同通道再次导入会替换采样。⑦完整周期应包含唤醒、采集、发送和下一次唤醒前的等待。</p>
-<button onclick="location.href='/test/export'">下载完整JSON记录</button> <a href="/test/guide" target="_blank">查看接口与操作说明</a></section></div>
-<div><section><strong>无线接收预览</strong><p class="muted">暂停或接收机关机后保留最后一张，是否有新图像以“图像年龄”为准。</p><img src="/stream" alt="等待有效无线图像"><p id="imageStatus"></p></section><section><strong>实验状态与最近事件</strong><pre id="result"></pre><strong>板端实际状态 / 收发日志</strong><pre id="logs"></pre></section></div></div></main>
+:root{font-family:system-ui,sans-serif;color:#173342;background:#eef3f6}body{max-width:1100px;margin:24px auto;padding:0 16px}h1{font-size:28px;margin-bottom:8px}h2{font-size:21px}p{line-height:1.7}.card{background:white;border:1px solid #d2dfe5;border-radius:14px;padding:22px;margin:18px 0}.muted{color:#5c7280}.banner{padding:16px;border-radius:8px;background:#fff0c4;white-space:pre-line}.good{background:#d6eee5}.modes{display:grid;grid-template-columns:1fr 1fr;gap:12px}button,.link{font:inherit;border:0;border-radius:8px;padding:12px 16px;cursor:pointer;background:#096d73;color:white}button:disabled{opacity:.4;cursor:default}.mode{text-align:left;min-height:110px;border:3px solid transparent}.mode.selected{border-color:#f9bc43}.mode strong{display:block;font-size:21px}.mode span{display:block;font-size:14px;margin-top:7px}.secondary{background:#dce9ed;color:#173342}.pause{background:#a13f31}input,textarea{font:inherit;padding:10px;border:1px solid #a9bfca;border-radius:7px;box-sizing:border-box}input{width:130px}textarea{width:100%;height:65px;margin:12px 0}.row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}table{width:100%;border-collapse:collapse;margin:12px 0}td,th{border-bottom:1px solid #dee7eb;padding:11px;text-align:left}pre{white-space:pre-wrap;word-break:break-word;max-height:260px;overflow:auto;font-size:13px}.scroll{overflow:auto}a{color:#096d73}#error{color:#a13f31;white-space:pre-line}@media(max-width:650px){.modes{grid-template-columns:1fr}.card{padding:15px}table{font-size:13px}}
+</style>
+<h1>四档电流测试</h1><p class="muted">电表接在发送端整机电源输入处，按①→②→③→④测量。每档等待稳定并观察后，手动记录读数。</p>
+<div id="status" class="banner">正在读取无线板端状态…</div><p id="error" role="alert"></p>
+<section class="card"><div class="row"><h2>连接与固定条件</h2><button class="secondary" onclick="act({action:'query'})">查询无线状态</button><a href="/viewer">图像 / 接收串口设置</a><a href="/test/guide" target="_blank">操作说明</a></div>
+<p id="connection" class="muted"></p><p>480×360 · JPEG QS12 · 采集目标每秒1张 · 433.92 MHz / 500 kbps · 照明始终关闭。四档均保留无线命令和状态通信，无线芯片不进入休眠。</p>
+<div class="row"><label>观察时间 <input id="window" type="number" min="5" max="600" value="30"> 秒</label><span class="muted">每次板端确认后先稳定5秒，再开始观察。</span></div>
+<textarea id="note" placeholder="电表型号、输入电源、场景和接线备注；各档保持相同条件"></textarea>
+</section>
+<section class="card"><h2>选择模式</h2><div class="modes">
+<button class="mode" data-case="1" onclick="start(1)"><strong>① 完整运行</strong><span>采集 + ISP/JPEG + STM32处理 + 无线图像</span></button>
+<button class="mode" data-case="2" onclick="start(2)"><strong>② 不发无线图像</strong><span>保留相同采集节奏；停止SPI图像传输与无线图像发送</span></button>
+<button class="mode" data-case="3" onclick="start(3)"><strong>③ 摄像头待机</strong><span>摄像头软待机、XCLK关闭；STM32保持运行</span></button>
+<button class="mode" data-case="4" onclick="start(4)"><strong>④ STM32 Sleep</strong><span>摄像头继续待机；STM32在控制轮询间进入Sleep</span></button></div>
+<p class="muted">Sleep保留1ms时基和约100ms控制轮询。点击①可从任意档恢复图传；切换成功以无线板端回执为准。</p>
+<div class="row"><button class="secondary" id="restore" onclick="start(1)">恢复完整运行</button><button class="pause" id="pause" onclick="act({action:'stop'})">暂停采集 / 保留无线控制</button></div>
+<div class="scroll"><table><thead><tr><th>模块</th><th>板端已确认状态</th></tr></thead><tbody id="modules"></tbody></table></div>
+</section>
+<section class="card"><h2>记录电表读数</h2><p id="timer" class="muted">选择模式并等待无线确认。</p><div class="row">
+<label>输入电压 <input id="voltage" type="number" step="any" min="0" placeholder="例如 5.00"> V</label>
+<label>整机电流 <input id="current" type="number" step="any" min="0" placeholder="电表读数"> mA</label>
+<button id="record" disabled onclick="record()">记录本档</button></div>
+<p class="muted">软件不读取电表。输入功率 = 输入电压 × 电流；相邻档差值包含所有随模式改变的整机开销。JPEG、ISP及LDO的独立功耗暂不能由这些差值确定。</p>
+<div class="row"><a class="link" href="/test/export">导出JSON记录</a><button class="secondary" onclick="newGroup()">新建测量组</button></div>
+<p class="muted">新组清空当前对比表，历史每档JSON仍保存在test_results。完成观察后保持当前模式，留出抄录电表的时间。</p>
+<div class="scroll"><table><thead><tr><th>模式</th><th>输入V</th><th>电流mA</th><th>输入mW</th><th>上一档−本档 mA</th><th>备注</th></tr></thead><tbody id="readings"></tbody></table></div>
+</section><section class="card"><h2>板端记录</h2><pre id="logs"></pre></section>
 <script>
-const el=id=>document.getElementById(id);let busy=false;
-async function request(q){if(busy)return;busy=true;try{let r=await fetch('/test/action',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(q)});let j=await r.json();if(!j.ok)throw Error(j.err);el('message').textContent='请求已发送，正在等待板端确认。';await refresh()}catch(e){el('message').textContent=e.message}finally{busy=false}}
-function start(c){request({action:'start',case:c,duty:+el('duty').value,interval:+el('interval').value,phase:el('phase').value,note:el('note').value})}
-function act(action){request({action})}
-async function importCsv(){try{let f=el('csv').files[0];if(!f)throw Error('请选择CSV');let rows=(await f.text()).replace(/^\uFEFF/,'').trim().split(/\r?\n/);if(rows.shift().trim()!=='t_s,voltage_v,current_a')throw Error('CSV表头必须为 t_s,voltage_v,current_a');let samples=rows.filter(x=>x.trim()).map(x=>{let v=x.split(',').map(Number);if(v.length!==3||v.some(x=>!Number.isFinite(x)))throw Error('CSV采样行无效');return {t_s:v[0],voltage_v:v[1],current_a:v[2]}});await request({action:'samples',channel:el('channel').value,samples})}catch(e){el('message').textContent=e.message}}
-async function refresh(){try{let [a,s,l]=await Promise.all(['/test/state','/stats','/logs'].map(u=>fetch(u).then(r=>r.json())));const names={pending:'等待板端确认',running:'运行中（板端已确认）',armed:'已待命，请实际断电/上电并标记',stopping:'正在停止，等待板端确认',stopped:'已停止（板端已确认）',unconfirmed:'未收到开始确认',stop_failed:'停止尚未确认',complete:'本次上电首帧成功',interrupted:'上次测试因服务重启中断',failed:'命令失败'};
-if(a.active)el('message').textContent=(names[a.active.status]||a.active.status)+(a.active.error?'：'+a.active.error:'');
-const ready=s.firmware_mode==='test'&&a.board.proto===3&&Date.now()/1000-a.board.received_at<15;
-document.querySelectorAll('.cases button').forEach((b,i)=>b.disabled=busy||(i!==0&&!ready)||(a.active&&!a.active.ended));
-el('result').textContent=JSON.stringify(a,null,2);el('status').textContent=`接收端 ${s.receiver.port} (${s.serial_ok?'已连接':'未连接'}) · 控制/发送端状态：433 MHz ${s.control_age===null?'等待':s.control_age+'秒前收到'} · ${s.sender.last||'等待发送板状态'} · 固件 ${ready?'测试版已无线确认':s.firmware_mode==='stream'?'原图传版（8项测试需先烧录测试版）':'等待无线确认'}`;el('imageStatus').textContent=`累计有效帧 ${s.frames} · 图像年龄 ${s.frame_age??'—'} 秒 · 校验错误 ${s.bad_crc} · 不完整无线帧 ${s.radio_incomplete}`;el('logs').textContent=JSON.stringify(l,null,2)}catch(e){el('message').textContent='服务连接失败：'+e.message}}
-refresh();setInterval(refresh,1500);
+let state=null,busy=false;
+const el=id=>document.getElementById(id);
+const names={0:'暂停',1:'完整运行',2:'不发无线图像',3:'摄像头待机 / MCU运行',4:'摄像头待机 / MCU Sleep'};
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+async function act(q){if(busy)return;busy=true;render();el('error').textContent='';try{const r=await fetch('/test/action',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(q)});const d=await r.json();if(!r.ok||d.ok===false)throw Error(d.err||d.error||'操作失败');state=d;}catch(e){el('error').textContent=e.message;}finally{busy=false;render();}}
+function start(c){act({action:'start',case:c,window_s:Number(el('window').value),note:el('note').value});}
+function record(){if(!el('voltage').value||!el('current').value){el('error').textContent='请输入电表的电压和电流读数';return;}act({action:'record',voltage_v:Number(el('voltage').value),current_ma:Number(el('current').value),note:el('note').value});}
+function newGroup(){if(confirm('开始新的对比组？历史每档文件仍会保留。'))act({action:'new_group'});}
+function render(){const s=state||{},a=s.active,b=s.board||{},fresh=s.control_ready===true,waiting=a&&['pending','stopping'].includes(a.status);let text='等待 proto=4 无线状态，请查询状态并核对固件。';
+if(Object.keys(b).length){text=`板端：${names[b.case]??'旧版模式'} · 状态年龄 ${s.board_age_s??'?'}秒 · 协议 ${b.proto??'?'} · 请求 ${b.rid??'?'}`;if(b.proto!==4)text+='\n当前是旧版固件，请先更新STM32四档测试固件。';else if(!fresh)text+='\n状态已过期，暂不能记录或切换。';else if(b.fault)text+='\n摄像头切换失败，请检查板端日志和接线。';}
+if(a){const statuses={pending:'等待板端确认',running:'板端已确认',unconfirmed:'命令未确认',stopping:'等待暂停确认',stopped:'已暂停',stop_failed:'暂停未确认',interrupted:'服务重启，请重新选档',desynced:'板端状态改变',failed:'发送失败'};text+='\n'+(statuses[a.status]||a.status)+(a.error?'：'+a.error:'');}
+el('status').textContent=text;el('status').className='banner'+(fresh&&!b.fault?' good':'');
+document.querySelectorAll('.mode').forEach(btn=>{btn.disabled=busy||!fresh||waiting;btn.classList.toggle('selected',fresh&&a?.status==='running'&&Number(btn.dataset.case)===b.case);});
+el('restore').disabled=busy||!fresh||waiting;el('pause').disabled=busy||!fresh;
+const rows=b.proto===4?[['摄像头',b.standby?'软待机，XCLK关闭':'持续工作，固定JPEG参数'],['STM32',b.sleep?'Sleep，保留时基和无线轮询':b.case===3?'保持运行':'保持运行，含采集/处理'],['CC1310无线',b.image?'图像发送 + 双向控制':'双向控制保持工作；不发图像'],['照明','关闭'],['采集 / 图像发送 / 跳过周期',`${b.captures??0} / ${b.sends??0} / ${b.skipped??0}`]]:[['模块','尚未收到四档固件状态']];
+el('modules').innerHTML=rows.map(r=>`<tr><td>${esc(r[0])}</td><td>${esc(r[1])}${!fresh?'（状态过期）':''}</td></tr>`).join('');
+let timer='选择模式并等待无线确认。';if(a?.status==='running'){timer=a.settle_remaining_s>0?`稳定中：剩余 ${a.settle_remaining_s} 秒`:a.observe_remaining_s>0?`观察电表：剩余 ${a.observe_remaining_s} 秒`:'观察完成，可以输入并记录电表读数；当前模式保持运行。';if(a.health_errors)timer+=' 存在采集失败或跳过周期，本档标记为不适合差值对比。';}
+el('timer').textContent=timer;el('record').disabled=busy||!fresh||a?.status!=='running'||a.observe_remaining_s>0||!!b.fault;
+el('readings').innerHTML=(s.readings||[]).map(r=>`<tr><td>${esc(r.name)}</td><td>${r.voltage_v.toFixed(3)}</td><td>${r.current_ma.toFixed(3)}</td><td>${r.power_mw.toFixed(3)}</td><td>${r.delta_current_ma===undefined?'—':r.delta_current_ma.toFixed(3)}</td><td>${esc(r.comparable?r.note:'采集/链路异常；'+r.note)}</td></tr>`).join('');
+el('logs').textContent=(a?.events||[]).map(e=>`${e.t_s}s ${e.text||e.kind}`).join('\n');}
+async function poll(){try{const [r,c]=await Promise.all([fetch('/test/state'),fetch('/stats')]);if(!r.ok||!c.ok)throw Error('服务返回错误');if(!busy)state=await r.json();const stats=await c.json();const cfg=stats.receiver||{};el('connection').textContent=`接收口 ${cfg.port||cfg.rf_port||'见图像页'} · 电脑仅连接收端CC1310；发送端独立供电。`;render();}catch(e){state=null;render();el('error').textContent='上位机连接中断：'+e.message;}finally{setTimeout(poll,1000);}}
+render();poll();
 </script></html>

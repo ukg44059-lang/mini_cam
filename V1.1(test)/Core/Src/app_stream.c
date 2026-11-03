@@ -691,16 +691,16 @@ static void dump_sensor_state(void)
 }
 
 
-/* Power experiment controller. All captures are sequential, making cases 4/5
- * identical except LED duty. RF PHY/power stay fixed in both CC1310 images.
- * No ACK is inferred from SPI completion: CC1310 reports the actual RF result.
+/* Four comparable input-current modes. The RF command path is always live.
+ * Modes 1/2 use the same 1 Hz capture slots; missed slots are skipped, not burst.
+ * Mode 3 busy-runs the MCU; mode 4 uses Sleep/WFI, retaining SysTick and SPI polls.
  */
 static unsigned test_case = 1U;
-static volatile unsigned test_led_duty;
-static uint32_t test_interval = 10000U, test_due, test_captures, test_sends;
+static uint32_t test_due, test_captures, test_sends, test_skipped;
 static bool test_standby, test_changed = true;
 static uint32_t test_request;
-static bool test_report = true;
+static bool test_report = true, test_fault;
+#define TEST_CAPTURE_MS 1000U
 
 static void test_log(const char *fmt,...)
 {
@@ -714,130 +714,112 @@ static void test_log(const char *fmt,...)
 
 static void test_status(void)
 {
-  test_log("[TEST] event=status proto=3 transport=rf433 rid=%lu case=%u led=%u interval_ms=%lu standby=%u captures=%lu sends=%lu\r\n",
-    (unsigned long)test_request, test_case, test_led_duty,
-    (unsigned long)test_interval, test_standby,
-    (unsigned long)test_captures, (unsigned long)test_sends);
+  test_log("[TEST] event=status proto=4 transport=rf433 rid=%lu case=%u led=0 interval_ms=1000 standby=%u sleep=%u image=%u fault=%u captures=%lu sends=%lu skipped=%lu\r\n",
+    (unsigned long)test_request, test_case, test_standby,
+    (test_case == 0U || test_case == 4U), test_case == 1U, test_fault,
+    (unsigned long)test_captures, (unsigned long)test_sends, (unsigned long)test_skipped);
   test_report = false;
 }
 
 void Test_LedTick(void)
 {
-  static unsigned phase;
-  phase = (phase + 1U) % 20U; /* 50 Hz PWM, 5% duty increments */
-  HAL_GPIO_WritePin(LED_W_GPIO_PORT, LED_W_PIN,
-      (phase * 5U < test_led_duty) ? LED_ON_LEVEL : LED_OFF_LEVEL);
+  /* Illumination is fixed off in every input-current comparison mode. */
+  HAL_GPIO_WritePin(LED_W_GPIO_PORT, LED_W_PIN, LED_OFF_LEVEL);
 }
 
-static void test_sensor(bool standby)
+static bool test_sensor(bool standby)
 {
-  if (standby == test_standby) return;
+  if (standby == test_standby) return true;
   if (standby) {
-    (void)ov3660_write_reg(0x3008, 0x42); /* retain configuration, soft standby */
+    if (ov3660_write_reg(0x3008, 0x42) != 0) return false;
     CAM_XclkStop();
   } else {
     CAM_XclkStart();
     HAL_Delay(5);
-    (void)ov3660_write_reg(0x3008, 0x02);
+    if (ov3660_write_reg(0x3008, 0x02) != 0) { CAM_XclkStop(); return false; }
     HAL_Delay(50);
   }
   test_standby = standby;
+  return true;
 }
 
 static bool test_command(const char *line)
 {
   char *end;
   unsigned long value;
-  /* Experiment parameters are locked; legacy UI commands cannot alter them. */
-  if (!strchr("AHELI", line[0]) || !line[1]) return true;
+  /* Legacy resolution, LED and period commands cannot alter this profile. */
+  if (!strchr("AHE", line[0]) || !line[1]) return true;
   value = strtoul(line + 1, &end, 10);
   if (*end) return true;
   if (line[0] == 'A' && value <= 999999U) {
     test_request = (uint32_t)value;
   } else if (line[0] == 'H' && value == 0U) {
     test_report = true;
-  } else if (line[0] == 'E' && value <= 8U) {
+  } else if (line[0] == 'E' && value <= 4U) {
     test_case = (unsigned)value;
     test_changed = true; test_report = true;
-    if (test_case != 5U) test_led_duty = 0;
-  } else if (line[0] == 'L' && value <= 100U && test_case == 5U) {
-    test_led_duty = (unsigned)(value / 5U * 5U);
-    test_report = true;
-    test_log("[TEST] event=led duty=%u\r\n", test_led_duty);
-  } else if (line[0] == 'I' && value >= 1U && value <= 3600U) {
-    test_interval = (uint32_t)value * 1000U;
   }
   return true;
 }
 
 static void test_run(void)
 {
-  static uint32_t frame_report_due;
   uint32_t start, len, capture_ms, send_ms = 0;
   bool sent = false;
   (void)CC_LinkPoll();
   (void)handle_commands();
   if (test_changed) {
     test_changed = false;
-    test_sensor(false);
-    s_want_jpeg = true; s_jpeg_pipeline = false;
-    s_uart_mirror = false; s_jpeg_qs = 12U;
-    if (!apply_framesize((ov3660_framesize_t)3))
-      die("Test configuration failed", "480x360 JPEG");
-    test_captures = test_sends = 0;
-    test_log("[TEST] event=states camera=soft_standby_when_idle mcu=Sleep_SysTick1ms tx=SPI_poll_RFcore_on rx=continuous_receive_external led_pwm_hz=50\r\n");
+    test_fault = false;
+    /* Reconfigure only active-camera modes. Standby modes share sensor state. */
+    if (test_case == 1U || test_case == 2U) {
+      if (!test_sensor(false)) test_fault = true;
+      s_want_jpeg = true; s_jpeg_pipeline = false;
+      s_uart_mirror = false; s_jpeg_qs = 12U;
+      if (!test_fault && !apply_framesize((ov3660_framesize_t)3)) test_fault = true;
+    } else {
+      if (!test_sensor(true)) test_fault = true;
+    }
+    test_captures = test_sends = test_skipped = 0;
     test_due = HAL_GetTick();
-    test_log("[TEST] event=case case=%u tick=%lu width=480 height=360 qs=12 led=%u interval_ms=%lu\r\n",
-      test_case, (unsigned long)test_due, test_led_duty, (unsigned long)test_interval);
+    test_log("[TEST] event=mode case=%u tick=%lu width=480 height=360 qs=12 rf_control=1\r\n",
+      test_case, (unsigned long)test_due);
   }
-  if (test_case == 0U || test_case == 2U || test_case == 8U ||
-      (test_case == 7U && (int32_t)(HAL_GetTick() - test_due) < 0)) {
-    test_sensor(true);
-    if (test_report) test_status();
-    /* SysTick and UART remain live; this is Sleep, not Stop/Standby mode. */
+  if (test_report) test_status();
+  if (test_fault) { __WFI(); return; }
+  if (test_case == 3U) {
+    /* Intentionally run, so comparison with mode 4 includes MCU Sleep saving. */
+    __NOP();
+    return;
+  }
+  if (test_case == 0U || test_case == 4U) {
+    /* Sleep only: SysTick (1ms) and 100ms CC_LinkPoll keep wireless recovery. */
     __WFI();
     return;
   }
   start = HAL_GetTick();
-  if (test_case != 7U) {
-    test_sensor(false);
-    if (test_report) test_status();
-  }
-  if (test_case == 7U) {
-    /* Start-to-start period. If a cycle overruns, skip missed slots. */
-    do { test_due += test_interval; }
-    while ((int32_t)(start - test_due) >= 0);
-    test_log("[TEST] event=cycle_start tick=%lu\r\n", (unsigned long)start);
-  }
-  test_sensor(false);
-  if (test_report) test_status();
+  if ((int32_t)(start - test_due) < 0) { __NOP(); return; }
+  /* Reserve the next identical slot before capture/transfer. */
+  test_due += TEST_CAPTURE_MS;
   len = CAM_CaptureJpeg(s_buf[0], s_frame_bytes, STREAM_CAP_TIMEOUT);
   capture_ms = HAL_GetTick() - start;
   if (len) {
     ++test_captures;
-    if (test_case != 3U) {
+    if (test_case == 1U) {
       uint32_t tx = HAL_GetTick();
       sent = send_frame(s_buf[0], len);
       send_ms = HAL_GetTick() - tx;
       ++test_sends; ++s_seq;
     }
   }
-  if(test_case!=3U || (int32_t)(HAL_GetTick()-frame_report_due)>=0) {
-  frame_report_due=HAL_GetTick()+1000U;
-  test_log("[TEST] event=frame case=%u tick=%lu bytes=%lu capture_ms=%lu send_ms=%lu spi_ok=%u captures=%lu sends=%lu\r\n",
+  while ((int32_t)(HAL_GetTick() - test_due) >= 0) {
+    test_due += TEST_CAPTURE_MS;
+    ++test_skipped;
+  }
+  test_log("[TEST] event=frame case=%u tick=%lu bytes=%lu capture_ms=%lu send_ms=%lu spi_ok=%u captures=%lu sends=%lu skipped=%lu\r\n",
     test_case, (unsigned long)HAL_GetTick(), (unsigned long)len,
     (unsigned long)capture_ms, (unsigned long)send_ms, sent,
-    (unsigned long)test_captures, (unsigned long)test_sends);
-  }
-  if (test_case == 7U) {
-    test_sensor(true);
-    test_log("[TEST] event=cycle_wait tick=%lu due=%lu\r\n",
-      (unsigned long)HAL_GetTick(), (unsigned long)test_due);
-  }
-  if (test_case == 1U && len && sent) {
-    /* One SPI transfer only; PC independently requires a valid RF image. */
-    test_case = 2U; test_changed = true;
-  }
+    (unsigned long)test_captures, (unsigned long)test_sends, (unsigned long)test_skipped);
 }
 
 

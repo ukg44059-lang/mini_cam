@@ -1,5 +1,5 @@
 {
-  "built_at": "2026-11-02T01:27:31.883880-07:00",
+  "built_at": "2026-11-02T19:43:58.705882-07:00",
   "version": "V1.1(test)",
   "compiler": "arm-none-eabi-gcc.exe (GNU Tools for STM32 7-2018-q2-update.20190328-1800) 7.3.1 20180622 (release) [ARM/embedded-7-branch revision 261907]",
   "build_command": "./Build-Version.ps1 -Version 'V1.1(test)'",
@@ -22,7 +22,7 @@
     "rx": 3
   },
   "flashed_during_import": false,
-  "flash_matches_running_hardware": "All three packaged ELF files programmed and verified by OpenOCD in this update",
+  "flash_matches_running_hardware": "STM32 programmed and verified in this update; CC1310 TX/RX images byte-identical to previously flashed v1.1-test.2",
   "sha256": {
     "cc1310_rf_image_rx.bin": "c63df2432e2d1c19cf7c8e29c4a60d405424653290e7a6dade401a1aff68191f",
     "cc1310_rf_image_rx.elf": "782d1948c76b3656d36b4748c4456c0a899c41b9d84b2ec958889118f056a672",
@@ -30,16 +30,14 @@
     "cc1310_rf_image_tx.bin": "32379237bb1bdb039cc6e1e09e19c955f3c5ede2186240d6f914814a827caea8",
     "cc1310_rf_image_tx.elf": "7784b3aaf3526dd7c39013dc7c130de87c2e44e850d3e8b9ccd2a60d8c21920c",
     "cc1310_rf_image_tx.hex": "7980c3252d7fe95017c42a25b31d195f8e177e4d240afffcf080b929c7498992",
-    "STM32U575_stream.bin": "dfbae1fdb5dd4f2b7f61d2830fce411e6a012055a659186fd2c251ccf3c8f1bf",
-    "STM32U575_stream.elf": "33a1523c6f2f7c423f2b4615ea6e78c6ac8abe8181f707fa7c38e307412a2906",
-    "STM32U575_stream.hex": "0558dac8e8806455352a50523b31c5bd878eca00e0fe1471584f238de3370991"
+    "STM32U575_stream.bin": "158127f01b16b58a76b0efaa47529cf69ffa567e36b09ae52b13ccb7240ab4b6",
+    "STM32U575_stream.elf": "a0b5a5783f2b7589c94695a84e3a7e6cee769ee7e26b6cec5b85651e5ce68212",
+    "STM32U575_stream.hex": "7dd63171f5ee557f1904e6a5be3c45111c4431d3ec843e1d109d0bced0715599"
   },
-  "tag": "v1.1-test.2",
+  "tag": "v1.1-test.3",
   "flashed_during_update": [
-    "stm32",
-    "tx",
-    "rx"
+    "stm32"
   ],
   "rx_firmware": "Matching wireless control receiver, DIO5 TX / DIO3 RX, 921600 baud",
-  "flash_verification": "All three: OpenOCD Verified OK; wireless-only functional check recorded in validation/wireless_hardware_check.json"
+  "flash_verification": "STM32 OpenOCD Verified OK, validation/flash_stm32_four_modes.txt; unchanged CC1310 binaries checked against v1.1-test.2 SHA-256"
 }

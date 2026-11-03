@@ -7,7 +7,7 @@ OV3660 + STM32U575 + 双 CC1310 的 433 MHz 无线图传工程。本仓库用于
 |目录|功能|验证状态|回溯标签|
 |---|---|---|---|
 |[V1.0](V1.0/README.md)|连续拍照→STM32→SPI→CC1310无线发送→另一个CC1310接收→电脑网页显示|基本链路已有真实硬件验证；本次归档重新构建固件尚未重刷验证|`v1.0`|
-|[V1.1(test)](V1.1%28test%29/README.md)|8项状态/功耗实验，433 MHz双向控制和状态回传，网页按钮、采样积分与导出|三端烧录校验及无线功能检查通过；真实断电、接收机关机及功耗实测待做|`v1.1-test.2`（保留`.1`和初始标签）|
+|[V1.1(test)](V1.1%28test%29/README.md)|四档整机电流对比：完整运行→停止无线图像→摄像头待机→MCU Sleep；全程无线控制，手动电表录入与导出|STM32烧录校验及11段无线模式/恢复检查通过；电表功耗待测|`v1.1-test.3`（此前测试标签均保留）|
 
 V1.0导入自本地sofeware_V2；此后Git版本号以本仓库为准，不按旧文件夹名称推断。
 
@@ -15,6 +15,7 @@ V1.0导入自本地sofeware_V2；此后Git版本号以本仓库为准，不按�
 
 |日期（America/Denver）|更新|内容|验证与已知问题|
 |---|---|---|---|
+|2026-11-02|V1.1(test) 四档电流测试|替换八项按钮；固定①②同采集节奏、③MCU运行/④Sleep，RF始终在线；手动输入电表V/mA、整机差值与JSON导出|构建、STM32烧录校验、11段实板检查、网页及离线检查通过；未实测电流；回溯标签v1.1-test.3|
 |2026-11-02|V1.1(test) 双向无线控制|命令下发、STM32状态确认和TX日志全部经433 MHz；电脑仅接收端COM20；更新三端固件、页面与操作说明|独占COM30/34期间仍可无线启停；连续6秒11张、间歇6秒3张，校验错误/不完整帧0；详见无线验证记录|
 |2026-11-02|V1.1(test) 测试准备更新|增加请求编号确认、状态查询、超时/停止失败提示、服务重启恢复记录，原图传页面增加测试入口；更新STM32/TX固件|部分功能响应检查通过，详见CHANGELOG；没有把命令确认当作功耗实测|
 |2026-11-01|V1.1(test) 首次归档|保存8项测试固件和UI、阶段日志、仪表CSV积分、5次上电记录、JSON导出及原图传固件识别|离线检查和编译通过；未烧录或完成8项实板测试；保留TX状态日志缺失问题|
@@ -38,10 +39,10 @@ python -m pip install -r V1.0/requirements.txt
 
 ```powershell
 ./Build-Version.ps1 -Version 'V1.1(test)'
-& './V1.1(test)/启动测试上位机.ps1'
+& './V1.1(test)/启动测试上位机.ps1' -ReceiverPort COM42
 ```
 
-测试页面默认 http://localhost:8081/ 。最新测试版电脑只需连接收端CC1310，默认COM20、921600；发送端独立供电，不依赖COM30或COM34数据线。两个版本共用实际串口，同一时间只启动一个上位机。最新测试版需三端配套固件，换回原图传固件后不能仅靠打开测试页面获得测试功能。
+测试页面默认 http://localhost:8081/ 。最新测试版电脑只需连接收端CC1310，本机当前COM42、921600（辅助口COM41）；发送端独立供电，不依赖COM30或COM34数据线。两个版本共用实际串口，同一时间只启动一个上位机。当前STM32为proto=4，CC1310沿用v1.1-test.2双向无线固件；测试版需三端配套固件，换回原图传固件后不能仅靠打开测试页面获得测试功能。
 
 ## 代码改坏后如何恢复
 
@@ -57,6 +58,6 @@ python tools/verify_snapshot.py V1.0
 
 已发布标签保持原样，后续修复建立新提交/新标签。README负责说明，Git提交负责保存内容，SHA-256清单负责核对文件；三者一起使用。建议每次有意义的更新写日期、内容、验证结果和已知问题，并及时推送GitHub。
 
-回溯选择：[v1.0 对应提交](https://github.com/ukg44059-lang/mini_cam/tree/v1.0)；[v1.1-test 对应提交](https://github.com/ukg44059-lang/mini_cam/tree/v1.1-test)；[全部提交记录](https://github.com/ukg44059-lang/mini_cam/commits/main/)。
+回溯选择：[v1.1-test.3 四档测试](https://github.com/ukg44059-lang/mini_cam/tree/v1.1-test.3)；[v1.1-test.2 八项无线测试](https://github.com/ukg44059-lang/mini_cam/tree/v1.1-test.2)；[v1.0 对应提交](https://github.com/ukg44059-lang/mini_cam/tree/v1.0)；[v1.1-test 对应提交](https://github.com/ukg44059-lang/mini_cam/tree/v1.1-test)；[全部提交记录](https://github.com/ukg44059-lang/mini_cam/commits/main/)。
 
 厂商驱动和OpenOCD保留其原有许可声明。仓库未给所有第三方内容另行授予统一许可。
