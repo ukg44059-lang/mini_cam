@@ -700,6 +700,7 @@ static uint32_t test_due, test_captures, test_sends, test_skipped;
 static bool test_standby, test_changed = true;
 static uint32_t test_request;
 static bool test_report = true, test_fault;
+static bool test_isp_enabled = true, test_jpeg_enabled = true;
 #define TEST_CAPTURE_MS 1000U
 
 static void test_log(const char *fmt,...)
@@ -714,9 +715,9 @@ static void test_log(const char *fmt,...)
 
 static void test_status(void)
 {
-  test_log("[TEST] event=status proto=4 transport=rf433 rid=%lu case=%u led=0 interval_ms=1000 standby=%u sleep=%u image=%u fault=%u captures=%lu sends=%lu skipped=%lu\r\n",
-    (unsigned long)test_request, test_case, test_standby,
-    (test_case == 0U || test_case == 4U), test_case == 1U, test_fault,
+  test_log("[TEST] event=status proto=6 transport=rf433 rid=%lu case=%u led=0 interval_ms=1000 width=480 height=360 fps_milli=1000 isp=%u jpeg=%u qs=12 pipeline=1 standby=%u sleep=%u image=%u fault=%u captures=%lu sends=%lu skipped=%lu\r\n",
+    (unsigned long)test_request, test_case, test_isp_enabled, test_jpeg_enabled, test_standby,
+    (test_case == 0U || test_case == 4U), test_case == 1U && test_jpeg_enabled, test_fault,
     (unsigned long)test_captures, (unsigned long)test_sends, (unsigned long)test_skipped);
   test_report = false;
 }
@@ -748,7 +749,7 @@ static bool test_command(const char *line)
   char *end;
   unsigned long value;
   /* Legacy resolution, LED and period commands cannot alter this profile. */
-  if (!strchr("AHE", line[0]) || !line[1]) return true;
+  if (!strchr("AHEJV", line[0]) || !line[1]) return true;
   value = strtoul(line + 1, &end, 10);
   if (*end) return true;
   if (line[0] == 'A' && value <= 999999U) {
@@ -757,6 +758,11 @@ static bool test_command(const char *line)
     test_report = true;
   } else if (line[0] == 'E' && value <= 4U) {
     test_case = (unsigned)value;
+    test_changed = true; test_report = true;
+  } else if ((line[0] == 'J' || line[0] == 'V') && value <= 1U) {
+    bool enabled = value != 0U;
+    if (line[0] == 'J') test_jpeg_enabled = enabled;
+    else test_isp_enabled = enabled;
     test_changed = true; test_report = true;
   }
   return true;
@@ -771,15 +777,18 @@ static void test_run(void)
   if (test_changed) {
     test_changed = false;
     test_fault = false;
-    /* Reconfigure only active-camera modes. Standby modes share sensor state. */
-    if (test_case == 1U || test_case == 2U) {
-      if (!test_sensor(false)) test_fault = true;
-      s_want_jpeg = true; s_jpeg_pipeline = false;
-      s_uart_mirror = false; s_jpeg_qs = 12U;
-      if (!test_fault && !apply_framesize((ov3660_framesize_t)3)) test_fault = true;
-    } else {
-      if (!test_sensor(true)) test_fault = true;
-    }
+    bool standby = (test_case == 0U || test_case == 3U || test_case == 4U);
+    if (!test_sensor(false)) test_fault = true;
+    s_want_jpeg = test_jpeg_enabled; s_jpeg_pipeline = true;
+    s_uart_mirror = false; s_jpeg_qs = 12U;
+    if (!test_fault && !apply_framesize(OV3660_FRAMESIZE_480X360)) test_fault = true;
+    /* OV3660 ISP_CONTROL registers: enabled defaults restore color/AWB/SDE,
+       while zero disables these processing blocks for an input-current delta. */
+    if (!test_fault &&
+        (ov3660_write_reg(0x5000, test_isp_enabled ? 0xA7U : 0x00U) != 0 ||
+         ov3660_write_reg(0x5001, test_isp_enabled ? 0x83U : 0x00U) != 0))
+      test_fault = true;
+    if (standby && !test_fault && !test_sensor(true)) test_fault = true;
     test_captures = test_sends = test_skipped = 0;
     test_due = HAL_GetTick();
     test_log("[TEST] event=mode case=%u tick=%lu width=480 height=360 qs=12 rf_control=1\r\n",
@@ -801,11 +810,13 @@ static void test_run(void)
   if ((int32_t)(start - test_due) < 0) { __NOP(); return; }
   /* Reserve the next identical slot before capture/transfer. */
   test_due += TEST_CAPTURE_MS;
-  len = CAM_CaptureJpeg(s_buf[0], s_frame_bytes, STREAM_CAP_TIMEOUT);
+  len = s_want_jpeg ? CAM_CaptureJpeg(s_buf[0], s_frame_bytes, STREAM_CAP_TIMEOUT)
+                    : (CAM_CaptureFrame(s_buf[0], s_frame_bytes, STREAM_CAP_TIMEOUT) == HAL_OK
+                       ? s_frame_bytes : 0U);
   capture_ms = HAL_GetTick() - start;
   if (len) {
     ++test_captures;
-    if (test_case == 1U) {
+    if (test_case == 1U && test_jpeg_enabled) {
       uint32_t tx = HAL_GetTick();
       sent = send_frame(s_buf[0], len);
       send_ms = HAL_GetTick() - tx;

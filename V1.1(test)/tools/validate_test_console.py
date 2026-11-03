@@ -21,7 +21,7 @@ def run():
         exp = tc.experiments
 
         class FakeSerial:
-            auto_ack, case, rid = True, 1, 0
+            auto_ack, case, rid, isp, jpeg = True, 1, 0, 1, 1
 
             def __init__(self):
                 self.commands = []
@@ -31,7 +31,7 @@ def run():
                 size = int.from_bytes(data[4:6], 'little')
                 command = data[6:6+size].decode('ascii')
                 self.commands.append(command)
-                for key, dest in [('A', 'rid'), ('E', 'case')]:
+                for key, dest in [('A', 'rid'), ('E', 'case'), ('V','isp'), ('J','jpeg')]:
                     match = re.search(key+r'(\d+)\n', command)
                     if match:
                         setattr(self, dest, int(match[1]))
@@ -40,8 +40,8 @@ def run():
 
             def ack(self, **overrides):
                 standby, sleep, image = tc.EXPECTED[self.case]
-                fields = dict(proto=4, rid=self.rid, case=self.case, led=0, interval_ms=1000,
-                              standby=standby, sleep=sleep, image=image, fault=0, skipped=0)
+                fields = dict(proto=6, rid=self.rid, case=self.case, led=0, interval_ms=1000,
+                              standby=standby, sleep=sleep, image=image, fault=0, skipped=0, width=480, height=360, fps_milli=1000, qs=12, pipeline=1, isp=self.isp, jpeg=self.jpeg)
                 fields.update(overrides)
                 exp.telemetry(('[TEST] event=status '+' '.join('%s=%s'%i for i in fields.items())+'\n').encode())
 
@@ -78,7 +78,8 @@ def run():
             with urllib.request.urlopen(base) as r:
                 html = r.read().decode()
             assert all('start(%d)'%c in html for c in tc.CASES)
-            assert 'start(5)' not in html and '无线芯片不进入休眠' in html
+            assert 'toggleFeature(\'isp\')' in html and 'toggleFeature(\'jpeg\')' in html
+            assert '无线芯片不进入休眠' in html
             checks.append('四档入口、无线不休眠说明')
             for case, ma in [(1, 100), (2, 70), (3, 45), (4, 30)]:
                 result = post(action='start', case=case)
@@ -99,6 +100,12 @@ def run():
             for v, i in [(0, 1), (5, -1), (float('nan'), 1), (5, float('inf'))]:
                 reject(action='record', voltage_v=v, current_ma=i)
             checks.append('拒绝非法电表读数')
+            for feature,enabled in [('jpeg',False),('isp',False),('isp',True),('jpeg',True)]:
+                result=post(action=feature,enabled=enabled)
+                assert result['active']['status']=='running'
+                assert ('J' if feature=='jpeg' else 'V')+str(int(enabled))+'\n' in serial.commands[-1]
+                assert result['board'][feature]==int(enabled)
+            checks.append('JPEG/ISP无线独立开关和状态回执')
             post(action='start', case=2);record_ready()
             post(action='record', voltage_v=6, current_ma=60)
             assert 'delta_current_ma' not in exp.readings[-1]

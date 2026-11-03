@@ -1148,6 +1148,11 @@ class Handler(BaseHTTPRequestHandler):
             q = json.loads(self.rfile.read(size))
             if not isinstance(q, dict):
                 raise ValueError('请求必须为JSON对象')
+            if q.get('action') in ('jpeg', 'isp'):
+                result = experiments.action(q, latest)
+                code = 200
+                self._send(code, 'application/json; charset=utf-8', json.dumps(result).encode())
+                return
             result = experiments.action(q, latest)
             code = 200
         except (ValueError, KeyError, TypeError) as e:

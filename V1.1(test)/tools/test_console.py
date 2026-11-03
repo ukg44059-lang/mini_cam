@@ -57,8 +57,8 @@ class Experiments:
     def ready(self, latest):
         if latest.receiver['source'] != 'rf433' or latest.ser is None:
             raise ValueError('请连接接收端CC1310应用串口并选择433 MHz来源')
-        if self.board.get('proto') != 4:
-            raise ValueError('需要四档测试固件 proto=4；旧版八项测试固件不能使用本页按钮')
+        if self.board.get('proto') != 6:
+            raise ValueError('需要测试固件 proto=6；旧版固件不能使用本页按钮')
         if time.time()-self.board.get('received_at', 0) > 15:
             raise ValueError('15秒内没有无线板端状态，请查询状态并检查供电')
 
@@ -77,12 +77,16 @@ class Experiments:
             self.event('mode_switch_requested', next_case=case)
             self.active.update(ended=True, status='switched')
             self.save()
+        feature_isp = bool(self.board.get('isp', 1))
+        feature_jpeg = bool(self.board.get('jpeg', 1))
         self.active = dict(
             schema='four_mode_v1', id=datetime.now().strftime('%Y%m%d_%H%M%S_')+uuid.uuid4().hex[:6],
             case=case, name=CASES[case], request_id=self.request_id, expected_case=case,
             status='pending', ack_deadline=time.monotonic()+10, _t0=time.monotonic(),
             started_utc=datetime.now(timezone.utc).isoformat(), settle_s=5, window_s=window,
-            settings=dict(width=480, height=360, jpeg_qs=12, interval_ms=1000, led=0,
+            expected_isp=int(feature_isp), expected_jpeg=int(feature_jpeg),
+            settings=dict(width=480, height=360, jpeg_qs=12, isp=feature_isp,jpeg=feature_jpeg,
+                          interval_ms=1000, led=0,
                           rf_mhz=433.92, rate_kbps=500, tx_power_register='0x913F', rf_control=True),
             events=[], frames=0, readings=[], health_errors=0,
             baseline=latest.snapshot_stats(), note=str(q.get('note', ''))[:1000])
@@ -96,11 +100,16 @@ class Experiments:
         return self.state()
 
     @staticmethod
-    def matches(fields, target):
-        return (fields.get('proto') == 4 and fields.get('case') == target and
+    def matches(fields, target, isp=True, jpeg=True):
+        return (fields.get('proto') == 6 and fields.get('case') == target and
                 fields.get('led') == 0 and fields.get('interval_ms') == 1000 and
+                fields.get('width') == 480 and fields.get('height') == 360 and
+                fields.get('fps_milli') == 1000 and fields.get('isp') == int(isp) and
+                fields.get('jpeg') == int(jpeg) and fields.get('qs') == 12 and
+                fields.get('pipeline') == 1 and
                 fields.get('fault') == 0 and
-                tuple(fields.get(k) for k in ('standby', 'sleep', 'image')) == EXPECTED[target])
+                tuple(fields.get(k) for k in ('standby', 'sleep')) == EXPECTED[target][:2] and
+                fields.get('image') == int(target == 1 and jpeg))
 
     def telemetry(self, raw, source='stm32'):
         with self.lock:
@@ -116,7 +125,9 @@ class Experiments:
                     self.board = dict(fields, received_at=time.time())
                     if a and not a.get('ended'):
                         target = 0 if a['status'] in ('stopping', 'stop_failed') else a['expected_case']
-                        matched = fields.get('rid') == a['request_id'] and self.matches(fields, target)
+                        matched = (fields.get('rid') == a['request_id'] and
+                                   self.matches(fields, target, a.get('expected_isp', True),
+                                                a.get('expected_jpeg', True)))
                         if matched and a['status'] in ('pending', 'unconfirmed', 'stopping', 'stop_failed'):
                             self.event('board_confirmed', **fields)
                             if target == 0:
@@ -151,7 +162,9 @@ class Experiments:
         a = self.active
         if not a or a.get('ended') or a.get('status') != 'running':
             raise ValueError('请先选择模式并等待板端确认')
-        if not self.matches(self.board, a['case']) or self.board.get('rid') != a['request_id']:
+        if (not self.matches(self.board, a['case'], bool(a.get('expected_isp', True)),
+                             bool(a.get('expected_jpeg', True))) or
+                self.board.get('rid') != a['request_id']):
             raise ValueError('板端确认与当前测试不一致')
         if time.monotonic()-a['confirmed_at'] < a['settle_s']+a['window_s']:
             raise ValueError('请等待稳定5秒并完成观察倒计时后记录电表读数')
@@ -169,7 +182,8 @@ class Experiments:
                    recorded_utc=datetime.now(timezone.utc).isoformat(), voltage_v=voltage,
                    current_ma=current, power_mw=voltage*current, input='manual_meter',
                    note=str(q.get('note', a['note']))[:1000], frames=a['frames'],
-                   settings=copy.deepcopy(a['settings']), observation_s=a['window_s'],
+                   settings=dict(a['settings'],isp=bool(self.board['isp']),jpeg=bool(self.board['jpeg'])),
+                   observation_s=a['window_s'],
                    health_errors=a['health_errors'], link_errors=link_errors,
                    comparable=(a['health_errors'] == 0 and link_errors == 0 and
                                self.board.get('skipped', 0) == 0),
@@ -196,6 +210,32 @@ class Experiments:
             if action == 'query':
                 error = latest.send_cmd('H0\n')
                 if error:
+                    raise ValueError(error)
+            elif action in ('jpeg', 'isp'):
+                self.ready(latest)
+                enabled = q.get('enabled')
+                if not isinstance(enabled, bool):
+                    raise ValueError('开关值必须是布尔值')
+                self.request_id = self.request_id % 999999 + 1
+                expected_isp = self.board.get('isp', 1)
+                expected_jpeg = self.board.get('jpeg', 1)
+                if action == 'isp': expected_isp = int(enabled)
+                else: expected_jpeg = int(enabled)
+                self.active = dict(schema='four_mode_v1', id=datetime.now().strftime('%Y%m%d_%H%M%S_')+
+                                   uuid.uuid4().hex[:6], case=self.board.get('case', 1),
+                                   expected_case=self.board.get('case', 1), status='pending',
+                                   expected_isp=expected_isp, expected_jpeg=expected_jpeg,
+                                   request_id=self.request_id, ack_deadline=time.monotonic()+10,
+                                   _t0=time.monotonic(), events=[], readings=[], frames=0,
+                                   window_s=int(q.get('window_s', 30)), settle_s=5,
+                                   settings=dict(width=480,height=360,jpeg_qs=12,interval_ms=1000,
+                                                 led=0,rf_control=True),note='')
+                letter = 'J' if action == 'jpeg' else 'V'
+                error = latest.send_cmd('A%d\n%s%d\nH0\n' %
+                                        (self.request_id, letter, int(enabled)))
+                if error:
+                    self.active.update(status='failed', ended=True, error=error)
+                    self.save()
                     raise ValueError(error)
             elif action == 'record':
                 self.record(q, latest)
@@ -239,7 +279,7 @@ class Experiments:
             age = time.time()-self.board.get('received_at', 0)
             return dict(ok=True, schema='four_mode_v1', board=dict(self.board), tx=dict(self.tx),
                         active=result, readings=copy.deepcopy(self.readings),
-                        control_ready=(self.board.get('proto') == 4 and age <= 15),
+                        control_ready=(self.board.get('proto') == 6 and age <= 15),
                         board_age_s=round(age, 1) if self.board else None)
 
 

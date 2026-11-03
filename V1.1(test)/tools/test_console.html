@@ -7,24 +7,26 @@
 <h1>四档电流测试</h1><p class="muted">电表接在发送端整机电源输入处，按①→②→③→④测量。每档等待稳定并观察后，手动记录读数。</p>
 <div id="status" class="banner">正在读取无线板端状态…</div><p id="error" role="alert"></p>
 <section class="card"><div class="row"><h2>连接与固定条件</h2><button class="secondary" onclick="act({action:'query'})">查询无线状态</button><a href="/viewer">图像 / 接收串口设置</a><a href="/test/guide" target="_blank">操作说明</a></div>
-<p id="connection" class="muted"></p><p>480×360 · JPEG QS12 · 采集目标每秒1张 · 433.92 MHz / 500 kbps · 照明始终关闭。四档均保留无线命令和状态通信，无线芯片不进入休眠。</p>
+<p id="connection" class="muted"></p><p>OV3660 ISP · 传感器硬件JPEG QS12 · STM32 DCMI/DMA · 480×360 · 目标1帧/秒 · 433.92 MHz / 500 kbps · 照明关闭。运行/发送超过1秒时会跳过周期，不会伪称稳定1 fps；无线芯片不进入休眠。</p>
 <div class="row"><label>观察时间 <input id="window" type="number" min="5" max="600" value="30"> 秒</label><span class="muted">每次板端确认后先稳定5秒，再开始观察。</span></div>
 <textarea id="note" placeholder="电表型号、输入电源、场景和接线备注；各档保持相同条件"></textarea>
 </section>
 <section class="card"><h2>选择模式</h2><div class="modes">
-<button class="mode" data-case="1" onclick="start(1)"><strong>① 完整运行</strong><span>采集 + ISP/JPEG + STM32处理 + 无线图像</span></button>
-<button class="mode" data-case="2" onclick="start(2)"><strong>② 不发无线图像</strong><span>保留相同采集节奏；停止SPI图像传输与无线图像发送</span></button>
+<button class="mode" data-case="1" onclick="start(1)"><strong>① 完整运行</strong><span>OV3660 ISP + 硬件JPEG QS12 + STM32处理 + 无线图像</span></button>
+<button class="mode" data-case="2" onclick="start(2)"><strong>② ISP + JPEG压缩</strong><span>相同采集节奏及处理，停止SPI图像转发与无线图像发送</span></button>
 <button class="mode" data-case="3" onclick="start(3)"><strong>③ 摄像头待机</strong><span>摄像头软待机、XCLK关闭；STM32保持运行</span></button>
 <button class="mode" data-case="4" onclick="start(4)"><strong>④ STM32 Sleep</strong><span>摄像头继续待机；STM32在控制轮询间进入Sleep</span></button></div>
 <p class="muted">Sleep保留1ms时基和约100ms控制轮询。点击①可从任意档恢复图传；切换成功以无线板端回执为准。</p>
 <div class="row"><button class="secondary" id="restore" onclick="start(1)">恢复完整运行</button><button class="pause" id="pause" onclick="act({action:'stop'})">暂停采集 / 保留无线控制</button></div>
+<h2>图像处理开关</h2><p class="muted">切换后先看板端回执和模块状态，再读取电表。关闭JPEG时输出改为灰度原始像素且不发图；ISP开关关闭OV3660的ISP子模块（0x5000/0x5001），这是传感器寄存器级旁路，不代表传感器全部模拟/数字电路关闭。</p>
+<div class="row"><button class="secondary" id="ispToggle" onclick="toggleFeature('isp')">ISP：查询中</button><button class="secondary" id="jpegToggle" onclick="toggleFeature('jpeg')">JPEG：查询中</button></div>
 <div class="scroll"><table><thead><tr><th>模块</th><th>板端已确认状态</th></tr></thead><tbody id="modules"></tbody></table></div>
 </section>
 <section class="card"><h2>记录电表读数</h2><p id="timer" class="muted">选择模式并等待无线确认。</p><div class="row">
 <label>输入电压 <input id="voltage" type="number" step="any" min="0" placeholder="例如 5.00"> V</label>
 <label>整机电流 <input id="current" type="number" step="any" min="0" placeholder="电表读数"> mA</label>
 <button id="record" disabled onclick="record()">记录本档</button></div>
-<p class="muted">软件不读取电表。输入功率 = 输入电压 × 电流；相邻档差值包含所有随模式改变的整机开销。JPEG、ISP及LDO的独立功耗暂不能由这些差值确定。</p>
+<p class="muted">软件不读取电表。②包含ISP和传感器硬件JPEG压缩；与①比较可观察停止图像转发/发送的整机差值。JPEG、ISP没有关闭对照档，整机输入无法分出其绝对功耗。输入功率 = 输入电压 × 电流。</p>
 <div class="row"><a class="link" href="/test/export">导出JSON记录</a><button class="secondary" onclick="newGroup()">新建测量组</button></div>
 <p class="muted">新组清空当前对比表，历史每档JSON仍保存在test_results。完成观察后保持当前模式，留出抄录电表的时间。</p>
 <div class="scroll"><table><thead><tr><th>模式</th><th>输入V</th><th>电流mA</th><th>输入mW</th><th>上一档−本档 mA</th><th>备注</th></tr></thead><tbody id="readings"></tbody></table></div>
@@ -36,15 +38,18 @@ const names={0:'暂停',1:'完整运行',2:'不发无线图像',3:'摄像头待�
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 async function act(q){if(busy)return;busy=true;render();el('error').textContent='';try{const r=await fetch('/test/action',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(q)});const d=await r.json();if(!r.ok||d.ok===false)throw Error(d.err||d.error||'操作失败');state=d;}catch(e){el('error').textContent=e.message;}finally{busy=false;render();}}
 function start(c){act({action:'start',case:c,window_s:Number(el('window').value),note:el('note').value});}
+function toggleFeature(feature){const key=feature==='isp'?'isp':'jpeg';act({action:feature,enabled:!Boolean(state?.board?.[key]),window_s:Number(el('window').value)});}
 function record(){if(!el('voltage').value||!el('current').value){el('error').textContent='请输入电表的电压和电流读数';return;}act({action:'record',voltage_v:Number(el('voltage').value),current_ma:Number(el('current').value),note:el('note').value});}
 function newGroup(){if(confirm('开始新的对比组？历史每档文件仍会保留。'))act({action:'new_group'});}
-function render(){const s=state||{},a=s.active,b=s.board||{},fresh=s.control_ready===true,waiting=a&&['pending','stopping'].includes(a.status);let text='等待 proto=4 无线状态，请查询状态并核对固件。';
-if(Object.keys(b).length){text=`板端：${names[b.case]??'旧版模式'} · 状态年龄 ${s.board_age_s??'?'}秒 · 协议 ${b.proto??'?'} · 请求 ${b.rid??'?'}`;if(b.proto!==4)text+='\n当前是旧版固件，请先更新STM32四档测试固件。';else if(!fresh)text+='\n状态已过期，暂不能记录或切换。';else if(b.fault)text+='\n摄像头切换失败，请检查板端日志和接线。';}
+function render(){const s=state||{},a=s.active,b=s.board||{},fresh=s.control_ready===true,waiting=a&&['pending','stopping'].includes(a.status);let text='等待 proto=6 无线状态，请查询状态并核对固件。';
+if(Object.keys(b).length){text=`板端：${names[b.case]??'模式'} · ${b.width??'?'}×${b.height??'?'} · ${(b.fps_milli/1000).toFixed(1)} fps目标 · ISP ${b.isp?'开':'关'} · JPEG QS${b.qs??'?'} ${b.jpeg?'开':'关'} · 状态年龄 ${s.board_age_s??'?'}秒 · 协议 ${b.proto??'?'} · 请求 ${b.rid??'?'}`;if(b.proto!==6)text+='\n当前固件未报告ISP/JPEG/帧率状态，请更新STM32 proto=6测试固件。';else if(!fresh)text+='\n状态已过期，暂不能记录或切换。';else if(b.fault)text+='\n摄像头切换失败，请检查板端日志和接线。';}
 if(a){const statuses={pending:'等待板端确认',running:'板端已确认',unconfirmed:'命令未确认',stopping:'等待暂停确认',stopped:'已暂停',stop_failed:'暂停未确认',interrupted:'服务重启，请重新选档',desynced:'板端状态改变',failed:'发送失败'};text+='\n'+(statuses[a.status]||a.status)+(a.error?'：'+a.error:'');}
 el('status').textContent=text;el('status').className='banner'+(fresh&&!b.fault?' good':'');
 document.querySelectorAll('.mode').forEach(btn=>{btn.disabled=busy||!fresh||waiting;btn.classList.toggle('selected',fresh&&a?.status==='running'&&Number(btn.dataset.case)===b.case);});
 el('restore').disabled=busy||!fresh||waiting;el('pause').disabled=busy||!fresh;
-const rows=b.proto===4?[['摄像头',b.standby?'软待机，XCLK关闭':'持续工作，固定JPEG参数'],['STM32',b.sleep?'Sleep，保留时基和无线轮询':b.case===3?'保持运行':'保持运行，含采集/处理'],['CC1310无线',b.image?'图像发送 + 双向控制':'双向控制保持工作；不发图像'],['照明','关闭'],['采集 / 图像发送 / 跳过周期',`${b.captures??0} / ${b.sends??0} / ${b.skipped??0}`]]:[['模块','尚未收到四档固件状态']];
+el('ispToggle').disabled=busy||!fresh||waiting;el('jpegToggle').disabled=busy||!fresh||waiting;
+el('ispToggle').textContent=`ISP：${b.isp?'开启':'关闭'}`;el('jpegToggle').textContent=`JPEG：${b.jpeg?'开启':'关闭'}`;
+const rows=b.proto===6?[['OV3660 ISP子模块',b.isp?'启用（0x5000/0x5001配置）':'关闭（寄存器写0）'],['传感器JPEG压缩',b.jpeg?`开启，QS${b.qs}`:'关闭，灰度输出'],['JPEG缓冲管线',b.pipeline?'双缓冲开启':'关闭'],['图像配置',`${b.width}×${b.height} · 目标 ${(b.fps_milli/1000).toFixed(1)} fps`],['摄像头',b.standby?'软待机，XCLK关闭':'持续工作'],['STM32',b.sleep?'Sleep，保留时基和无线轮询':b.case===3?'保持运行':'保持运行，含采集/处理'],['CC1310无线',b.image?'图像发送 + 双向控制':'双向控制保持工作；不发图像'],['照明','关闭'],['采集 / 图像发送 / 跳过周期',`${b.captures??0} / ${b.sends??0} / ${b.skipped??0}`]]:[['模块','尚未收到测试固件状态']];
 el('modules').innerHTML=rows.map(r=>`<tr><td>${esc(r[0])}</td><td>${esc(r[1])}${!fresh?'（状态过期）':''}</td></tr>`).join('');
 let timer='选择模式并等待无线确认。';if(a?.status==='running'){timer=a.settle_remaining_s>0?`稳定中：剩余 ${a.settle_remaining_s} 秒`:a.observe_remaining_s>0?`观察电表：剩余 ${a.observe_remaining_s} 秒`:'观察完成，可以输入并记录电表读数；当前模式保持运行。';if(a.health_errors)timer+=' 存在采集失败或跳过周期，本档标记为不适合差值对比。';}
 el('timer').textContent=timer;el('record').disabled=busy||!fresh||a?.status!=='running'||a.observe_remaining_s>0||!!b.fault;

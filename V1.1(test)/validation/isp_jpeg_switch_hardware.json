@@ -1,0 +1,121 @@
+{
+  "ok": true,
+  "protocol": 6,
+  "switches": [
+    {
+      "toggle": "jpeg",
+      "enabled": false,
+      "board": {
+        "proto": 6,
+        "rid": 892349,
+        "case": 1,
+        "led": 0,
+        "interval_ms": 1000,
+        "width": 480,
+        "height": 360,
+        "fps_milli": 1000,
+        "isp": 1,
+        "jpeg": 0,
+        "qs": 12,
+        "pipeline": 1,
+        "standby": 0,
+        "sleep": 0,
+        "image": 0,
+        "fault": 0,
+        "captures": 0,
+        "sends": 0,
+        "skipped": 0,
+        "received_at": 1793692369.5916104
+      }
+    },
+    {
+      "toggle": "isp",
+      "enabled": false,
+      "board": {
+        "proto": 6,
+        "rid": 892350,
+        "case": 1,
+        "led": 0,
+        "interval_ms": 1000,
+        "width": 480,
+        "height": 360,
+        "fps_milli": 1000,
+        "isp": 0,
+        "jpeg": 0,
+        "qs": 12,
+        "pipeline": 1,
+        "standby": 0,
+        "sleep": 0,
+        "image": 0,
+        "fault": 0,
+        "captures": 0,
+        "sends": 0,
+        "skipped": 0,
+        "received_at": 1793692370.1364174
+      }
+    },
+    {
+      "toggle": "isp",
+      "enabled": true,
+      "board": {
+        "proto": 6,
+        "rid": 892351,
+        "case": 1,
+        "led": 0,
+        "interval_ms": 1000,
+        "width": 480,
+        "height": 360,
+        "fps_milli": 1000,
+        "isp": 1,
+        "jpeg": 0,
+        "qs": 12,
+        "pipeline": 1,
+        "standby": 0,
+        "sleep": 0,
+        "image": 0,
+        "fault": 0,
+        "captures": 0,
+        "sends": 0,
+        "skipped": 0,
+        "received_at": 1793692370.8112342
+      }
+    },
+    {
+      "toggle": "jpeg",
+      "enabled": true,
+      "board": {
+        "proto": 6,
+        "rid": 892352,
+        "case": 1,
+        "led": 0,
+        "interval_ms": 1000,
+        "width": 480,
+        "height": 360,
+        "fps_milli": 1000,
+        "isp": 1,
+        "jpeg": 1,
+        "qs": 12,
+        "pipeline": 1,
+        "standby": 0,
+        "sleep": 0,
+        "image": 1,
+        "fault": 0,
+        "captures": 0,
+        "sends": 0,
+        "skipped": 0,
+        "received_at": 1793692371.5013275
+      }
+    }
+  ],
+  "restored": {
+    "frames": 1,
+    "width": 480,
+    "height": 360,
+    "fps": 0.04,
+    "bad_crc": 0,
+    "incomplete": 0
+  },
+  "current_measured": false,
+  "tested_utc": "2026-11-03",
+  "verified_firmware_sha256": "fbb74363f6d09ddbd9aadacb7518ab927ff3921a6c0de791c535ad3c844f492e"
+}

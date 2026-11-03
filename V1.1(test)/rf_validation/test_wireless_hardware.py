@@ -55,7 +55,7 @@ def run():
                 state = wait_status('running')
                 expected = {1:(0,0,1),2:(0,0,0),3:(1,0,0),4:(1,1,0)}[case]
                 board = state['board']
-                assert board['proto'] == 4 and board['fault'] == 0 and board['led'] == 0
+                assert board['proto'] == 6 and board['fault'] == 0 and board['led'] == 0
                 assert tuple(board[k] for k in ('standby','sleep','image')) == expected
                 # Drain any image already en route before taking the quiet-mode baseline.
                 time.sleep(1)
